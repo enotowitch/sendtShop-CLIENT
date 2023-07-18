@@ -19,6 +19,7 @@ export default function AppRouter() {
 			<Route exact path="/product/:id" element={<PostFull type="product" />} />
 			{/* article */}
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
+			<Route exact path="/articles" element={<PostCards type="article" />} />
 			<Route exact path="/cart" element={<Cart />} />
 		</Routes>
 	)

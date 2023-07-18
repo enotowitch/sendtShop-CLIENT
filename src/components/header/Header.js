@@ -11,7 +11,7 @@ export default function Header() {
 	return (
 		<>
 			<header className="f jcsb">
-				{<Link to="/"><img src={logoMain} className="ml" /></Link>}
+				<img onClick={() => window.location.href = "/"} src={logoMain} className="ml" />
 
 				<div className="mla">
 					{pathname === SEARCH_ROUTE ? <Link to={SEARCH_ROUTE}><Search sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={SEARCH_ROUTE}><Search /></Link>}
