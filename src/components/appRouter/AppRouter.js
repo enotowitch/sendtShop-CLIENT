@@ -1,7 +1,7 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom"
-import AddPost from "../post/AddPost"
-import Posts from "../post/Posts"
+import PostAdd from "../post/PostAdd"
+import PostCards from "../post/PostCards"
 import PostFull from "../post/PostFull"
 import VerifyToken from "../auth/VerifyToken"
 import Profile from "../profile/Profile"
@@ -13,12 +13,12 @@ export default function AppRouter() {
 			<Route exact path="/profile" element={<Profile />} />
 			<Route exact path="/verifyToken/:token" element={<VerifyToken />} />
 			{/* product */}
-			<Route exact path="/add/product" element={<AddPost type="product" />} />
-			<Route exact path="/" element={<Posts type="product" />} />
-			<Route exact path="/edit/product/:id" element={<AddPost type="product" />} />
+			<Route exact path="/add/product" element={<PostAdd type="product" />} />
+			<Route exact path="/" element={<PostCards type="product" />} />
+			<Route exact path="/edit/product/:id" element={<PostAdd type="product" />} />
 			<Route exact path="/product/:id" element={<PostFull type="product" />} />
 			{/* article */}
-			<Route exact path="/add/article" element={<AddPost type="article" />} />
+			<Route exact path="/add/article" element={<PostAdd type="article" />} />
 			<Route exact path="/cart" element={<Cart />} />
 		</Routes>
 	)

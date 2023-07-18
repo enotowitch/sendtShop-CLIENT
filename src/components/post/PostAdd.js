@@ -4,10 +4,10 @@ import useFullPost from "../../hooks/useFullPost"
 import useAddOrEdit from "../../hooks/useAddOrEdit"
 import VariableComponent from "./VariableComponent"
 
-export default function AddPost({ type }) { // type=product/article/...
+export default function PostAdd({ type }) { // type=product/article/...
 
 	// * gray cause of eval
-	const { addPost, editPost } = usePost() // AddPost is for both: addPost & editPost
+	const { addPost, editPost } = usePost() // PostAdd is for both: addPost & editPost
 	const { fullPost } = useFullPost(type) // to get all info about post for editPost, NOT to actual display the full post
 	const { varText, varFn } = useAddOrEdit(type) // variable text/function dep. on post type
 

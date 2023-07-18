@@ -5,8 +5,7 @@ import { Clear, Edit } from "@mui/icons-material";
 import "./index.scss"
 import usePost from "../../hooks/usePost";
 
-// Post=card
-export default function Post({ obj }) { // Post=product/article/...; top=logic; bottom=view
+export default function PostCard({ obj }) { // PostCard=product/article/...; top=logic; bottom=view
 
 	// logic
 	const { img, title, price, type, _id } = obj
