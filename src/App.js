@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+// npm i @mui/material @emotion/react @emotion/styled @mui/icons-material 
+// npm i firebase sass axios react-router-dom
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import AppRouter from "./components/appRouter/AppRouter";
+import Header from "./components/header/Header";
+import Snackbar from "./components/snackbar/Snackbar";
+
+export default function App() {
+	return (
+		<>
+			<Header />
+			<AppRouter />
+			<Snackbar />
+		</>
+	)
 }
-
-export default App;

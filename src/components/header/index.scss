@@ -1,0 +1,17 @@
+@import "../../vars.scss";
+
+// !!
+header{
+	position: fixed;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	background: $dark800;
+	height: 60px;
+	// !! header icons
+	svg{
+	height: 35px !important;
+	width: 35px !important;
+	color: $white;
+}
+}

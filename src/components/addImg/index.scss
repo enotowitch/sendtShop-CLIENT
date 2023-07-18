@@ -1,0 +1,13 @@
+// !!
+label{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// !! height of the `addImage` and `preview`
+	img{
+		// width: 100%;
+		max-height: 380px;
+		margin: 15px 0;
+		object-fit: contain;
+	}
+}

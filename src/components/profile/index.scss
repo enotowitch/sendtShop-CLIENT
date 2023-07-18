@@ -1,0 +1,14 @@
+@import "../../vars.scss";
+
+.adminPanel{
+	// !! adminPanel icons
+	svg{
+		height: 35px !important;
+		width: 35px !important;
+		color: $black;
+	}
+	a{
+		text-decoration: none;
+		color: $black;
+	}
+}

@@ -1,0 +1,10 @@
+.delAnim{
+	animation: delAnim 0.9s forwards;
+}
+
+@keyframes delAnim {
+	to{
+		opacity: 0;
+		scale: 0;
+	}
+}
