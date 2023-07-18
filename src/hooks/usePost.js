@@ -35,7 +35,7 @@ export default function usePost() {
 	}
 
 	// ! editPost
-	const { id } = useParams()
+	const { id: _id } = useParams()
 
 	async function editPost(e, type) {
 		// e = form event (onSubmit)
@@ -46,7 +46,7 @@ export default function usePost() {
 		const img = await addImg() // get uploadedImg url (on server) to store in DB
 
 		const { form } = parseForm(e)
-		const res = await api.editPost({ ...form, type, id, img })
+		const res = await api.editPost({ ...form, type, _id, img })
 		res.ok && (window.location.href = "/") // TODO go to `full type` page
 	}
 

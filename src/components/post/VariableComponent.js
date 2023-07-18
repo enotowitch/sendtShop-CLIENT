@@ -1,7 +1,6 @@
 import React, { Suspense } from "react"
-import { useParams } from "react-router-dom"
 
-// render: type=product/article/comment/...; action=add/...
+// render: type=product/article/comment/...; action=add/full/...
 export default function VariableComponent({ type, action, obj }) {
 
 	const VariableView = React.lazy(() => {
