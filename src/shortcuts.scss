@@ -45,6 +45,26 @@
 	gap: 60px;
 }
 // ! MARGIN
+// auto
+.ma{
+	margin: auto !important;
+}
+.m0a{
+	margin: 0 auto !important;
+}
+// all
+.m{
+	margin: 15px !important;
+}
+.m2{
+	margin: 30px !important;
+}
+.m3{
+	margin: 45px !important;
+}
+.m4{
+	margin: 60px !important;
+}
 // left
 .ml{
 	margin-left: 15px !important;
@@ -128,25 +148,6 @@
 }
 .mb4{
 	margin-bottom: 60px !important;
-}
-.ma{
-	margin: auto !important;
-}
-.m0a{
-	margin: 0 auto !important;
-}
-// all
-.m{
-	margin: 15px !important;
-}
-.m2{
-	margin: 30px !important;
-}
-.m3{
-	margin: 45px !important;
-}
-.m4{
-	margin: 60px !important;
 }
 // ? MARGIN
 // ! PADDING

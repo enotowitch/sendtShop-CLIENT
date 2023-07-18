@@ -10,9 +10,23 @@ export default function Cart() {
 
 	const cartProds = all?.filter(prod => user?.cart.includes(prod._id))
 
+	let allProdsTotalPrice = 0
+
+	const userCart = cartProds?.map(prod => {
+
+		const thisProdQuantity = user?.cart.filter(id => id === prod._id).length
+		const thisProdTotalPrice = prod.price * thisProdQuantity
+		allProdsTotalPrice += prod.price * thisProdQuantity
+
+		return (
+			<CartCard key={prod._id} obj={prod} quantity={thisProdQuantity} totalPrice={thisProdTotalPrice} />
+		)
+	})
+
 	return (
 		<>
-			{cartProds?.map(obj => <CartCard key={obj._id} obj={obj} />)}
+			<div className="tac mb">Subtotal: ${allProdsTotalPrice}</div>
+			{userCart}
 		</>
 	)
 }
