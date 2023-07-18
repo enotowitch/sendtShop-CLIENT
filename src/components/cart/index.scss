@@ -1,0 +1,11 @@
+@import "../../vars.scss";
+
+.cartCard{
+	max-width: $wM;
+	// !!
+	img{
+		height: 60px;
+		border-radius: $borderRadiusMedium;
+		width: auto;
+	}
+}

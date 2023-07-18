@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { Context } from "../../Context"
 import usePosts from "../../hooks/usePosts"
+import CartCard from "./CartCard"
 
 export default function Cart() {
 
@@ -11,7 +12,7 @@ export default function Cart() {
 
 	return (
 		<>
-			{cartProds?.map(prod => <div>{prod.title}</div>)}
+			{cartProds?.map(obj => <CartCard key={obj._id} obj={obj} />)}
 		</>
 	)
 }
