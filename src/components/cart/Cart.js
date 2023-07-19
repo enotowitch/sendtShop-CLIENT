@@ -7,6 +7,10 @@ import useStripe from "./useStripe"
 
 export default function Cart() { // TODO refactor
 
+	// 1. get user card products
+	// 2. get all products
+	// 3. if `ids from user cart` match `ids from all product` => show each product info (taken from all products)
+
 	const { user } = useContext(Context)
 	const { all } = usePosts("product")
 	const { stripeLink } = useStripe()
