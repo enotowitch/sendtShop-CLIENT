@@ -101,18 +101,9 @@ export const editPost = async (formAndType) => {
 }
 
 // ! pullPush
-export const pullPush = async ({ col, field, item, action, dups }) => {
-	// HOW TO USE:
-	// col=user/product/article...
-	// colId= userId by default (comes from addUserId middleware) || productId/articleId/...
-	// field=cart/like...
-	// item: productId/articleId/{}/...
-	// action: pull/push
-	// dups: false by default (allow duplicate items be added to `field`)
-	// dups: "TRUE example": duplicate product ids in user cart `field`
-	// dups: "FALSE example": only one user id in article like `field`
+export const pullPush = async ({ col, field, item, action, dups, pullMode }) => {
 	try {
-		const { data } = await instance.post(`/pullPush`, { col, field, item, action, dups })
+		const { data } = await instance.post(`/pullPush`, { col, field, item, action, dups, pullMode })
 		return data
 	} catch (error) {
 		console.log(error)

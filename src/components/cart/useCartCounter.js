@@ -12,7 +12,7 @@ export default function useCartCounter(productQuantity, productId) {
 		}
 		if (act === "-") {
 			countSet(prev => prev === 1 ? 1 : prev - 1) // prevent 0 prods
-			// api -
+			const res = await api.pullPush({ col: "user", field: "cart", item: productId, action: "pull", pullMode: "one" })
 		}
 	}
 
