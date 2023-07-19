@@ -13,7 +13,7 @@ export default function usePosts(type) { // type=product/article/comment/review.
 		}
 
 		getAllPosts()
-	}, [])
+	}, [type])
 
 
 	return (
