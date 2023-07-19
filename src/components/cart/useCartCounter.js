@@ -1,14 +1,14 @@
 import { useState } from "react"
 import * as api from "../../api"
 
-export default function useCartCounter(quantity, _id) {
+export default function useCartCounter(productQuantity, productId) {
 
-	const [count, countSet] = useState(quantity)
+	const [count, countSet] = useState(productQuantity)
 
 	async function cartCounter(act) { // +/-
 		if (act === "+") {
 			countSet(prev => prev + 1)
-			const res = await api.addTo("cart", _id)
+			const res = await api.pullPush({ col: "user", field: "cart", item: productId, action: "push", dups: true })
 		}
 		if (act === "-") {
 			countSet(prev => prev === 1 ? 1 : prev - 1) // prevent 0 prods

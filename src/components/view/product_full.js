@@ -4,8 +4,8 @@ import React from 'react'
 export default function product_full({ obj }) {
 
 	// !! only props must be here, no hooks
-	const { img, title, price, _id } = obj.fullPost
-	const { addTo } = obj
+	const { img, title, price, _id: productId } = obj.fullPost
+	const { pullPush } = obj
 
 	return (
 		<>
@@ -16,7 +16,7 @@ export default function product_full({ obj }) {
 				<div className="title tac">{title}</div>
 				<div className="brand tac">${price}</div>
 				<Button
-					onClick={() => (window.location.href = "/cart", addTo("cart", _id))}
+					onClick={() => (window.location.href = "/cart", pullPush({ col: "user", field: "cart", item: productId, action: "push", dups: true }))}
 					variant="contained"
 				>
 					add to cart

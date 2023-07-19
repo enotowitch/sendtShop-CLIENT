@@ -2,13 +2,13 @@ import React from "react"
 import "./index.scss"
 import VariableComponent from "./VariableComponent"
 import useFullPost from "../../hooks/useFullPost"
-import useAddTo from "../../hooks/useAddTo"
+import usePullPush from "../../hooks/usePullPush"
 
 export default function PostFull({ type }) { // type= TODO
 
 	const { fullPost } = useFullPost(type)
-	const { addTo } = useAddTo()
-	const obj = { fullPost, addTo }
+	const { pullPush } = usePullPush()
+	const obj = { fullPost, pullPush }
 
 	return (
 		<div className="f m0a postFull">
