@@ -6,6 +6,7 @@ import PostFull from "../post/PostFull"
 import VerifyToken from "../auth/VerifyToken"
 import Profile from "../profile/Profile"
 import Cart from "../cart/Cart"
+import VerifyOrderToken from "../cart/VerifyOrderToken"
 
 export default function AppRouter() {
 	return (
@@ -21,6 +22,8 @@ export default function AppRouter() {
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
 			<Route exact path="/articles" element={<PostCards type="article" />} />
 			<Route exact path="/cart" element={<Cart />} />
+			{/* order */}
+			<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
 		</Routes>
 	)
 }

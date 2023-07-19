@@ -10,6 +10,7 @@ instance.interceptors.request.use(config => {
 	return config
 })
 
+// !! AUTH
 // ! loginGoogle
 export const loginGoogle = async (email) => {
 	try {
@@ -39,7 +40,9 @@ export const loginSendEmail = async (form) => {
 		console.log(error)
 	}
 }
+// ?? AUTH
 
+// !! POST
 // ! addPost
 export const addPost = async (formAndType) => {
 	try {
@@ -109,3 +112,17 @@ export const pullPush = async ({ col, colId, field, item, action, dups, pullMode
 		console.log(error)
 	}
 }
+// ?? POST
+
+// !! ORDER
+// ! addOrder
+export const addOrder = async (token, cart) => {
+	console.log(cart)	
+	try {
+		const { data } = await instance.post(`/addOrder`, { token, cart })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+// ?? ORDER
