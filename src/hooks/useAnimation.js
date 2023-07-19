@@ -6,9 +6,9 @@ export default function useAnimation() {
 
 	function deleteAnimation(e, type) {
 		if (e.target) {
-			e.target.closest(".card").classList.add("delAnim")
+			e.target.closest(".animation").classList.add("delAnim")
 			setTimeout(() => {
-				e.target.closest(".card").style.display = "none"
+				e.target.closest(".animation").style.display = "none"
 			}, 500);
 		}
 		showSnackbar({ text: `${type} deleted` })

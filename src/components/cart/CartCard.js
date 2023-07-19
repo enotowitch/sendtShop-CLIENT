@@ -2,15 +2,15 @@ import React from "react"
 import CloseIcon from "@mui/icons-material/Close";
 import "./index.scss"
 import CartCounter from "./CartCounter";
-import usePullPush from "../../hooks/usePullPush"
+import useCartCard from "./useCartCard";
 
 export default function CartCard({ obj, quantity, totalPrice }) {
 
 	const { img, title, price, _id: productId } = obj
-	const { pullPush } = usePullPush()
+	const { deleteAll } = useCartCard(productId)
 
 	return (
-		<section className="f jcsb aic m0a mb cartCard">
+		<section className="f jcsb aic m0a mb cartCard animation">
 			<img src={img} />
 			<div className="fc">
 				<div>{title}</div>
@@ -20,7 +20,7 @@ export default function CartCard({ obj, quantity, totalPrice }) {
 			<CartCounter quantity={quantity} _id={productId} />
 
 			<div>${totalPrice}</div>
-			<CloseIcon onClick={(e) => pullPush({ col: "user", field: "cart", item: productId, action: "pull" })} />
+			<CloseIcon onClick={(e) => deleteAll(e)} />
 		</section>
 	)
 }

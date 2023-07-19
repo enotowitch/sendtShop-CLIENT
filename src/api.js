@@ -101,9 +101,9 @@ export const editPost = async (formAndType) => {
 }
 
 // ! pullPush
-export const pullPush = async ({ col, field, item, action, dups, pullMode }) => {
+export const pullPush = async ({ col, colId, field, item, action, dups, pullMode }) => {
 	try {
-		const { data } = await instance.post(`/pullPush`, { col, field, item, action, dups, pullMode })
+		const { data } = await instance.post(`/pullPush`, { col, colId, field, item, action, dups, pullMode })
 		return data
 	} catch (error) {
 		console.log(error)
