@@ -1,10 +1,8 @@
 import React from "react"
-import usePosts from "../../hooks/usePosts"
 import { useNavigate } from "react-router-dom"
 
-export default function Orders() { // TODO rename to OrderCards
+export default function OrderCard({ orders }) {
 
-	const { all } = usePosts("order")
 	const navigate = useNavigate()
 
 	function onClick(order) {
@@ -13,10 +11,9 @@ export default function Orders() { // TODO rename to OrderCards
 		navigate("/order")
 	}
 
-	// TODO ??? when page reloads => lose Context => no orders (in admin panel) 
 	return (
 		<>
-			{all?.map(order => ( // TODO: separate component: OrderCard
+			{orders?.map(order => (
 				<section className="f jcsb m0a mb wM" onClick={() => onClick(order)}>
 					<div className="fc">
 						<div>Order id:</div>
