@@ -11,6 +11,7 @@ import OrderCards from "../order/OrderCards"
 import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
 import Shipping from "../cart/Shipping"
+import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
 
 export default function AppRouter() {
 
@@ -39,6 +40,7 @@ export default function AppRouter() {
 					<Route exact path="/orders" element={<OrderCards />} />
 					<Route exact path="/order" element={<Cart />} />
 					<Route exact path="/order/shipping" element={<Shipping />} />
+					<Route exact path="/order/sent" element={<OrderSendEmailTrack />} />
 				</>
 			}
 			{/* NO ROUTES FOUND */}

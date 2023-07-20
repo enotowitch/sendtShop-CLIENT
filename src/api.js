@@ -124,4 +124,14 @@ export const addOrder = async (token) => {
 		console.log(error)
 	}
 }
+
+// ! addOrder
+export const orderSendEmailTrack = async (form) => {
+	try {
+		const { data } = await instance.post(`/orderSendEmailTrack`, { ...form })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
 // ?? ORDER
