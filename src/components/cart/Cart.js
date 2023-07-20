@@ -47,6 +47,10 @@ export default function Cart() { // TODO refactor
 	})
 
 	return (
-		<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={link} text={text} />
+		cartProducts.length > 0
+			?
+			<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={link} text={text} />
+			:
+			<div className="title tac danger">Your cart is empty</div>
 	)
 }
