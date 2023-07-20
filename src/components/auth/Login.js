@@ -1,4 +1,4 @@
-import { Box, TextField, Button } from "@mui/material"
+import { TextField, Button } from "@mui/material"
 import useLogin from "./useLogin"
 import "./index.scss"
 import Or from "./Or"
@@ -9,7 +9,7 @@ export default function Login() {
 
 	return (
 		<section className="wS m0a">
-			<Box className="title tac mb">Sign In</Box>
+			<div className="title tac mb">Sign In</div>
 			<form className="fc aic" onSubmit={loginSendEmail}>
 				<TextField
 					required

@@ -9,7 +9,7 @@ export default function usePullPush() { // TODO: rename pullPush to pushTo & +pu
 		// colId= userId by default (comes from addUserId middleware) || productId/articleId/...
 		// field=cart/like...
 		// item: productId/articleId/{}/...
-		// action: pull/push
+		// action: pull/push/clear
 		// dups: false by default (allow duplicate items be added to `field`)
 		// dups: "TRUE example": duplicate product ids in user cart `field`
 		// dups: "FALSE example": only one user id in article like `field`
@@ -19,7 +19,6 @@ export default function usePullPush() { // TODO: rename pullPush to pushTo & +pu
 		// eg: user.findOneAndUpdate({ _id: req?.userId }, { $push: { cart: productId } })
 		// eg: article.findOneAndUpdate({ _id: articleId }, { $push: { like: userId } })
 		const res = await api.pullPush({ col, colId, field, item, action, dups, pullMode })
-		console.log(res)
 	}
 
 	return (

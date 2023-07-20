@@ -1,6 +1,7 @@
 export const baseURL = process.env.REACT_APP_API_URL || "http://localhost:5000"
 export const BRAND_COLOR = "#673BD9"
 
+// TODO: currently all routes are hardcoded; use consts in ROUTES later
 // ROUTES
 export const SEARCH_ROUTE = "/search"
 export const LIKED_PRODS_ROUTE = "/liked" // TODO ?

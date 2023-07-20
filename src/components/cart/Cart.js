@@ -8,10 +8,6 @@ import CartProducts from "./CartProducts"
 
 export default function Cart() { // TODO refactor
 
-	// 1. get user card products
-	// 2. get all products
-	// 3. if `ids from user cart` match `ids from all product` => show each product info (taken from all products)
-
 	const { user } = useContext(Context)
 	const { all } = usePosts("product")
 	const { stripeLink } = useStripe()
@@ -29,6 +25,9 @@ export default function Cart() { // TODO refactor
 		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
 	}
 
+	// 1. get user/order cart products
+	// 2. get all products
+	// 3. if `ids from user cart` match `ids from all products` => show each product info (taken from all products)
 	const cartProds = all?.filter(prod => userOrOrder?.cart.includes(prod._id))
 
 	let allProductsTotalPrice = 0

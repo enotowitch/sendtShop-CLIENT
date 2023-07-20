@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import * as api from "../api"
 import { useParams } from "react-router-dom"
 
-export default function useFullPost(type) {	// type=product/article/comment/review...
+export default function usePostFull(type) {	// type=product/article/comment/review...
 
 	const { id } = useParams()
 
