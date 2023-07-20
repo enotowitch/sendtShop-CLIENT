@@ -8,6 +8,10 @@
 		width: 100px !important;
 		border-radius: $borderRadiusMedium;
 		width: auto;
+		@media (max-width:$mobile) {
+			width: 100% !important;
+			height: auto;
+		}
 	}
 }
 

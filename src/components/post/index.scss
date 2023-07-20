@@ -26,7 +26,7 @@
 	// width: 1380px; // !!
 	width: 100%;
 	justify-content: center;
-	@media (max-width:700px) {
+	@media (max-width:$mobile) {
 		flex-direction: column;
 		align-items: center;
 	}
@@ -34,14 +34,18 @@
 
 .postFull{
 	max-width: 1100px;
+	@media (max-width:$mobile) {
+		gap: 15px;
+	}
 	&__left{
 		max-width: 570px;
 	}
 	&__right{
-		width: 530px;
+		width: 440px;
 	}
 	// !!
 	img{
 		width: 100%;
+		border-radius: $borderRadiusLarge;
 	}
 }

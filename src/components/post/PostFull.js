@@ -11,7 +11,7 @@ export default function PostFull({ type }) { // type= TODO
 	const obj = { fullPost, pullPush }
 
 	return (
-		<div className="f m0a postFull">
+		<div className="f g6 m0a postFull">
 			<VariableComponent type={type} action="full" obj={obj} />
 		</div>
 	)

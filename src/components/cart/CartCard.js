@@ -10,7 +10,7 @@ export default function CartCard({ obj, quantity, totalPrice, className }) {
 	const { deleteAll } = useCartCard(productId)
 
 	return (
-		<section className={`f jcsb aic m0a mb cartCard animation ${className}`}>
+		<section className={`f jcsb aic m0a mb cartCard animation ${className ? className : ""}`}>
 			<img src={img} />
 			<div className="fc">
 				<div>{title}</div>
