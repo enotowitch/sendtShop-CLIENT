@@ -30,6 +30,7 @@ function ContextProvider({ children }) {
 
 	// ! uploadedImg: AddImg
 	const [uploadedImg, uploadedImgSet] = useState(null) // AddImg: jobs/folios
+	const [order, orderSet] = useState(null) // null || {} // order admin clicked to display like Context user
 
 	// ! RETURN
 	return (
@@ -39,7 +40,9 @@ function ContextProvider({ children }) {
 			// snackbar
 			snackbarShow, snackbarShowSet, snackbarText, snackbarTextSet, snackbarLink, snackbarLinkSet, snackbarLinkType, snackbarLinkTypeSet,
 			// uploadedImg: AddImg
-			uploadedImg, uploadedImgSet
+			uploadedImg, uploadedImgSet,
+			// order
+			order, orderSet
 		}}>
 
 			{children}

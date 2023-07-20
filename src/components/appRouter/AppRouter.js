@@ -7,6 +7,7 @@ import VerifyToken from "../auth/VerifyToken"
 import Profile from "../profile/Profile"
 import Cart from "../cart/Cart"
 import VerifyOrderToken from "../cart/VerifyOrderToken"
+import Orders from "../order/Orders"
 
 export default function AppRouter() {
 	return (
@@ -24,6 +25,8 @@ export default function AppRouter() {
 			<Route exact path="/cart" element={<Cart />} />
 			{/* order */}
 			<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
+			<Route exact path="/orders" element={<Orders />} />
+			<Route exact path="/order" element={<Cart />} />
 		</Routes>
 	)
 }
