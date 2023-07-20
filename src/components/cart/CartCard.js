@@ -4,13 +4,13 @@ import "./index.scss"
 import CartCounter from "./CartCounter";
 import useCartCard from "./useCartCard";
 
-export default function CartCard({ obj, quantity, totalPrice }) {
+export default function CartCard({ obj, quantity, totalPrice, className }) {
 
 	const { img, title, price, _id: productId } = obj
 	const { deleteAll } = useCartCard(productId)
 
 	return (
-		<section className="f jcsb aic m0a mb cartCard animation">
+		<section className={`f jcsb aic m0a mb cartCard animation ${className}`}>
 			<img src={img} />
 			<div className="fc">
 				<div>{title}</div>

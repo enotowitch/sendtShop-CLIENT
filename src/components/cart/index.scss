@@ -10,3 +10,10 @@
 		width: auto;
 	}
 }
+
+.orderCard{
+	// !! hide all (svg) icons in CartCard: .cartCard => with icons; .orderCard => NO icons
+	svg{
+		display: none;
+	}
+}

@@ -17,7 +17,7 @@ export default function Cart() { // TODO refactor
 	const { stripeLink } = useStripe()
 
 	// `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
-	let userOrOrder, link
+	let userOrOrder, link, className
 	if (useLocation().pathname === "/cart") {
 		userOrOrder = user
 		link = stripeLink
@@ -26,6 +26,7 @@ export default function Cart() { // TODO refactor
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
 		link = "/putSomeLinkHere" // TODO
+		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
 	}
 
 	const cartProds = all?.filter(prod => userOrOrder?.cart.includes(prod._id))
@@ -39,7 +40,7 @@ export default function Cart() { // TODO refactor
 		allProductsTotalPrice += prod.price * thisProdQuantity
 
 		return (
-			<CartCard key={prod._id} obj={prod} quantity={thisProdQuantity} totalPrice={thisProdTotalPrice} />
+			<CartCard key={prod._id} obj={prod} quantity={thisProdQuantity} totalPrice={thisProdTotalPrice} className={className} />
 		)
 	})
 
