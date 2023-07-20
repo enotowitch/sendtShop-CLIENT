@@ -10,6 +10,7 @@ import VerifyOrderToken from "../cart/VerifyOrderToken"
 import OrderCards from "../order/OrderCards"
 import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
+import Shipping from "../cart/Shipping"
 
 export default function AppRouter() {
 
@@ -28,13 +29,16 @@ export default function AppRouter() {
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
 			<Route exact path="/articles" element={<PostCards type="article" />} />
 			{/* USER ROUTES */}
-			{/* cart & order */}
 			{user &&
 				<>
+					{/* cart */}
 					<Route exact path="/cart" element={<Cart />} />
+					<Route exact path="/cart/shipping" element={<Shipping />} />
+					{/* order */}
 					<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
 					<Route exact path="/orders" element={<OrderCards />} />
 					<Route exact path="/order" element={<Cart />} />
+					<Route exact path="/order/shipping" element={<Shipping />} />
 				</>
 			}
 			{/* NO ROUTES FOUND */}
