@@ -18,7 +18,7 @@ export default function usePost() {
 
 		const { form } = parseForm(e)
 		const res = await api.addPost({ ...form, type, img })
-		res.ok && (window.location.href = "/")
+		res.ok && (window.location.href = `/product/${res._id}`)
 	}
 
 	// ! deletePost
@@ -47,7 +47,7 @@ export default function usePost() {
 
 		const { form } = parseForm(e)
 		const res = await api.editPost({ ...form, type, _id, img })
-		res.ok && (window.location.href = "/") // TODO go to `full type` page
+		res.ok && (window.location.href = `/${type}/${_id}`)
 	}
 
 	return (
