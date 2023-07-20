@@ -26,6 +26,7 @@ export default function Shipping() {
 				</div>
 				<Input editValue={userOrOrder?.city} required name="city" label="town/city" helperText="text" className="w100" />
 				<Button type="submit" variant="contained">PLACE ORDER</Button>
+				{/* TODO: cart button = useStripe; order button = go to send email */}
 			</form>
 		</section>
 	)

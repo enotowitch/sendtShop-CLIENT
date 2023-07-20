@@ -116,9 +116,9 @@ export const pullPush = async ({ col, colId, field, item, action, dups, pullMode
 
 // !! ORDER
 // ! addOrder
-export const addOrder = async (token, cart, shipping) => {
+export const addOrder = async (token) => {
 	try {
-		const { data } = await instance.post(`/addOrder`, { token, cart, shipping })
+		const { data } = await instance.post(`/addOrder`, { token })
 		return data
 	} catch (error) {
 		console.log(error)
