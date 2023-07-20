@@ -1,16 +1,15 @@
-import React, { useContext } from "react"
+import React from "react"
 import usePosts from "../../hooks/usePosts"
-import { Context } from "../../Context"
 import { useNavigate } from "react-router-dom"
 
 export default function Orders() { // TODO rename to OrderCards
 
 	const { all } = usePosts("order")
-	const { orderSet } = useContext(Context)
 	const navigate = useNavigate()
 
 	function onClick(order) {
-		orderSet(order)
+		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
+		localStorage.setItem("order", JSON.stringify(order))
 		navigate("/order")
 	}
 

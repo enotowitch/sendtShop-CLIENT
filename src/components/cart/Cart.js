@@ -12,7 +12,7 @@ export default function Cart() { // TODO refactor
 	// 2. get all products
 	// 3. if `ids from user cart` match `ids from all product` => show each product info (taken from all products)
 
-	const { user, order } = useContext(Context)
+	const { user } = useContext(Context)
 	const { all } = usePosts("product")
 	const { stripeLink } = useStripe()
 
@@ -23,7 +23,8 @@ export default function Cart() { // TODO refactor
 		link = stripeLink
 	}
 	if (useLocation().pathname === "/order") {
-		userOrOrder = order
+		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
+		userOrOrder = JSON.parse(localStorage.getItem("order"))
 		link = "/putSomeLinkHere" // TODO
 	}
 
