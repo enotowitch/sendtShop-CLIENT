@@ -1,32 +1,13 @@
-import React, { useContext } from "react"
-import { Context } from "../../Context"
+import React from "react"
 import usePosts from "../../hooks/usePosts"
 import CartCard from "./CartCard"
-import { useLocation } from "react-router-dom"
 import CartProducts from "./CartProducts"
+import useUserOrOrderCart from "./useUserOrOrderCart"
 
 export default function Cart() { // TODO refactor
 
-	const { user } = useContext(Context)
 	const { all } = usePosts("product")
-
-	// TODO refactor: useUserOrOrderCart
-	// `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
-	let userOrOrder, link, className, text
-	if (useLocation().pathname === "/cart") {
-		userOrOrder = user
-		link = "/cart/shipping"
-		text = "* Additional taxes and fees will be calculated at checkout"
-	}
-	if (useLocation().pathname === "/order") {
-		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
-		userOrOrder = JSON.parse(localStorage.getItem("order"))
-		link = "/order/shipping"
-		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
-		// text = "Deliver these products using shipping info and send email with tracking link to user" // TODO
-		text = "* some text here"
-	}
-	// TODO refactor: useUserOrOrderCart
+	const { userOrOrder, link, className, text } = useUserOrOrderCart()
 
 	// 1. get user/order cart products
 	// 2. get all products
