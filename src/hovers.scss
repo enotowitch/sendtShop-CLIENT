@@ -1,3 +1,8 @@
+// !! use if no special className used: eg: .cartCard
+.cp{
+	cursor: pointer;
+}
+
 // !!
 header, .card{
 	svg, img{
@@ -5,5 +10,12 @@ header, .card{
 		// &:hover{
 		// 	filter: contrast(70%);
 		// }
+	}
+}
+
+.cartCard{
+	// cartCard icons
+	svg{
+		cursor: pointer;
 	}
 }

@@ -14,10 +14,16 @@ export default function OrderCard({ orders }) {
 	return (
 		<>
 			{orders?.map(order => (
-				<section className="f jcsb m0a mb wM" onClick={() => onClick(order)}>
+				<section className="f jcsb m0a mb wM cp" onClick={() => onClick(order)}>
 					<div className="fc">
 						<div>Order id:</div>
 						<div className="brand">{order._id}</div>
+					</div>
+					<div className="fc">
+						<div>Created:</div>
+						<div className="brand">
+							{order.createdAt.replace(/T/, " / ").replace(/\..+/, "")}
+						</div>
 					</div>
 					<div className="fc">
 						<div>Total quantity:</div>
