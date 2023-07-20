@@ -17,7 +17,7 @@ export default function Header() {
 					{pathname === SEARCH_ROUTE ? <Link to={SEARCH_ROUTE}><Search sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={SEARCH_ROUTE}><Search /></Link>}
 					{pathname === LIKED_PRODS_ROUTE ? <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder /></Link>}
 					{pathname === CART_ROUTE ? <Link to={CART_ROUTE}><AddShoppingCart sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={CART_ROUTE}><AddShoppingCart /></Link>}
-					{pathname === PROFILE_ROUTE ? <Link to={PROFILE_ROUTE}><PersonOutline sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={PROFILE_ROUTE}><PersonOutline /></Link>}
+					{pathname === PROFILE_ROUTE ? <Link to={PROFILE_ROUTE} className="profile"><PersonOutline sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={PROFILE_ROUTE} className="profile"><PersonOutline /></Link>}
 				</div>
 
 				<Menu className="mx" />

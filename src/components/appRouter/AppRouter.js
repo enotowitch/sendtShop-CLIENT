@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Route, Routes } from "react-router-dom"
 import PostAdd from "../post/PostAdd"
 import PostCards from "../post/PostCards"
@@ -8,8 +8,13 @@ import Profile from "../profile/Profile"
 import Cart from "../cart/Cart"
 import VerifyOrderToken from "../cart/VerifyOrderToken"
 import OrderCards from "../order/OrderCards"
+import { Context } from "../../Context"
+import ClickProfile from "./ClickProfile"
 
 export default function AppRouter() {
+
+	const { user } = useContext(Context)
+
 	return (
 		<Routes>
 			<Route exact path="/profile" element={<Profile />} />
@@ -22,11 +27,19 @@ export default function AppRouter() {
 			{/* article */}
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
 			<Route exact path="/articles" element={<PostCards type="article" />} />
-			<Route exact path="/cart" element={<Cart />} />
-			{/* order */}
-			<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
-			<Route exact path="/orders" element={<OrderCards />} />
-			<Route exact path="/order" element={<Cart />} />
+			{/* USER ROUTES */}
+			{/* cart & order */}
+			{user &&
+				<>
+					<Route exact path="/cart" element={<Cart />} />
+					<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
+					<Route exact path="/orders" element={<OrderCards />} />
+					<Route exact path="/order" element={<Cart />} />
+				</>
+			}
+			{/* NO ROUTES FOUND */}
+			{/* click Profile(Login) if no user */}
+			<Route path="*" element={<ClickProfile />} />
 		</Routes>
 	)
 }
