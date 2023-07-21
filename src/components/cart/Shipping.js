@@ -9,9 +9,15 @@ export default function Shipping() {
 	const { addShipping } = useShipping()
 	const { userOrOrder, varText, varLink, userEmail } = useUserOrOrderShipping()
 
+	function onSubmit(e) {
+		// !! order 1 & 2 is mandatory
+		addShipping(e) // 1. add shipping form to user (DB)
+		window.location.href = varLink // 2. go to stripeLink || "/order/sent"
+	}
+
 	return (
 		<section>
-			<form onSubmit={(e) => addShipping(e)} className="wM m0a">
+			<form onSubmit={onSubmit} className="wM m0a">
 				<div className="f fwn g2">
 					<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" helperText="text" className="w100" />
 					<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" helperText="text" className="w100" />
@@ -24,7 +30,7 @@ export default function Shipping() {
 				<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" className="w100" />
 				<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" className="w100" />
 				<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" className="w100" />
-				<Button type="submit" variant="contained" href={varLink}>{varText}</Button>
+				<Button type="submit" variant="contained">{varText}</Button>
 				{/* TODO: cart button = useStripe; order button = go to send email */}
 			</form>
 		</section>
