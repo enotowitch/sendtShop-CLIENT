@@ -13,7 +13,7 @@ export default function OrderSendEmailTrack() {
 	// admin copies `track number`to input and SENDS EMAIL with `track number` to user
 
 	const { sendEmail } = useOrderSendEmailTrack()
-	const email = JSON.parse(localStorage.getItem("order")).email // user email
+	const email = JSON.parse(localStorage.getItem("order")).email // user order email
 
 	// TODO ??? all <Input/> className="w100" = via style
 	return (

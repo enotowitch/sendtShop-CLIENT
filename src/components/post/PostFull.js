@@ -4,9 +4,9 @@ import VariableComponent from "./VariableComponent"
 import usePostFull from "../../hooks/usePostFull"
 import usePullPush from "../../hooks/usePullPush"
 
-export default function PostFull({ type }) { // type= TODO
+export default function PostFull({ type }) { // type=product/article/...
 
-	const { fullPost } = usePostFull(type)
+	const { fullPost } = usePostFull(type) // full product/full article/...
 	const { pullPush } = usePullPush()
 	const obj = { fullPost, pullPush }
 

@@ -2,7 +2,7 @@ import { Context } from "../../Context"
 import { useContext } from "react"
 
 // `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
-// = `user` and (admin) `order` = userOrOrder(array)
+// = `user` and (admin) `order` = userOrOrder(object)
 export default function useUserOrOrderCart() {
 
 	const { user } = useContext(Context)

@@ -9,9 +9,11 @@ export default function VariableComponent({ type, action, obj }) {
 		})
 	})
 
+	// TODO ??? rename VariableComponent to VariableView
+	// TODO ??? place VariableComponent to `view` folder
 	return (
 		<Suspense>
-			{/* load product_add/article_add/comment_add/... */}
+			{/* load product_add/article_full/... */}
 			<VariableView obj={obj} />
 		</Suspense>
 	)

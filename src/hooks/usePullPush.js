@@ -1,6 +1,6 @@
 import * as api from "../api"
 
-export default function usePullPush() { // TODO: rename pullPush to pushTo & +pullFrom
+export default function usePullPush() {
 
 	async function pullPush({ col, colId, field, item, action, dups, pullMode }) {
 		// for updating already created fields in collection
@@ -16,8 +16,11 @@ export default function usePullPush() { // TODO: rename pullPush to pushTo & +pu
 		// pullMode: all/one; "all" by default (pull all or one item(s) from `field`)
 
 		// examples:
-		// eg: user.findOneAndUpdate({ _id: req?.userId }, { $push: { cart: productId } })
-		// eg: article.findOneAndUpdate({ _id: articleId }, { $push: { like: userId } })
+		// pullPush({ col: "user", field: "cart", item: productId, action: "pull" })
+		// pullPush({ col: "user", field: "cart", item: productId, action: "push", dups: true })
+		// pullPush({ col: "user", field: "cart", item: productId, action: "pull", pullMode: "one" })
+		// pullPush({ col: "user", field: "shipping", item: {...form}, action: "push" })
+		// pullPush({ col: "user", field: "cart", action: "clear" })
 		const res = await api.pullPush({ col, colId, field, item, action, dups, pullMode })
 	}
 
