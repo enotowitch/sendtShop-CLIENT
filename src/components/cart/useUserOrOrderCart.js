@@ -7,7 +7,7 @@ export default function useUserOrOrderCart() {
 
 	const { user } = useContext(Context)
 
-	let userOrOrder, link, className, text
+	let userOrOrder, link, className, text // TODO: rename: varText, varLink
 	if (window.location.pathname.includes("/cart")) { // !!
 		userOrOrder = user
 		link = "/cart/shipping"
