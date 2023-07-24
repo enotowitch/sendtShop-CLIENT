@@ -11,7 +11,7 @@ export default function PostFull({ type }) { // type=product/article/...
 	const obj = { fullPost, pullPush }
 
 	return (
-		<div className="f g6 m0a postFull">
+		<div className="fcc g6 m0a mb postFull">
 			<VariableComponent type={type} action="full" obj={obj} />
 		</div>
 	)
