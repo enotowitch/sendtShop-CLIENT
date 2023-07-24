@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import * as api from "../api"
 
-export default function usePosts(type) { // type=product/article/comment/review...
-
-	const [all, allSet] = useState([])
+// type=product/article/comment/review...
+// field=tags/likes/...
+// eg: all products/all articles/...
+// eg: product.tags/article.likes/...
+export default function usePosts(type, field) {
 
 	// ! all
+	const [all, allSet] = useState([])
 	useEffect(() => {
 		async function getAllPosts() {
 			const res = await api.getAllPosts(type)
@@ -15,8 +18,19 @@ export default function usePosts(type) { // type=product/article/comment/review.
 		getAllPosts()
 	}, [type])
 
+	// ! allWithField
+	const [allWithField, allWithFieldSet] = useState([])
+	useEffect(() => {
+		async function getAllWithFieldPosts() {
+			const res = await api.getAllPosts(type, field)
+			allWithFieldSet(res)
+		}
+
+		getAllWithFieldPosts()
+	}, [type, field])
+
 
 	return (
-		{ all }
+		{ all, allWithField }
 	)
 }

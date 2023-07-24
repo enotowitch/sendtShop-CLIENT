@@ -64,9 +64,9 @@ export const addImg = async (formData) => {
 }
 
 // ! getAllPosts
-export const getAllPosts = async (type) => {
+export const getAllPosts = async (type, field) => {
 	try {
-		const { data } = await instance.post("/getAllPosts", { type })
+		const { data } = await instance.post("/getAllPosts", { type, field })
 		return data
 	} catch (error) {
 		console.log(error)

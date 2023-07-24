@@ -21,7 +21,7 @@ export default function Product_article_card({ obj, children }) {
 				</div>
 			}
 			<img src={img} />
-			<Tags arr={tags} />
+			<Tags arr={tags} className="scrollableTags" />
 			<div className="title tac">{title}</div>
 
 			{children}
