@@ -23,9 +23,12 @@
 }
 
 .cards{
-	max-width: 1380px; // !!
+	max-width: 1380px; // !! big screen => justify-content: flex-start
 	width: 100%;
 	justify-content: flex-start;
+	@media (max-width:1364px) { // !! small screen => justify-content: center
+		justify-content: center;
+	}
 	@media (max-width:$mobile) {
 		flex-direction: column;
 		align-items: center;

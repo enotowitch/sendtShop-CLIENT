@@ -11,7 +11,7 @@ export default function AdminPanel() {
 
 	return (
 		user?.isAdmin &&
-		<section className="fcc g mb adminPanel">
+		<section className="fcc g wS m0a mb adminPanel">
 			<Link to="/add/product"><AdminIcon text="product"><ControlPoint /></AdminIcon></Link>
 			<Link to="/add/article"><AdminIcon text="article"><ControlPoint /></AdminIcon></Link>
 			<Link to="/orders"><AdminIcon text="orders"><LayersOutlined /></AdminIcon></Link>
