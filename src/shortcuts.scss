@@ -273,6 +273,12 @@
 .brL{ // border-radius LARGE
 	border-radius: $borderRadiusLarge !important;
 }
+.brS{ // border-radius SMALL
+	border-radius: $borderRadiusSmall !important;
+}
+.inputBorderGray{
+	border: 1px solid #b3b3b3;
+}
 // ! WIDTH
 .wS{ // width Small/Medium/Large
 	max-width: $wS;

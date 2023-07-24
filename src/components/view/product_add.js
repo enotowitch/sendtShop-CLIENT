@@ -2,6 +2,7 @@ import React from 'react'
 import AddImg from '../addImg/AddImg'
 import Input from '../form/Input'
 import { Button } from '@mui/material'
+import Tags from '../form/Tags'
 
 // addProduct/editProduct
 export default function product_add({ obj }) {
@@ -18,7 +19,7 @@ export default function product_add({ obj }) {
 				<AddImg editValue={fullPost?.img} />
 				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
 				<Input editValue={fullPost?.brand} required name="brand" label="brand" helperText="text" />
-				<Input editValue={fullPost?.tags} required name="tags" label="tags" helperText="tags separated by comma" />
+				<Tags />
 				<Input editValue={fullPost?.price} required name="price" type="number" label="price" helperText="number" />
 				<Input editValue={fullPost?.text} required name="text" label="text" helperText="text" multiline />
 				<Button type="submit" variant="contained">{varText}</Button>

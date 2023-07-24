@@ -1,0 +1,10 @@
+// !! mui tags background
+.MuiInputBase-root.MuiFilledInput-root{
+	background: white;
+	padding: 8px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	&::before{
+		border-bottom: none !important;
+	}
+}
