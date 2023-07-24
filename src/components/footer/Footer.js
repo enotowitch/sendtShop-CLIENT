@@ -7,7 +7,7 @@ export default function Footer() {
 		<footer>
 			<div className="f jcsa wL w100 m0a">
 				{/* left */}
-				<div className="fc tac">
+				<div className="fc tac wS w100">
 					<div className="fw700">MENU</div>
 					<Link>News</Link>
 					<Link>About Us</Link>
@@ -15,7 +15,7 @@ export default function Footer() {
 					<Link>Contact</Link>
 				</div>
 				{/* center */}
-				<div className="fc tac">
+				<div className="fc tac wS w100">
 					<div className="fw700">HELP</div>
 					<Link>Terms and Conditions</Link>
 					<Link>Privacy Policy</Link>
@@ -23,7 +23,7 @@ export default function Footer() {
 					<Link>FAQ</Link>
 				</div>
 				{/* right */}
-				<div className="fc tac">
+				<div className="fc tac wS w100">
 					<div className="fw700">VISIT US</div>
 					<Link>Etsy</Link>
 					<Link>Shopify</Link>
