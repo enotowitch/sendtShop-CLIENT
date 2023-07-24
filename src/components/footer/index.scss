@@ -1,0 +1,14 @@
+@import "../../vars.scss";
+
+// !!
+footer{
+	background: $dark800;
+	color: $white;
+	font-size: 20px; // TODO ???
+	// !! all links margin
+	* {
+		margin-bottom: 10px;
+	}
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
