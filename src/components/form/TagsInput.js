@@ -2,7 +2,7 @@ import * as React from "react";
 import { Chip, Autocomplete, TextField, Stack } from "@mui/material";
 import "./index.scss"
 
-export default function Tags() {
+export default function TagsInput() {
 	return (
 		<Stack spacing={3} className="w100 mb inputBorderGray brS">
 			<Autocomplete

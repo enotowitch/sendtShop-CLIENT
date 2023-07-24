@@ -1,13 +1,23 @@
 @import "../../vars.scss";
 
 .card{
+	position: relative;
 	background: $white;
 	border-radius: $borderRadiusLarge;
-	&__top, &__bottom{
+	&__bottom{
 		margin: 10px;
 	}
 	// !! card top icons
 	&__top{
+		// hidden: shown onHover
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		background: $white;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		padding: 5px 0;
 		svg{
 			height: 40px;
 			width: 40px;
@@ -19,6 +29,9 @@
 		height: 202px;
 		object-fit: cover;
 		min-width: $wS; // !!
+		border-radius: $borderRadiusLarge;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 }
 

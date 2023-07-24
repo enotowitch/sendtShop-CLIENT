@@ -90,6 +90,9 @@
 .ml4{
 	margin-left: 60px !important;
 }
+.ml010{
+	margin-left: 10px !important;
+}
 .mla{
 	margin-left: auto !important;
 }
@@ -105,6 +108,9 @@
 }
 .mr4{
 	margin-right: 60px !important;
+}
+.mr010{
+	margin-right: 10px !important;
 }
 .mra{
 	margin-right: auto !important;
@@ -265,6 +271,12 @@
 }
 .whiteBg{
 	background: $white !important;
+}
+.gray{
+	color: $gray !important;
+}
+.grayBg{
+	background: $gray !important;
 }
 .googleBg{
 	background: #4285F4 !important;
