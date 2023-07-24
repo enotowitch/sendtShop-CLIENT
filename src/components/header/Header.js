@@ -3,10 +3,13 @@ import "./index.scss"
 import { Link, useLocation } from "react-router-dom"
 import { BRAND_COLOR, CART_ROUTE, LIKED_PRODS_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE } from "../../consts"
 import logoMain from "../../img/logoMain.svg"
+import { useState } from "react"
+import HeaderDrawer from "./HeaderDrawer"
 
 export default function Header() {
 
-	const { pathname } = useLocation()
+	const { pathname } = useLocation() // TODO window.location
+	const [showMenu, showMenuSet] = useState(false)
 
 	return (
 		<>
@@ -20,7 +23,10 @@ export default function Header() {
 					{pathname === PROFILE_ROUTE ? <Link to={PROFILE_ROUTE} className="profile"><PersonOutline sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={PROFILE_ROUTE} className="profile"><PersonOutline /></Link>}
 				</div>
 
-				<Menu className="mx" />
+				{/* TODO separate component */}
+				<Menu className="mx" onClick={() => showMenuSet(prev => !prev)} />
+				{showMenu && <HeaderDrawer showMenu={showMenu} showMenuSet={showMenuSet} />}
+
 			</header>
 			{/* header is fixed, so need this trick div (adds margin-bottom) */}
 			<div className="mb4 op0">"needs content"</div>

@@ -16,3 +16,10 @@ header{
 	color: $white;
 }
 }
+
+.headerDrawer{
+	width: 360px;
+	@media (max-width:$mobile) {
+		width: 100vw;
+	}
+}
