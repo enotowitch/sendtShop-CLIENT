@@ -3,7 +3,7 @@ import "./index.scss"
 
 export default function CartSteps({ step }) {
 	return (
-		<div className="fcc g">
+		<div className="fcc g mb">
 			{/* 1 */}
 			<div className="line line__small brandBg"></div>
 			<div className="round fcc brandBg white">1</div>
