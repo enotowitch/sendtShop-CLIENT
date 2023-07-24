@@ -3,6 +3,7 @@ import usePosts from "../../hooks/usePosts"
 import CartCard from "./CartCard"
 import CartProducts from "./CartProducts"
 import useUserOrOrderCart from "./useUserOrOrderCart"
+import CartSteps from "./CartSteps"
 
 export default function Cart() { // TODO refactor
 
@@ -30,7 +31,10 @@ export default function Cart() { // TODO refactor
 	return (
 		cartProducts.length > 0
 			?
-			<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={link} text={text} />
+			<>
+				<CartSteps />
+				<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={link} text={text} />
+			</>
 			:
 			<div className="title tac danger">Your cart is empty</div>
 	)
