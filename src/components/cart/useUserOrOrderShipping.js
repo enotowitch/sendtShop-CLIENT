@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../Context"
 import useStripe from "./useStripe"
+import { ADMIN_ORDER_SHIPPING } from "../../consts"
 
 export default function useUserOrOrderShipping() {
 
@@ -13,7 +14,7 @@ export default function useUserOrOrderShipping() {
 		varText = "PLACE ORDER"
 		varLink = stripeLink
 	}
-	if (window.location.pathname.includes("/order/shipping")) {
+	if (window.location.pathname.includes(ADMIN_ORDER_SHIPPING)) {
 		userOrOrder = JSON.parse(localStorage.getItem("order")).shipping
 		varText = "SEND EMAIL"
 		varLink = "/order/sent"

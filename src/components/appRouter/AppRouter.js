@@ -12,6 +12,7 @@ import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
 import Shipping from "../cart/Shipping"
 import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
+import { ADMIN_ORDER, ADMIN_ORDERS, ADMIN_ORDER_SHIPPING, USER_ORDER, USER_ORDERS } from "../../consts"
 
 export default function AppRouter() {
 
@@ -35,12 +36,16 @@ export default function AppRouter() {
 					{/* cart */}
 					<Route exact path="/cart" element={<Cart />} />
 					<Route exact path="/cart/shipping" element={<Shipping />} />
-					{/* order */}
+					{/* ORDER */}
 					<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
-					<Route exact path="/orders" element={<OrderCards />} />
-					<Route exact path="/order" element={<Cart />} />
-					<Route exact path="/order/shipping" element={<Shipping />} />
+					{/* admin order */}
+					<Route exact path={ADMIN_ORDERS} element={<OrderCards title="Orders to deliver" />} />
+					<Route exact path={ADMIN_ORDER} element={<Cart />} />
+					<Route exact path={ADMIN_ORDER_SHIPPING} element={<Shipping />} />
 					<Route exact path="/order/sent" element={<OrderSendEmailTrack />} />
+					{/* user order */}
+					<Route exact path={USER_ORDERS} element={<OrderCards title="Previous orders" />} />
+					<Route exact path={USER_ORDER} element={<Cart />} />
 				</>
 			}
 			{/* NO ROUTES FOUND */}
