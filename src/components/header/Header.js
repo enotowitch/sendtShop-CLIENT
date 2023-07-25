@@ -15,7 +15,7 @@ export default function Header() {
 
 				<img onClick={() => window.location.href = "/"} src={logoMain} className="ml" />
 
-				<div className="mla">
+				<div className="mla headerIcons">
 					{pathname === SEARCH_ROUTE ? <Link to={SEARCH_ROUTE}><Search sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={SEARCH_ROUTE}><Search /></Link>}
 					{pathname === LIKED_PRODS_ROUTE ? <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder /></Link>}
 					{pathname === CART_ROUTE ? <Link to={CART_ROUTE}><AddShoppingCart sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={CART_ROUTE}><AddShoppingCart /></Link>}

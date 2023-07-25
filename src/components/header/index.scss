@@ -1,14 +1,18 @@
 @import "../../vars.scss";
 
-// !!
-header{
+@mixin headerValues {
 	position: fixed;
-	z-index: 9;
+	z-index: 9999; // to be under MUI drawer (.headerDrawer)
 	width: 100vw;
 	display: flex;
 	align-items: center;
 	background: $dark800;
 	height: 60px;
+}
+
+// !!
+header{
+	@include headerValues;
 	// !! header icons
 	svg{
 	height: 35px !important;
@@ -19,7 +23,17 @@ header{
 
 .headerDrawer{
 	width: 360px;
+	margin-top: 60px !important; // space for header
 	@media (max-width:$mobile) {
 		width: 100vw;
+	}
+}
+
+.headerIcons{
+	@media (max-width:$mobile) {
+		@include headerValues;
+		bottom: 0;
+		left: 0;
+		justify-content: center;
 	}
 }
