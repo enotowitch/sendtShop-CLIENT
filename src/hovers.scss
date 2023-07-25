@@ -19,3 +19,10 @@ header, .card{
 		cursor: pointer;
 	}
 }
+
+.scrollableTags{
+	cursor: grab;
+	* {
+		cursor: grab;
+	}
+}
