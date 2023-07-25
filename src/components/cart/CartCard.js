@@ -7,7 +7,7 @@ import useCartCard from "./useCartCard";
 export default function CartCard({ obj, quantity, totalPrice, className }) {
 
 	const { img, title, price, _id: productId } = obj
-	const { deleteAll } = useCartCard(productId)
+	const { deleteAllCartProducts } = useCartCard(productId)
 
 	return (
 		<section className={`f jcsb aic m0a mb cartCard animation ${className ? className : ""}`}>
@@ -20,7 +20,7 @@ export default function CartCard({ obj, quantity, totalPrice, className }) {
 			<CartCounter quantity={quantity} _id={productId} />
 
 			<div>${totalPrice}</div>
-			<CloseIcon onClick={(e) => deleteAll(e)} />
+			<CloseIcon onClick={(e) => deleteAllCartProducts(e)} />
 		</section>
 	)
 }

@@ -8,7 +8,7 @@ export default function useShipping() {
 	async function addShipping(e) {
 		e.preventDefault()
 
-		// user click PLACE ORDER
+		// user clicks PLACE ORDER
 		// shipping form is added to user.shipping (DB)
 		const { form } = parseForm(e)
 		const res = await pullPush({ col: "user", field: "shipping", item: form, action: "push" })
@@ -17,6 +17,7 @@ export default function useShipping() {
 		// if stripe success => user is redirected to "/verifyOrderToken" page, he gets orderToken,
 		// then client makes app.post("/addOrder") from "/verifyOrderToken" page
 		// then if token verified => create ORDER (collection item) with cart & shipping fields (same as user's fields)
+		// ORDER.cart & ORDER.shipping is copied from USER.cart & USER.shipping
 	}
 
 	return (

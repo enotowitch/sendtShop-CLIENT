@@ -26,7 +26,7 @@ export default function usePosts(type, field) {
 			allWithFieldSet(res)
 		}
 
-		getAllWithFieldPosts()
+		field && getAllWithFieldPosts()
 	}, [type, field])
 
 

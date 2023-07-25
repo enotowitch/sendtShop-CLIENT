@@ -10,10 +10,9 @@ export default function Shipping() {
 	const { addShipping } = useShipping()
 	const { userOrOrder, varText, varLink, userEmail } = useUserOrOrderShipping()
 
-	function onSubmit(e) { // TODO combine these all to addShipping(useShipping)
-		// !! order 1 & 2 is mandatory
-		addShipping(e) // 1. add shipping form to user (DB)
-		window.location.href = varLink // 2. go to stripeLink || "/order/sent"
+	function onSubmit(e) { // !! don't refactor
+		addShipping(e) // 1. add shipping form to user (DB); then user.shipping is copied to order.shipping
+		window.location.href = varLink // 2. USER: go to: stripeLink || ORDER: go to: "/order/sent"
 	}
 
 	return (
@@ -34,7 +33,6 @@ export default function Shipping() {
 					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" className="w100" />
 					<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" className="w100" />
 					<Button type="submit" variant="contained">{varText}</Button>
-					{/* TODO: cart button = useStripe; order button = go to send email */}
 				</form>
 			</section>
 		</>

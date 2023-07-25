@@ -19,7 +19,7 @@ export default function TagsInput() {
 					value.map((option, index) => (
 						<>
 							<Chip variant="outlined" label={option} {...getTagProps({ index })} />
-							{/* hidden input to get Chip values in parseForm */}
+							{/* hidden input to get `Chip values` in parseForm */}
 							<input hidden name={`tag${index}`} value={option} />
 						</>
 					))

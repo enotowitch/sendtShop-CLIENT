@@ -11,12 +11,7 @@ export default function CartProducts({ cartProducts, allProductsTotalPrice, link
 			<section className="tac mb wS w100">
 				<div>Subtotal: ${allProductsTotalPrice}</div>
 				<div className="my">{text}</div>
-				<Button
-					variant="contained"
-					href={link}
-				>
-					CONTINUE TO SHIPPING
-				</Button>
+				<Button variant="contained" href={link}>CONTINUE TO SHIPPING</Button>
 			</section>
 		</div>
 	)

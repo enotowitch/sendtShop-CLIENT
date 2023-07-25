@@ -7,22 +7,22 @@ export default function useUserOrOrderCart() {
 
 	const { user } = useContext(Context)
 
-	let userOrOrder, link, className, text // TODO: rename: varText, varLink
+	let userOrOrder, varLink, className, varText
 	if (window.location.pathname.includes("/cart")) { // !!
 		userOrOrder = user
-		link = "/cart/shipping"
-		text = "* Additional taxes and fees will be calculated at checkout"
+		varLink = "/cart/shipping"
+		varText = "* Additional taxes and fees will be calculated at checkout"
 	}
 	if (window.location.pathname.includes("/order")) { // !!
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
-		link = "/order/shipping"
+		varLink = "/order/shipping"
 		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
-		// text = "Deliver these products using shipping info and send email with tracking link to user" // TODO
-		text = "* some text here"
+		// varText = "Deliver these products using shipping info and send email with tracking link to user" // TODO
+		varText = "* some text here"
 	}
 
 	return (
-		{ userOrOrder, link, className, text }
+		{ userOrOrder, varLink, className, varText }
 	)
 }
