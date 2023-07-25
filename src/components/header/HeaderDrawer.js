@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import * as React from "react";
+import { Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import usePosts from "../../hooks/usePosts"
 import "./index.scss"
 
@@ -9,11 +9,11 @@ export default function HeaderDrawer({ showMenu, showMenuSet }) {
 
 	return (
 		<Drawer
-			anchor='right'
+			anchor="right"
 			open={showMenu}
 			onClose={() => showMenuSet(false)}
 		>
-			<List className='headerDrawer'>
+			<List className="headerDrawer">
 				{allWithField?.map((text) => (
 					<ListItem key={text} disablePadding>
 						<ListItemButton>

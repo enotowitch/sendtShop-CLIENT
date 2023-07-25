@@ -1,6 +1,6 @@
 import React from "react"
 import "./index.scss"
-import VariableComponent from "./VariableComponent"
+import VariableView from "../view/VariableView"
 import usePostFull from "../../hooks/usePostFull"
 import usePullPush from "../../hooks/usePullPush"
 
@@ -12,7 +12,7 @@ export default function PostFull({ type }) { // type=product/article/...
 
 	return (
 		<div className="fcc g6 m0a mb postFull">
-			<VariableComponent type={type} action="full" obj={obj} />
+			<VariableView type={type} action="full" obj={obj} />
 		</div>
 	)
 }

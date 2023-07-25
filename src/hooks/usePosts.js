@@ -3,8 +3,8 @@ import * as api from "../api"
 
 // type=product/article/comment/review...
 // field=tags/likes/...
-// eg: all products/all articles/...
-// eg: product.tags/article.likes/...
+// eg: all: all products/all articles/...
+// eg: allWithField: product.tags/article.likes/...
 export default function usePosts(type, field) {
 
 	// ! all
@@ -29,7 +29,7 @@ export default function usePosts(type, field) {
 		field && getAllWithFieldPosts()
 	}, [type, field])
 
-
+	
 	return (
 		{ all, allWithField }
 	)

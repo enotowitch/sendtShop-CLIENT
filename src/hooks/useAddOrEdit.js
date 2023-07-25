@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom"
-
 export default function useAddOrEdit(type) { // type=product/article/comment/review...
 
 	let varText, varFn

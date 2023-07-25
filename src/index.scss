@@ -40,3 +40,8 @@ section{
 		background: $brand;
 	}
 }
+
+// MUI TextField(input) style by default
+.MuiFormControl-root.MuiTextField-root{
+	width: 100%;
+}

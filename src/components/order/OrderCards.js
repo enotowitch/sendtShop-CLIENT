@@ -6,8 +6,9 @@ export default function OrderCards() {
 
 	const { all } = usePosts("order")
 
-	// TODO ??? map here + key
 	return (
-		<OrderCard orders={all} />
+		<>
+			{all?.map(order => <OrderCard key={order._id} order={order} />)}
+		</>
 	)
 }

@@ -1,19 +1,18 @@
-import { AddShoppingCart, FavoriteBorder, Menu, PersonOutline, Search } from "@mui/icons-material"
+import { AddShoppingCart, FavoriteBorder, PersonOutline, Search } from "@mui/icons-material"
 import "./index.scss"
 import { Link, useLocation } from "react-router-dom"
 import { BRAND_COLOR, CART_ROUTE, LIKED_PRODS_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE } from "../../consts"
 import logoMain from "../../img/logoMain.svg"
-import { useState } from "react"
-import HeaderDrawer from "./HeaderDrawer"
+import HeaderMenu from "./HeaderMenu"
 
 export default function Header() {
 
-	const { pathname } = useLocation() // TODO window.location
-	const [showMenu, showMenuSet] = useState(false)
+	const { pathname } = useLocation()
 
 	return (
 		<>
 			<header className="f jcsb">
+
 				<img onClick={() => window.location.href = "/"} src={logoMain} className="ml" />
 
 				<div className="mla">
@@ -23,9 +22,7 @@ export default function Header() {
 					{pathname === PROFILE_ROUTE ? <Link to={PROFILE_ROUTE} className="profile"><PersonOutline sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={PROFILE_ROUTE} className="profile"><PersonOutline /></Link>}
 				</div>
 
-				{/* TODO separate component */}
-				<Menu className="mx" onClick={() => showMenuSet(prev => !prev)} />
-				{showMenu && <HeaderDrawer showMenu={showMenu} showMenuSet={showMenuSet} />}
+				<HeaderMenu />
 
 			</header>
 			{/* header is fixed, so need this trick div (adds margin-bottom) */}

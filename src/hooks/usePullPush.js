@@ -2,6 +2,7 @@ import * as api from "../api"
 
 export default function usePullPush() {
 
+	// TODO ??? delete this hook make direct call to api ?
 	async function pullPush({ col, colId, field, item, action, dups, pullMode }) {
 		// for updating already created fields in collection
 		// HOW TO USE:

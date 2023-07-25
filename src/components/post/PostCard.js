@@ -1,7 +1,7 @@
 import React from "react"
 import "./index.scss"
 import usePost from "../../hooks/usePost";
-import VariableComponent from "./VariableComponent";
+import VariableView from "../view/VariableView"
 
 export default function PostCard({ obj }) { // top=logic; bottom=view
 
@@ -12,10 +12,10 @@ export default function PostCard({ obj }) { // top=logic; bottom=view
 
 	return (
 		// view
-		// go to `/product/id` || `/article/id` || ...
+		//                                                go to: `/product/id` || `/article/id` || ...
 		<div className="wS card animation" onClick={() => window.location.href = `/${type}/${_id}`}>
 			{/* load product_card/article_card/... */}
-			<VariableComponent type={type} action="card" obj={_obj} />
+			<VariableView type={type} action="card" obj={_obj} />
 		</div>
 	)
 }

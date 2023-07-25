@@ -12,7 +12,7 @@ export default function article_add({ obj }) {
 	return (
 		<>
 			<div className="title tac">TEST: {varText}</div>
-			{/* eg: addPost(e, "article")} || editPost(e, "product")} */}
+			{/*                  eg: addPost(e, "article")} || editPost(e, "product")} */}
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "article")`)}>
 				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
 				<Input editValue={fullPost?.tags} required name="tags" label="tags" helperText="tags separated by comma" />

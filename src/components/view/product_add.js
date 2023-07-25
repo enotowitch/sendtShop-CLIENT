@@ -14,7 +14,7 @@ export default function product_add({ obj }) {
 	return (
 		<>
 			<div className="title tac">{varText}</div>
-			{/* eg: addPost(e, "product")} */}
+			{/*                                   eg: addPost(e, "product")} */}
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "product")`)}>
 				<AddImg editValue={fullPost?.img} />
 				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
