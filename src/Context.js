@@ -31,6 +31,9 @@ function ContextProvider({ children }) {
 	// ! uploadedImg: AddImg
 	const [uploadedImg, uploadedImgSet] = useState(null) // AddImg: jobs/folios
 
+	// ! menu
+	const [showMenu, showMenuSet] = useState(false) // Burger menu
+
 	// ! RETURN
 	return (
 		<Context.Provider value={{
@@ -39,7 +42,9 @@ function ContextProvider({ children }) {
 			// snackbar
 			snackbarShow, snackbarShowSet, snackbarText, snackbarTextSet, snackbarLink, snackbarLinkSet, snackbarLinkType, snackbarLinkTypeSet,
 			// uploadedImg: AddImg
-			uploadedImg, uploadedImgSet
+			uploadedImg, uploadedImgSet,
+			// menu
+			showMenu, showMenuSet
 		}}>
 
 			{children}

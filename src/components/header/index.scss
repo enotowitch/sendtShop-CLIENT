@@ -30,6 +30,7 @@ header{
 }
 
 .headerIcons{
+	margin-right: 100px; // space for Burger
 	@media (max-width:$mobile) {
 		@include headerValues;
 		bottom: 0;
