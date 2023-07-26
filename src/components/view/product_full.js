@@ -1,5 +1,6 @@
 import { Button } from '@mui/material'
 import React from 'react'
+import { CART_ROUTE } from '../../consts'
 
 export default function product_full({ obj }) {
 
@@ -19,7 +20,7 @@ export default function product_full({ obj }) {
 				<div className="tac">{text}</div>
 				<Button
 					className="mt"
-					onClick={() => (window.location.href = "/cart", pullPush({ col: "user", field: "cart", item: productId, action: "push", dups: true }))}
+					onClick={() => (window.location.href = CART_ROUTE, pullPush({ col: "user", field: "cart", item: productId, action: "push", dups: true }))}
 					variant="contained"
 				>
 					add to cart

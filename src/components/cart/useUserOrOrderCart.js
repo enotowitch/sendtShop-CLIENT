@@ -1,6 +1,6 @@
 import { Context } from "../../Context"
 import { useContext } from "react"
-import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, ADMIN_ORDER_SENT_SHIPPING } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, ADMIN_ORDER_SENT_SHIPPING, CART_ROUTE } from "../../consts"
 import usePullPush from "../../hooks/usePullPush"
 
 // `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
@@ -12,7 +12,7 @@ export default function useUserOrOrderCart() {
 
 	let userOrOrder, varLink, className, varText, varBtnText
 	// ! user cart
-	if (window.location.pathname.includes("/cart")) { // !!
+	if (window.location.pathname.includes(CART_ROUTE)) {
 		userOrOrder = user
 		varLink = "/cart/shipping"
 		varText = "* Additional taxes and fees will be calculated at checkout"
@@ -40,7 +40,7 @@ export default function useUserOrOrderCart() {
 	if (window.location.pathname.includes(USER_ORDER)) { // !!
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to user
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
-		varLink = "/cart"
+		varLink = CART_ROUTE
 		// user clicks on orderCard (one prev order) => prev order info is written to localStorage(order)
 		// then if user clicks REPEAT ORDER => prev order info is written to user.cart (DB), so user can pay and order same order again
 		const repeatUserOrderCart = userOrOrder.cart // [prodId1,prodId2...]

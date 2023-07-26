@@ -18,7 +18,7 @@ export default function useUserOrOrderShipping() {
 	// ! admin (new order)
 	if (window.location.pathname.includes(ADMIN_ORDER_NEW_SHIPPING)) {
 		userOrOrder = JSON.parse(localStorage.getItem("order")).shipping
-		varText = "SEND EMAIL"
+		varText = "SEND TRACK"
 		varLink = ADMIN_ORDER_NEW_TRACK
 		isInputDisabled = true
 	}

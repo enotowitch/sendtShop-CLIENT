@@ -12,7 +12,7 @@ import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
 import Shipping from "../cart/Shipping"
 import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
-import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK, CART_ROUTE } from "../../consts"
 
 export default function AppRouter() {
 
@@ -34,7 +34,7 @@ export default function AppRouter() {
 			{user &&
 				<>
 					{/* cart */}
-					<Route exact path="/cart" element={<Cart />} />
+					<Route exact path={CART_ROUTE} element={<Cart />} />
 					<Route exact path="/cart/shipping" element={<Shipping />} />
 					{/* ORDER */}
 					<Route exact path="/verifyOrderToken/:token" element={<VerifyOrderToken />} />
