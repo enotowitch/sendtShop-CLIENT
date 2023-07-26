@@ -1,6 +1,6 @@
 import { Context } from "../../Context"
 import { useContext } from "react"
-import { ADMIN_ORDER, ADMIN_ORDER_SHIPPING, USER_ORDER } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, ADMIN_ORDER_SENT_SHIPPING } from "../../consts"
 import usePullPush from "../../hooks/usePullPush"
 
 // `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
@@ -18,14 +18,23 @@ export default function useUserOrOrderCart() {
 		varText = "* Additional taxes and fees will be calculated at checkout"
 		varBtnText = "CONTINUE TO SHIPPING"
 	}
-	// ! admin order: one user order (of many users' orders) managed by admin
-	if (window.location.pathname.includes(ADMIN_ORDER)) { // !!
+	// ! admin order (NEW): one user order (of many users' orders) managed by admin
+	if (window.location.pathname.includes(ADMIN_ORDER_NEW)) { // !!
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
-		varLink = ADMIN_ORDER_SHIPPING
+		varLink = ADMIN_ORDER_NEW_SHIPPING
 		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
 		varText = "Deliver these products using shipping info and send email with tracking link to user"
 		varBtnText = "USER SHIPPING INFO"
+	}
+	// ! admin order (SENT): one user order (of many users' orders) managed by admin
+	if (window.location.pathname.includes(ADMIN_ORDER_SENT)) { // !!
+		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
+		userOrOrder = JSON.parse(localStorage.getItem("order"))
+		varLink = ADMIN_ORDER_SENT_SHIPPING
+		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
+		varText = "Check where the order was shipped"
+		varBtnText = "SHIPPED TO"
 	}
 	// ! user order: one PREVIOUS user order managed by user
 	if (window.location.pathname.includes(USER_ORDER)) { // !!

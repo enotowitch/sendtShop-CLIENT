@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { ADMIN_ORDER, ADMIN_ORDERS_NEW, USER_ORDER, USER_ORDERS } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, USER_ORDER, USER_ORDERS } from "../../consts"
 
 export default function OrderCard({ order }) {
 
@@ -9,7 +9,8 @@ export default function OrderCard({ order }) {
 	function onClick(order) {
 		// order never changes after it's written to DB(it's paid), so can be written to localStorage, to be displayed to admin/user
 		localStorage.setItem("order", JSON.stringify(order))
-		window.location.pathname === ADMIN_ORDERS_NEW && navigate(ADMIN_ORDER)
+		window.location.pathname === ADMIN_ORDERS_NEW && navigate(ADMIN_ORDER_NEW)
+		window.location.pathname === ADMIN_ORDERS_SENT && navigate(ADMIN_ORDER_SENT)
 		window.location.pathname === USER_ORDERS && navigate(USER_ORDER)
 	}
 

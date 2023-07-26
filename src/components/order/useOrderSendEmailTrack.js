@@ -1,5 +1,5 @@
 import * as api from "../../api"
-import { ADMIN_ORDERS_NEW } from "../../consts"
+import { ADMIN_ORDERS_NEW, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK } from "../../consts"
 import parseForm from "../../utils/parseForm"
 
 export default function useOrderSendEmailTrack() {
@@ -8,14 +8,25 @@ export default function useOrderSendEmailTrack() {
 		e.preventDefault()
 		const { form } = parseForm(e)
 		const res = await api.orderSendEmailTrack(form) // email, track, orderId
-		if (res.ok) { // email with track sent => change order status to "sent"
+		if (res.ok) { // email with track sent => change order status to "sent" & add track
 			const orderId = form._id
-			await api.editPost({ type: "order", _id: orderId, status: "sent" })
+			const orderTrack = form.track
+			await api.editPost({ type: "order", _id: orderId, status: "sent", track: orderTrack })
 			window.location.href = ADMIN_ORDERS_NEW
 		}
 	}
 
+	let varBtnText
+	// ! admin order (new)
+	if (window.location.pathname === ADMIN_ORDER_NEW_TRACK) {
+		varBtnText = "SEND EMAIL"
+	}
+	// ! admin order (sent)
+	if (window.location.pathname === ADMIN_ORDER_SENT_TRACK) {
+		varBtnText = "SEND EMAIL AGAIN"
+	}
+
 	return (
-		{ sendEmail }
+		{ sendEmail, varBtnText }
 	)
 }

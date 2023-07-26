@@ -12,7 +12,7 @@ import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
 import Shipping from "../cart/Shipping"
 import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
-import { ADMIN_ORDER, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_SHIPPING, USER_ORDER, USER_ORDERS } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK } from "../../consts"
 
 export default function AppRouter() {
 
@@ -41,9 +41,12 @@ export default function AppRouter() {
 					{/* admin order */}
 					<Route exact path={ADMIN_ORDERS_NEW} element={<OrderCards title="Orders to deliver" />} />
 					<Route exact path={ADMIN_ORDERS_SENT} element={<OrderCards title="Delivered orders" />} />
-					<Route exact path={ADMIN_ORDER} element={<Cart />} />
-					<Route exact path={ADMIN_ORDER_SHIPPING} element={<Shipping />} />
-					<Route exact path="/order/sent" element={<OrderSendEmailTrack />} />
+					<Route exact path={ADMIN_ORDER_NEW} element={<Cart />} />
+					<Route exact path={ADMIN_ORDER_SENT} element={<Cart />} />
+					<Route exact path={ADMIN_ORDER_NEW_SHIPPING} element={<Shipping />} />
+					<Route exact path={ADMIN_ORDER_SENT_SHIPPING} element={<Shipping />} />
+					<Route exact path={ADMIN_ORDER_NEW_TRACK} element={<OrderSendEmailTrack />} />
+					<Route exact path={ADMIN_ORDER_SENT_TRACK} element={<OrderSendEmailTrack />} />
 					{/* user order */}
 					<Route exact path={USER_ORDERS} element={<OrderCards title="Previous orders" />} />
 					<Route exact path={USER_ORDER} element={<Cart />} />
