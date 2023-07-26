@@ -15,16 +15,28 @@ export default function OrderCard({ order }) {
 
 	return (
 		<section className="f jcsb m0a mb wM cp" onClick={() => onClick(order)}>
+			{/* id */}
 			<div className="fc p">
 				<div className="fw500">Order id:</div>
 				<div className="brand">{order._id}</div>
 			</div>
+			{/* created */}
 			<div className="fc p">
 				<div className="fw500">Created:</div>
 				<div className="brand">
 					{order.createdAt.replace(/T/, " / ").replace(/\..+/, "")}
 				</div>
 			</div>
+			{/* track sent: // !! assuming order only updated when status is changed to "sent" */}
+			{order.status === "sent" &&
+				<div className="fc p">
+					<div className="fw500">Track sent:</div>
+					<div className="brand">
+						{order.updatedAt.replace(/T/, " / ").replace(/\..+/, "")}
+					</div>
+				</div>
+			}
+			{/* quantity */}
 			<div className="fc p">
 				<div className="fw500">Total quantity:</div>
 				<div className="brand">{order.cart.length}</div>
