@@ -22,7 +22,7 @@ export default function OrderCards({ title }) {
 
 	// show only admin orders with no status = `NEW ORDERS`
 	if (window.location.pathname === ADMIN_ORDERS_NEW) {
-		all = all?.filter(order => !order.status)
+		all = all?.filter(order => order.status === "pending")
 	}
 
 	return (
