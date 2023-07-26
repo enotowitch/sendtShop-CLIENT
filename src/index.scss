@@ -59,3 +59,22 @@ input:disabled{
 .MuiFormControl-root.MuiTextField-root{
 	width: 100%;
 }
+
+// ! scrollbar
+body::-webkit-scrollbar {
+	width: 10px;
+}
+// other scrollbars
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: lighten($dark800, 10%);
+	// border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+	background: $white;
+	// border-radius: 20px;	
+}
+// ? scrollbar
