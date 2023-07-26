@@ -48,6 +48,11 @@ input:disabled{
 		color: $brand;
 		border: 1px solid $brand;
 	}
+	// disabled
+	&:disabled{
+		background: $gray;
+		color: $white;
+	}
 }
 
 // MUI TextField(input) style by default

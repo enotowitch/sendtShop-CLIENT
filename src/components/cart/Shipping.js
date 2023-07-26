@@ -8,7 +8,7 @@ import CartSteps from "./CartSteps"
 export default function Shipping() {
 
 	const { addShipping } = useShipping()
-	const { userOrOrder, varText, varLink, userEmail, isInputDisabled } = useUserOrOrderShipping()
+	const { userOrOrder, varText, varLink, userEmail, isInputDisabled, isBtnDisabled, varBtnHelpText } = useUserOrOrderShipping()
 
 	function onSubmit(e) { // !! don't refactor
 		addShipping(e) // 1. add shipping form to user (DB); then user.shipping is copied to order.shipping
@@ -32,7 +32,8 @@ export default function Shipping() {
 					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" isDisabled={isInputDisabled} />
 					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" isDisabled={isInputDisabled} />
 					<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" isDisabled={isInputDisabled} />
-					<Button type="submit" variant="contained">{varText}</Button>
+					<Button type="submit" disabled={isBtnDisabled} variant="contained">{varText}</Button>
+					<div className="brand tac fsi">{varBtnHelpText}</div>
 				</form>
 			</section>
 		</>

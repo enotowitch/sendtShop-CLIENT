@@ -8,7 +8,7 @@ export default function useUserOrOrderShipping() {
 	const { user } = useContext(Context)
 	const { stripeLink } = useStripe()
 
-	let userOrOrder, varText, varLink, isInputDisabled // TODO rename varText=varBtnText
+	let userOrOrder, varText, varLink, isInputDisabled, isBtnDisabled, varBtnHelpText // TODO rename varText=varBtnText
 	// ! user (cart)
 	if (window.location.pathname.includes("/cart/shipping")) {
 		userOrOrder = user.shipping
@@ -35,11 +35,17 @@ export default function useUserOrOrderShipping() {
 		varText = "CHECK TRACK" // TODO rename varText=varBtnText
 		varLink = USER_ORDER_TRACK
 		isInputDisabled = true
+		// disable or enable button dep. on order.status
+		// if order.status = "pending" => track is not sent yet by admin => so user can NOT check track
+		// if order.status = "sent" => track is already sent by admin => so user CAN check track
+		const orderStatus = JSON.parse(localStorage.getItem("order")).status
+		orderStatus === "pending" && (isBtnDisabled = true && (varBtnHelpText = "* track is not sent yet by admin"))
+		orderStatus === "sent" && (isBtnDisabled = false)
 	}
 
 	const userEmail = user?.email // may need separately for default user email: eg: paste user.email to shipping form on 1 `user order`
 
 	return (
-		{ userOrOrder, varText, varLink, userEmail, isInputDisabled }
+		{ userOrOrder, varText, varLink, userEmail, isInputDisabled, isBtnDisabled, varBtnHelpText }
 	)
 }
