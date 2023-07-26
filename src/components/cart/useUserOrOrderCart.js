@@ -1,6 +1,6 @@
 import { Context } from "../../Context"
 import { useContext } from "react"
-import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, ADMIN_ORDER_SENT_SHIPPING, CART_ROUTE } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, ADMIN_ORDER_SENT_SHIPPING, CART_ROUTE, USER_ORDER_SHIPPING } from "../../consts"
 import usePullPush from "../../hooks/usePullPush"
 
 // `user` and (admin) `order` both have `cart` field (array of prod ids), so can be rendered in similar way
@@ -10,7 +10,7 @@ export default function useUserOrOrderCart() {
 	const { user } = useContext(Context)
 	const { pullPush } = usePullPush()
 
-	let userOrOrder, varLink, className, varText, varBtnText
+	let userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2
 	// ! user cart
 	if (window.location.pathname.includes(CART_ROUTE)) {
 		userOrOrder = user
@@ -48,9 +48,12 @@ export default function useUserOrOrderCart() {
 		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
 		varText = "By clicking `order again` products in this previous order will be added to your cart. You will be able to modify this new order or order the same"
 		varBtnText = "ORDER AGAIN"
+		// user previous order has 2 buttons
+		varLink2 = USER_ORDER_SHIPPING
+		varBtnText2 = "CHECK SHIPPING INFO"
 	}
 
 	return (
-		{ userOrOrder, varLink, className, varText, varBtnText }
+		{ userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2 }
 	)
 }

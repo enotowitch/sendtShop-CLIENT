@@ -13,7 +13,7 @@ export default function OrderSendEmailTrack() {
 	// (`DELIVERY` made): admin has `track number`
 	// admin copies `track number` to input and SENDS EMAIL with `track number` to user
 
-	const { sendEmail, varBtnText } = useOrderSendEmailTrack()
+	const { sendEmail, varBtnText, showBtn } = useOrderSendEmailTrack()
 	const { email, _id: orderId, track } = JSON.parse(localStorage.getItem("order")) // user order email & id
 
 	return (
@@ -24,7 +24,7 @@ export default function OrderSendEmailTrack() {
 					<Input editValue={orderId} disabled name="_id" label="order id" className="mb" />
 					<Input editValue={email} disabled name="email" label="user email" className="mb" />
 					<Input editValue={track} required name="track" type="url" label="track delivery link" helperText="url" />
-					<Button type="submit" variant="contained">{varBtnText}</Button>
+					{showBtn && <Button type="submit" variant="contained">{varBtnText}</Button>}
 				</form>
 			</section>
 		</>

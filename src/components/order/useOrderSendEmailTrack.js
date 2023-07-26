@@ -16,17 +16,19 @@ export default function useOrderSendEmailTrack() {
 		}
 	}
 
-	let varBtnText
+	let varBtnText, showBtn // don't show button in USER_ORDER_TRACK
 	// ! admin order (new)
 	if (window.location.pathname === ADMIN_ORDER_NEW_TRACK) {
 		varBtnText = "SEND EMAIL"
+		showBtn = true
 	}
 	// ! admin order (sent)
 	if (window.location.pathname === ADMIN_ORDER_SENT_TRACK) {
 		varBtnText = "SEND EMAIL AGAIN"
+		showBtn = true
 	}
 
 	return (
-		{ sendEmail, varBtnText }
+		{ sendEmail, varBtnText, showBtn }
 	)
 }

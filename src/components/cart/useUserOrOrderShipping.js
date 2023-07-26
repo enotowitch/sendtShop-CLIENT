@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../Context"
 import useStripe from "./useStripe"
-import { ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_NEW_SHIPPING, ADMIN_ORDER_SENT_TRACK, ADMIN_ORDER_SENT_SHIPPING } from "../../consts"
+import { ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_NEW_SHIPPING, ADMIN_ORDER_SENT_TRACK, ADMIN_ORDER_SENT_SHIPPING, USER_ORDER_SHIPPING, USER_ORDER_TRACK } from "../../consts"
 
 export default function useUserOrOrderShipping() {
 
@@ -27,6 +27,13 @@ export default function useUserOrOrderShipping() {
 		userOrOrder = JSON.parse(localStorage.getItem("order")).shipping
 		varText = "CHECK TRACK"
 		varLink = ADMIN_ORDER_SENT_TRACK
+		isInputDisabled = true
+	}
+	// ! user (previous order)
+	if (window.location.pathname.includes(USER_ORDER_SHIPPING)) {
+		userOrOrder = JSON.parse(localStorage.getItem("order")).shipping
+		varText = "CHECK TRACK" // TODO rename varText=varBtnText
+		varLink = USER_ORDER_TRACK
 		isInputDisabled = true
 	}
 

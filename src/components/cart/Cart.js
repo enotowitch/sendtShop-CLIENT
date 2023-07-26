@@ -8,7 +8,7 @@ import CartSteps from "./CartSteps"
 export default function Cart() { // TODO refactor
 
 	const { all } = usePosts("product")
-	const { userOrOrder, varLink, className, varText, varBtnText } = useUserOrOrderCart()
+	const { userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2 } = useUserOrOrderCart()
 
 	// 1. get user/order cart products
 	// 2. get all products
@@ -33,7 +33,7 @@ export default function Cart() { // TODO refactor
 			?
 			<>
 				<CartSteps />
-				<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={varLink} text={varText} btnText={varBtnText} />
+				<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={varLink} link2={varLink2} text={varText} btnText={varBtnText} btnText2={varBtnText2} />
 			</>
 			:
 			<div className="title tac danger">Your cart is empty</div>

@@ -43,6 +43,11 @@ input:disabled{
 	&.MuiButton-contained{
 		background: $brand;
 	}
+	// outlined
+	&.MuiButton-outlined{
+		color: $brand;
+		border: 1px solid $brand;
+	}
 }
 
 // MUI TextField(input) style by default
