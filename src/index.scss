@@ -30,6 +30,10 @@ section{
 	}
 }
 
+input:disabled{
+	font-weight: 700;
+}
+
 // MUI buttons style by default
 .MuiButtonBase-root.MuiButton-root{
 	display: block;

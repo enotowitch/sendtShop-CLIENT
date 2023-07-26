@@ -8,7 +8,7 @@ import CartSteps from "./CartSteps"
 export default function Shipping() {
 
 	const { addShipping } = useShipping()
-	const { userOrOrder, varText, varLink, userEmail } = useUserOrOrderShipping()
+	const { userOrOrder, varText, varLink, userEmail, isInputDisabled } = useUserOrOrderShipping()
 
 	function onSubmit(e) { // !! don't refactor
 		addShipping(e) // 1. add shipping form to user (DB); then user.shipping is copied to order.shipping
@@ -21,17 +21,17 @@ export default function Shipping() {
 			<section>
 				<form onSubmit={onSubmit} className="wM m0a">
 					<div className="f fwn g2">
-						<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" helperText="text" />
-						<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" helperText="text" />
+						<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" helperText="text" isDisabled={isInputDisabled} />
+						<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" helperText="text" isDisabled={isInputDisabled} />
 					</div>
-					<Input editValue={userOrOrder?.city} required name="city" label="town/city" helperText="text" />
+					<Input editValue={userOrOrder?.city} required name="city" label="town/city" helperText="text" isDisabled={isInputDisabled} />
 					<div className="f fwn g2">
-						<Input editValue={userOrOrder?.address} required name="address" label="address" helperText="text" />
-						<Input editValue={userOrOrder?.apartment} name="apartment" label="apartment" helperText="optional" />
+						<Input editValue={userOrOrder?.address} required name="address" label="address" helperText="text" isDisabled={isInputDisabled} />
+						<Input editValue={userOrOrder?.apartment} name="apartment" label="apartment" helperText="optional" isDisabled={isInputDisabled} />
 					</div>
-					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" />
-					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" />
-					<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" />
+					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" isDisabled={isInputDisabled} />
 					<Button type="submit" variant="contained">{varText}</Button>
 				</form>
 			</section>
