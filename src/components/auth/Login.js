@@ -18,7 +18,7 @@ export default function Login() {
 					label="email"
 					helperText="You will get email notification. Please confirm it."
 				/>
-				<Button type="submit" variant="contained" className="mt2">Sign in</Button>
+				<Button type="submit" variant="contained" className="mt2 mb2">Sign in</Button>
 
 				<Or />
 

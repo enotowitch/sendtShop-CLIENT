@@ -8,7 +8,7 @@ export default function useUserOrOrderShipping() {
 	const { user } = useContext(Context)
 	const { stripeLink } = useStripe()
 
-	let userOrOrder, varText, varLink
+	let userOrOrder, varText, varLink // TODO rename varText=varBtnText
 	if (window.location.pathname.includes("/cart/shipping")) {
 		userOrOrder = user.shipping
 		varText = "PLACE ORDER"
