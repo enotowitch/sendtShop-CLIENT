@@ -40,3 +40,13 @@
 	border-radius: 50%;
 	background: $grayLight;
 }
+
+.cartStep{
+	position: relative;
+	&__text{
+		position: absolute;
+		top: 40px;
+		width: 200px; // !! text goes to next line if much text: can look bad
+		text-align: center;
+	}
+}

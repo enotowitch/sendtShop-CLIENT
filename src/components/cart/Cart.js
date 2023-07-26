@@ -32,7 +32,7 @@ export default function Cart() { // TODO refactor
 		cartProducts.length > 0
 			?
 			<>
-				<CartSteps />
+				<CartSteps step={1} />
 				<CartProducts cartProducts={cartProducts} allProductsTotalPrice={allProductsTotalPrice} link={varLink} link2={varLink2} text={varText} btnText={varBtnText} btnText2={varBtnText2} />
 			</>
 			:

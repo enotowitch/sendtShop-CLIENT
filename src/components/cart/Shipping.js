@@ -31,7 +31,7 @@ export default function Shipping() {
 					</div>
 					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" isDisabled={isInputDisabled} />
 					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" isDisabled={isInputDisabled} />
-					<Input editValue={userOrOrder?.email || userEmail} required name="email" type="email" label="email" helperText="email" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.email || userEmail} disabled name="email" type="email" label="email" helperText="email" isDisabled={isInputDisabled} />
 					<Button type="submit" disabled={isBtnDisabled} variant="contained">{varText}</Button>
 					<div className="brand tac fsi">{varBtnHelpText}</div>
 				</form>
