@@ -2,6 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import { ADMIN_ORDER_NEW, ADMIN_ORDER_SENT, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, USER_ORDER, USER_ORDERS } from "../../consts"
 import "./index.scss"
+import cleanTimestamp from "../../utils/cleanTimestamp"
 
 export default function OrderCard({ order }) {
 
@@ -26,7 +27,7 @@ export default function OrderCard({ order }) {
 			<div className="fc p orderCard__item">
 				<div className="fw500">Created:</div>
 				<div className="brand">
-					{order.createdAt.replace(/T/, " / ").replace(/\..+/, "")}
+					{cleanTimestamp(order.createdAt)}
 				</div>
 			</div>
 			{/* track sent (date): // !! assuming order only updated when status is changed to "sent" */}
@@ -34,7 +35,7 @@ export default function OrderCard({ order }) {
 				<div className="fc p orderCard__item">
 					<div className="fw500">Track sent:</div>
 					<div className="brand">
-						{order.updatedAt.replace(/T/, " / ").replace(/\..+/, "")}
+						{cleanTimestamp(order.updatedAt)}
 					</div>
 				</div>
 			}

@@ -12,7 +12,7 @@ import { Context } from "../../Context"
 import ClickProfile from "./ClickProfile"
 import Shipping from "../cart/Shipping"
 import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
-import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK, CART_ROUTE, USER_ORDER_SHIPPING, USER_ORDER_TRACK } from "../../consts"
+import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK, CART_ROUTE, USER_ORDER_SHIPPING, USER_ORDER_TRACK, ARTICLES_ROUTE } from "../../consts"
 
 export default function AppRouter() {
 
@@ -20,6 +20,7 @@ export default function AppRouter() {
 
 	return (
 		<Routes>
+			{/* auth */}
 			<Route exact path="/profile" element={<Profile />} />
 			<Route exact path="/verifyLoginToken/:token" element={<VerifyLoginToken />} />
 			{/* product */}
@@ -29,7 +30,8 @@ export default function AppRouter() {
 			<Route exact path="/product/:id" element={<PostFull type="product" />} />
 			{/* article */}
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
-			<Route exact path="/articles" element={<PostCards type="article" />} />
+			<Route exact path={ARTICLES_ROUTE} element={<PostCards type="article" />} />
+			<Route exact path="/article/:id" element={<PostFull type="article" />} />
 			{/* USER ROUTES */}
 			{user &&
 				<>

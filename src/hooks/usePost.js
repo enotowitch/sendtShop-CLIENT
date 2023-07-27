@@ -18,7 +18,7 @@ export default function usePost() {
 
 		const { form } = parseForm(e)
 		const res = await api.addPost({ ...form, type, img })
-		res.ok && (window.location.href = `/product/${res._id}`)
+		res.ok && (window.location.href = `/${type}/${res._id}`)
 	}
 
 	// ! deletePost
