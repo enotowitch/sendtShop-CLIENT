@@ -23,7 +23,7 @@ export default function useUserOrOrderCart() {
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
 		varLink = ADMIN_ORDER_NEW_SHIPPING
-		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
+		className = "hideSvg"
 		varText = "Deliver these products using shipping info and send email with tracking link to user"
 		varBtnText = "USER SHIPPING INFO"
 	}
@@ -32,7 +32,7 @@ export default function useUserOrOrderCart() {
 		// order never changes after it's written to DB, so can be written to localStorage, to be displayed to admin
 		userOrOrder = JSON.parse(localStorage.getItem("order"))
 		varLink = ADMIN_ORDER_SENT_SHIPPING
-		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
+		className = "hideSvg"
 		varText = "Check where the order was shipped"
 		varBtnText = "SHIPPED TO"
 	}
@@ -45,7 +45,7 @@ export default function useUserOrOrderCart() {
 		// then if user clicks REPEAT ORDER => prev order info is written to user.cart (DB), so user can pay and order same order again
 		const repeatUserOrderCart = userOrOrder.cart // [prodId1,prodId2...]
 		pullPush({ col: "user", field: "cart", item: repeatUserOrderCart, action: "push" })
-		className = "orderCard" // !! hide all (svg) icons in CartCard via style .orderCard: .cartCard => with icons; .orderCard => NO icons
+		className = "hideSvg"
 		varText = "By clicking `order again` products in this previous order will be added to your cart. You will be able to modify this new order or order the same"
 		varBtnText = "ORDER AGAIN"
 		// user previous order has 2 buttons

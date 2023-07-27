@@ -15,8 +15,7 @@
 	}
 }
 
-.orderCard{
-	// !! hide all (svg) icons in CartCard: .cartCard => with icons; .orderCard => NO icons
+.hideSvg{
 	svg{
 		display: none;
 	}

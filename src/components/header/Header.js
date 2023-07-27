@@ -18,7 +18,7 @@ export default function Header() {
 					<HeaderIcon route={LIKED_PRODS_ROUTE}><FavoriteBorder /></HeaderIcon>
 					<HeaderIcon route={CART_ROUTE}><AddShoppingCart /></HeaderIcon>
 					<HeaderIcon route={USER_ORDERS}><LayersOutlined /></HeaderIcon>
-					<HeaderIcon route={PROFILE_ROUTE}><PersonOutline /></HeaderIcon>
+					<HeaderIcon route={PROFILE_ROUTE} className="profile"><PersonOutline /></HeaderIcon>
 				</div>
 
 				<HeaderMenu />

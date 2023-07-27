@@ -17,7 +17,7 @@ export default function OrderCard({ order }) {
 	}
 
 	return (
-		<section className="f jcsb m0a mb wM cp" onClick={() => onClick(order)}>
+		<section className="f jcsb m0a mb wM orderCard" onClick={() => onClick(order)}>
 			{/* id */}
 			<div className="fc p orderCard__item">
 				<div className="fw500">Order id:</div>
@@ -39,11 +39,11 @@ export default function OrderCard({ order }) {
 					</div>
 				</div>
 			}
-			{/* quantity */}
-			<div className="fc p orderCard__item">
+			{/* quantity // TODO ??? broken */}
+			{/* <div className="fc p orderCard__item">
 				<div className="fw500">Total quantity:</div>
 				<div className="brand">{order.cart.length}</div>
-			</div>
+			</div> */}
 			{/* order status */}
 			{order.status &&
 				<div className="fc p orderCard__item">

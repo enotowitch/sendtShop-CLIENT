@@ -9,6 +9,7 @@ export default function OrderCards({ title }) {
 	let { all } = usePosts("order")
 	const { user } = useContext(Context)
 
+	// TODO make hook "useOrderCards"
 	// show only this user orders
 	if (window.location.pathname === USER_ORDERS) {
 		// userId in DB ORDER matches this user id
