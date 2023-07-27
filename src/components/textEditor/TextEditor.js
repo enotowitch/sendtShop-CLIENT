@@ -3,9 +3,7 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import "./index.scss"
 
-export default function TextEditor(props) {
-
-	const { editValue } = props
+export default function TextEditor({ editValue }) {
 
 	const [value, valueSet] = useState("")
 

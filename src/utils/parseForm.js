@@ -16,9 +16,7 @@ export default function parseForm(e) { // e=event from onSubmit (html form)
 			if (each.name.includes("tag")) {
 				tags = [...tags, each.value]
 			}
-		}
-		// !! don't write each tag to form separately, they are in tags: []
-		if (!each.name.includes("tag")) {
+			
 			form = { ...form, tags, textEditorValue, [each.name]: each.checked || each.value }
 		}
 	})

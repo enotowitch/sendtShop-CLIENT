@@ -18,7 +18,7 @@ export default function article_add({ obj }) {
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "article")`)}>
 				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
 				<TagsInput />
-				<TextEditor />
+				<TextEditor editValue={fullPost?.textEditorValue} />
 				<Button type="submit" variant="contained">{varText}</Button>
 			</form>
 		</>

@@ -31,6 +31,7 @@ export default function AppRouter() {
 			{/* article */}
 			<Route exact path="/add/article" element={<PostAdd type="article" />} />
 			<Route exact path={ARTICLES_ROUTE} element={<PostCards type="article" />} />
+			<Route exact path="/edit/article/:id" element={<PostAdd type="article" />} />
 			<Route exact path="/article/:id" element={<PostFull type="article" />} />
 			{/* USER ROUTES */}
 			{user &&
