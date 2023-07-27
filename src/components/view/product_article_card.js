@@ -3,7 +3,7 @@ import liked from "../../img/liked.svg"
 import { Clear, Edit } from "@mui/icons-material";
 import Tags from '../tags/Tags';
 
-export default function Product_article_card({ obj, children }) {
+export default function product_article_card({ obj, children }) {
 
 	// !! only props must be here, no hooks
 	// * gray cause of eval
