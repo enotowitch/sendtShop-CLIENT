@@ -50,6 +50,8 @@
 	}
 	&__right{
 		width: 440px;
+	}
+	&__left,&__right{
 		align-self: flex-start;
 	}
 	// !!

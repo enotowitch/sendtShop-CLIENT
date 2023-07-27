@@ -12,6 +12,7 @@
 	display: flex; 
 	flex-wrap: nowrap;
 	overflow: auto;
+	min-height: 47px; // !! if no tags height=47
 	// center 1 tag
 	max-width: fit-content;
 	margin: 0 auto;
