@@ -9,7 +9,7 @@ import Cart from "../cart/Cart"
 import VerifyOrderToken from "../cart/VerifyOrderToken"
 import OrderCards from "../order/OrderCards"
 import { Context } from "../../Context"
-import ClickProfile from "./ClickProfile"
+import GoToProfile from "./GoToProfile"
 import Shipping from "../cart/Shipping"
 import OrderSendEmailTrack from "../order/OrderSendEmailTrack"
 import { ADMIN_ORDER_NEW, ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, ADMIN_ORDER_NEW_SHIPPING, USER_ORDER, USER_ORDERS, ADMIN_ORDER_SENT, ADMIN_ORDER_SENT_SHIPPING, ADMIN_ORDER_NEW_TRACK, ADMIN_ORDER_SENT_TRACK, CART_ROUTE, USER_ORDER_SHIPPING, USER_ORDER_TRACK, ARTICLES_ROUTE } from "../../consts"
@@ -59,7 +59,7 @@ export default function AppRouter() {
 			}
 			{/* NO ROUTES FOUND */}
 			{/* click Profile(Login) if no user */}
-			<Route path="*" element={<ClickProfile />} />
+			<Route path="*" element={<GoToProfile />} />
 		</Routes>
 	)
 }

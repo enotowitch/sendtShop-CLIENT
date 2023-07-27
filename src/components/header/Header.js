@@ -1,14 +1,11 @@
 import { AddShoppingCart, FavoriteBorder, LayersOutlined, PersonOutline, Search, ArticleOutlined } from "@mui/icons-material"
 import "./index.scss"
-import { Link, useLocation } from "react-router-dom"
-import { ARTICLES_ROUTE, BRAND_COLOR, CART_ROUTE, LIKED_PRODS_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE, USER_ORDERS } from "../../consts"
+import { ARTICLES_ROUTE, CART_ROUTE, LIKED_PRODS_ROUTE, PROFILE_ROUTE, SEARCH_ROUTE, USER_ORDERS } from "../../consts"
 import logoMain from "../../img/logoMain.svg"
 import HeaderMenu from "./HeaderMenu"
+import HeaderIcon from "./HeaderIcon"
 
 export default function Header() {
-
-	const { pathname } = useLocation()
-
 	return (
 		<>
 			<header className="f jcsb">
@@ -16,12 +13,12 @@ export default function Header() {
 				<img onClick={() => window.location.href = "/"} src={logoMain} className="ml" />
 
 				<div className="mla headerIcons">
-					{pathname === SEARCH_ROUTE ? <Link to={SEARCH_ROUTE}><Search sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={SEARCH_ROUTE}><Search /></Link>}
-					{pathname === ARTICLES_ROUTE ? <Link to={ARTICLES_ROUTE}><ArticleOutlined sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={ARTICLES_ROUTE}><ArticleOutlined /></Link>}
-					{pathname === LIKED_PRODS_ROUTE ? <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={LIKED_PRODS_ROUTE}><FavoriteBorder /></Link>}
-					{pathname === CART_ROUTE ? <Link to={CART_ROUTE}><AddShoppingCart sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={CART_ROUTE}><AddShoppingCart /></Link>}
-					{pathname === USER_ORDERS ? <Link to={USER_ORDERS}><LayersOutlined sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={USER_ORDERS}><LayersOutlined /></Link>}
-					{pathname === PROFILE_ROUTE ? <Link to={PROFILE_ROUTE} className="profile"><PersonOutline sx={{ fill: BRAND_COLOR }} /></Link> : <Link to={PROFILE_ROUTE} className="profile"><PersonOutline /></Link>}
+					<HeaderIcon route={SEARCH_ROUTE}><Search /></HeaderIcon>
+					<HeaderIcon route={ARTICLES_ROUTE}><ArticleOutlined /></HeaderIcon>
+					<HeaderIcon route={LIKED_PRODS_ROUTE}><FavoriteBorder /></HeaderIcon>
+					<HeaderIcon route={CART_ROUTE}><AddShoppingCart /></HeaderIcon>
+					<HeaderIcon route={USER_ORDERS}><LayersOutlined /></HeaderIcon>
+					<HeaderIcon route={PROFILE_ROUTE}><PersonOutline /></HeaderIcon>
 				</div>
 
 				<HeaderMenu />
@@ -32,3 +29,4 @@ export default function Header() {
 		</>
 	)
 }
+// 
