@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../form/Input'
 import { Button } from '@mui/material'
 import TagsInput from "../form/TagsInput"
+import TextEditor from '../textEditor/TextEditor'
 
 // addArticle/editArticle
 export default function article_add({ obj }) {
@@ -17,7 +18,7 @@ export default function article_add({ obj }) {
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "article")`)}>
 				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
 				<TagsInput />
-				<Input editValue={fullPost?.text} required name="text" label="text" helperText="text" multiline />
+				<TextEditor />
 				<Button type="submit" variant="contained">{varText}</Button>
 			</form>
 		</>

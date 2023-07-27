@@ -1,0 +1,41 @@
+@import "../../vars.scss";
+
+// ! SimpleMDE
+.CodeMirror{
+	// background: $white;
+	// color: $white;
+	border-radius: $borderRadiusSmall !important;
+	height: 200px !important;
+	margin: 0 auto;
+}
+// !! hide some not important editor options
+.editor-statusbar{
+	display: none;
+}
+.editor-toolbar{
+	.separator, .preview, .side-by-side, .fullscreen {
+		display: none !important;
+	}
+}
+
+.editor-toolbar{
+	button{
+		&:hover{
+			background: $black;
+		}
+		background: transparent !important;
+	}
+}
+// ? SimpleMDE
+
+// !! fix all <pre> tags text
+pre{
+	white-space: pre-line;
+	hyphens: auto;
+	font-family: $fontMain;
+	padding: 0 15px;
+	// !! force margin inside <pre> tags
+	p,h1,h2,h3,h4,h5,h6,img {
+		margin-bottom: 15px;
+	}
+	}

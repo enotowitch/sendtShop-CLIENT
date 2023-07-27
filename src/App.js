@@ -1,5 +1,6 @@
 // npm i @mui/material @emotion/react @emotion/styled @mui/icons-material 
-// npm i firebase sass axios react-router-dom
+// npm i firebase sass axios react-router-dom 
+// npm i react-simplemde-editor marked-react
 
 import AppRouter from "./components/appRouter/AppRouter";
 import Footer from "./components/footer/Footer";
