@@ -1,5 +1,6 @@
 export default function useAddOrEdit(type) { // type=product/article/comment/review...
 
+	// TODO move to post folder
 	let varText, varFn
 	if (window.location.pathname.includes("add/")) {
 		varText = "Add " + type

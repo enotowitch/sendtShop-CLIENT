@@ -8,6 +8,7 @@ export default function OrderCard({ order }) {
 
 	const navigate = useNavigate()
 
+	// TODO ??? refactor
 	function onClick(order) {
 		// order never changes after it's written to DB(it's paid), so can be written to localStorage, to be displayed to admin/user
 		localStorage.setItem("order", JSON.stringify(order))

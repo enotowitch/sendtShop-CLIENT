@@ -1,0 +1,12 @@
+@import "../../vars.scss";
+
+.addToCart{
+	background: $white;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	border: 2px solid $brand;
+}

@@ -19,7 +19,7 @@ export default function VerifyOrderToken() {
 			const res = await api.addOrder(token)
 			if (res.ok) { // order added to DB => clear user's cart
 				await pullPush({ col: "user", field: "cart", action: "clear" })
-				window.location.href = USER_ORDERS // TODO all routes = consts routes
+				window.location.href = USER_ORDERS
 			}
 		}
 

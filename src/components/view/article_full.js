@@ -2,23 +2,22 @@ import React from "react"
 import cleanTimestamp from "../../utils/cleanTimestamp"
 import Tags from "../tags/Tags"
 import Markdown from "../textEditor/Markdown"
-import { Visibility, Favorite, Share } from "@mui/icons-material";
+import { Visibility } from "@mui/icons-material";
+import Product_article_card_top from "./product_article_card_top"
 
 export default function article_full({ obj }) {
 
 	// !! only props must be here, no hooks
-	const { title, _id: articleId, createdAt, tags, textEditorValue, views } = obj.fullPost
-	const { pullPush } = obj
+	const { title, _id: articleId, createdAt, tags, textEditorValue, views, type } = obj.fullPost
+	const { deletePost } = obj
 
 	return (
 		<div className="fc aic">
-			<div className="f jcsb w100">
+
+			<Product_article_card_top obj={{ ...obj.fullPost, deletePost }}>
 				<div className="f aic"><Visibility />{views}</div>
-				<div className="f g">
-					<div className="f aic"><Favorite className="brand" />123</div>
-					<Share />
-				</div>
-			</div>
+			</Product_article_card_top>
+
 			<div className="title tac">{title}</div>
 			{/* // TODO min read */}
 			<div className="gray mb">{cleanTimestamp(createdAt, false)} | 1 min read</div>

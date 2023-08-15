@@ -5,7 +5,7 @@ export default function Input(props) {
 
 	// for edit: pass old value to editValue prop
 	// eg: <Input editValue={obj.inputName} />
-	const { editValue, isDisabled } = props
+	const { editValue, isDisabled, variant = "standard", size = "normal" } = props
 	useEffect(() => {
 		editValue && valueSet(editValue)
 	}, [editValue])
@@ -14,10 +14,13 @@ export default function Input(props) {
 
 	return (
 		<TextField
+			className="mb"
 			disabled={isDisabled}
 			{...props}
 			value={value}
 			onChange={(e) => valueSet(e.target.value)}
+			variant={variant}
+			size={size}
 		/>
 	)
 }

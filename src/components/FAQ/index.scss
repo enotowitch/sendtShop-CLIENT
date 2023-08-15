@@ -1,0 +1,24 @@
+@import "../../vars.scss";
+
+.FAQ{
+	padding: 15px;
+	padding-right: 50px;
+	max-width: 100%;
+	border-bottom: 1px solid $gray;
+	font-family: $fontSecondary;
+	&__title{
+		position: relative;
+		color: $gray;
+		text-transform: capitalize;
+	}
+	&__text{
+		padding: 15px;
+	}
+	&__toggle{
+		position: absolute;
+		right: -30px;
+		top: -10px;
+		font-size: 30px;
+		color: $gray;
+	}
+}

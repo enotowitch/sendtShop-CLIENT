@@ -63,10 +63,30 @@ export const addImg = async (formData) => {
 	}
 }
 
+// ! deleteImg
+export const deleteImg = async (imgName) => {
+	try {
+		const { data } = await instance.post("/deleteImg", { imgName })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 // ! getAllPosts
 export const getAllPosts = async (type, field) => {
 	try {
 		const { data } = await instance.post("/getAllPosts", { type, field })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! filterPosts
+export const filterPosts = async (type, filterPostsQuery, skip) => {
+	try {
+		const { data } = await instance.post("/filterPosts", { type, filterPostsQuery, skip })
 		return data
 	} catch (error) {
 		console.log(error)

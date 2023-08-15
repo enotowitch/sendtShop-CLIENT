@@ -1,0 +1,45 @@
+@import "../../vars.scss";
+
+.react-slider{
+	height: 100%;
+	.react-slider__picture{
+		img{
+			height: 400px;
+			object-fit: contain;
+		}
+	}
+	.react-slider__ul{ // hint imgs
+		min-height: 70px;
+		display: flex;
+		li{ // one hint img wrap
+			display: flex;
+			gap: 5px;
+			align-items: center;
+		}
+		img{ // one hint img
+			border-radius: 0;
+			object-fit: cover;
+		}
+		// media: > mobile
+		@media (min-width:$mobile) {			
+			img{ // one hint img
+				height: 55px;
+				min-width: 80px;
+			}
+		}
+	}
+}
+
+.smallImgPreviewWrap{ // .react-slider__ul / hint imgs in edit mode
+	gap: 25px;
+	padding-left: 15px;
+	border: 2px dashed #575757;
+	border-radius: 20px;
+	min-height: 100px !important;
+	img{ // one hint img in edit mode
+		height: 55px !important;
+		min-width: 80px !important;
+		border: none !important;
+		object-fit: fill !important;
+	}
+}

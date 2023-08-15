@@ -21,17 +21,17 @@ export default function Shipping() {
 			<section>
 				<form onSubmit={onSubmit} className="wM m0a">
 					<div className="f fwn g2">
-						<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" helperText="text" isDisabled={isInputDisabled} />
-						<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" helperText="text" isDisabled={isInputDisabled} />
+						<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" isDisabled={isInputDisabled} />
+						<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" isDisabled={isInputDisabled} />
 					</div>
-					<Input editValue={userOrOrder?.city} required name="city" label="town/city" helperText="text" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.city} required name="city" label="town/city" isDisabled={isInputDisabled} />
 					<div className="f fwn g2">
-						<Input editValue={userOrOrder?.address} required name="address" label="address" helperText="text" isDisabled={isInputDisabled} />
+						<Input editValue={userOrOrder?.address} required name="address" label="address" isDisabled={isInputDisabled} />
 						<Input editValue={userOrOrder?.apartment} name="apartment" label="apartment" helperText="optional" isDisabled={isInputDisabled} />
 					</div>
-					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" helperText="number" isDisabled={isInputDisabled} />
-					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" helperText="number" isDisabled={isInputDisabled} />
-					<Input editValue={userOrOrder?.email || userEmail} disabled name="email" type="email" label="email" helperText="email" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" isDisabled={isInputDisabled} />
+					<Input editValue={userOrOrder?.email || userEmail} disabled name="email" type="email" label="email" isDisabled={isInputDisabled} />
 					<Button type="submit" disabled={isBtnDisabled} variant="contained">{varText}</Button>
 					<div className="brand tac fsi">{varBtnHelpText}</div>
 				</form>

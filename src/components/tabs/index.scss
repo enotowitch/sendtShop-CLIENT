@@ -1,0 +1,22 @@
+@import "../../vars.scss";
+
+.tab{
+	color: $black;
+	padding: 0 12px;
+	white-space: nowrap;
+	text-transform: capitalize;
+	cursor: pointer;
+	&_active{
+		font-weight: 700;
+		color: $brand;
+		// TODO product_full needs: underline `postFilter`: NOT 
+		// border-bottom: 2px solid $brand; // underline active tab
+	}
+}
+
+.filter{
+	border: 2px solid $black; 
+	border-radius: $borderRadiusLarge;
+	height: 30px;
+	width: $wS;
+}

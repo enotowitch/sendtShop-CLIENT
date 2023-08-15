@@ -3,6 +3,7 @@
 @import "./hovers.scss";
 @import "./animations.scss";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700&display=swap');
 
 // ! GLOBAL
 
@@ -13,6 +14,10 @@ body {
 	box-sizing: border-box;
 	background: $appBg;
 	font-family: "Montserrat", sans-serif;
+}
+
+* { // !!
+	box-sizing: border-box;
 }
 
 a{
@@ -32,6 +37,10 @@ section{
 
 input:disabled{
 	font-weight: 700;
+}
+
+b{
+	font-weight: 600;
 }
 
 // MUI buttons style by default
@@ -55,10 +64,14 @@ input:disabled{
 	}
 }
 
-// MUI TextField(input) style by default
-.MuiFormControl-root.MuiTextField-root{
+// ! MUI TextField(input) style by default
+.MuiFormControl-root.MuiTextField-root{ // input
 	width: 100%;
 }
+.MuiInputBase-root.MuiFilledInput-root{ // autocompelete inner input
+	padding-top: 8px !important;
+}
+// ? MUI TextField(input) style by default
 
 // ! scrollbar
 body::-webkit-scrollbar {

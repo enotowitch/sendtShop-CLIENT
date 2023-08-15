@@ -1,9 +1,14 @@
 @import "../../vars.scss";
 
-// !! mui chip tag
+// !! mui chip tag outlined
 .MuiChip-root.MuiChip-outlined{
 	border: 1px solid $brand;
 	color: $brand;
+}
+// !! mui chip tag filled
+.MuiChip-root.MuiChip-filled{
+	color: $white;
+	background: $brand;
 }
 
 // ! scrollableTags

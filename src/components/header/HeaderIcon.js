@@ -1,18 +1,33 @@
 import React, { cloneElement, useContext } from "react"
-import { Link, useLocation } from "react-router-dom"
 import { BRAND_COLOR } from "../../consts"
 import { Context } from "../../Context"
 
-export default function HeaderIcon({ children, route, className }) {
+// field=cart/likes
+export default function HeaderIcon({ children, route, className, field }) {
 
-	const { pathname } = useLocation()
-	const { showMenuSet } = useContext(Context) // close mobile menu on header icon click
+	const { showMenuSet, user } = useContext(Context)
+
+	function onClick() {
+		showMenuSet(false) // close mobile menu on header icon click
+	}
 
 	return (
-		pathname === route
+		window.location.pathname === route
 			?
-			<Link to={route} className={className} onClick={() => showMenuSet(false)}>{cloneElement(children, { style: { fill: BRAND_COLOR } })}</Link>
+			<div className="fcc por wfc">
+				<a href={route} className={className} onClick={onClick}>{cloneElement(children, { style: { fill: BRAND_COLOR } })}</a>
+				{/* show user.cart || user.likes count */}
+				{user?.[field]?.length > 0 &&
+					<div className="headerIconCount">{user?.[field]?.length}</div>
+				}
+			</div>
 			:
-			<Link to={route} className={className} onClick={() => showMenuSet(false)}>{children}</Link>
+			<div className="fcc por wfc">
+				<a href={route} className={className} onClick={onClick}>{children}</a>
+				{/* show user.cart || user.likes count */}
+				{user?.[field]?.length > 0 &&
+					<div className="headerIconCount">{user?.[field]?.length}</div>
+				}
+			</div>
 	)
 }

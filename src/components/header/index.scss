@@ -31,12 +31,33 @@ header{
 
 .headerIcons{
 	margin-right: 100px; // space for Burger
+	display: flex;
 	@media (max-width:$mobile) {
 		@include headerValues;
 		bottom: 0;
 		left: 0;
-		justify-content: center;
+		justify-content: space-evenly;
 	}
+}
+
+.headerIconCount{
+	position: absolute;
+	left: 10px;
+	top: 8px;
+	background: $brand; 
+	border-radius: 50%;
+	width: 16px;
+	height: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 12px;
+	color: $white;
+	pointer-events: none;
+}
+
+.logoMain{
+	height: 40px;
 }
 
 // ! Burger

@@ -1,34 +1,32 @@
-import React, { useContext } from "react"
+import React from "react"
 import addImage from "./addImage.svg"
-import { Context } from "../../Context"
 import './index.scss'
 import usePreview from "./usePreview"
+import CarouselProduct from "../carousel/CarouselProduct"
 
-export default function AddImg({ editValue, className }) {
+export default function AddImg({ editValue, obj }) { // obj=fullPost
 
-	const { uploadedImgSet } = useContext(Context)
 	const { preview, previewMake } = usePreview(editValue)
 
 	async function onChange(e) {
-		// * only saves uploadedImg to Context, image upload happens in useAddImg
-		uploadedImgSet(e.target.files[0])
-		previewMake(e.target.files[0])
+		// 1. make previews
+		// 2.	save imgs to Context
+		previewMake(e.target.files)
 	}
 
 	return (
-		<label>
+		<label className="por">
 			<input
-				// required
-				hidden
+				required
+				className="hiddenInput"
 				name="img"
 				type="file"
 				onChange={onChange}
+				multiple
+				accept="image/png, image/gif, image/jpeg"
 			/>
 
-			<img
-				src={preview || addImage}
-				className={className}
-			/>
+			<CarouselProduct arr={preview.length > 0 ? preview : [addImage]} obj={obj} />
 		</label>
 	)
 }

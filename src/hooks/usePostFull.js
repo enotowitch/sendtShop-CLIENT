@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import * as api from "../api"
-import { useParams } from "react-router-dom"
+import { Context } from "../Context"
 
-export default function usePostFull(type) {	// type=product/article/comment/review...
+export default function usePostFull(type, id) {	// type=product/article/comment/review...
 
-	const { id } = useParams()
-
+	// TODO move to post folder
 	const [fullPost, fullPostSet] = useState({})
+	const { update } = useContext(Context)
 
 	useEffect(() => {
 		async function getFullPost() {
@@ -15,7 +15,7 @@ export default function usePostFull(type) {	// type=product/article/comment/revi
 		}
 
 		getFullPost()
-	}, [])
+	}, [update])
 
 	return (
 		{ fullPost }

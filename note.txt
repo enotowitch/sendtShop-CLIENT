@@ -30,3 +30,67 @@ export default function useStripe() {
 		{ stripeLink }
 	)
 }
+
+pagination
+============
+
+1. api.js
+
+// ! filterPosts
+export const filterPosts = async (type, filterPostsQuery, skip) => {
+	try {
+		const { data } = await instance.post("/filterPosts", { type, filterPostsQuery, skip })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+2. Context.js
+
+const [skip, skipSet] = useState(0) // for pagination: how many posts to skip/limit
+
+// pagination: skip posts
+skip, skipSet
+
+3. NEW FILE - LoadMore.js
+
+import { Button } from "@mui/material"
+import React from "react"
+import { useContext } from "react"
+import { Context } from "../../Context"
+
+// eg:			SKIP LIMIT
+// round 1		 0    10
+// round 2		10		10
+// round 3		20    10
+// round 4		30    10
+// ...
+export default function LoadMore() {
+
+	const { skipSet } = useContext(Context)
+
+	return (
+		<Button onClick={() => skipSet(prev => prev + 1)}>Load More</Button>
+	)
+}
+
+4. PostCards.js
+
+import LoadMore from "./LoadMore"
+<LoadMore />
+
+5. usePosts.js
+
+	// ! all
+	const { update, filterPostsQuery, skip } = useContext(Context)
+	const [all, allSet] = useState([])
+	useEffect(() => {
+		async function getAllPosts() {
+			// eg:									product {tag:sale, sort:price&asc, text:someText}
+			const res = await api.filterPosts(type, filterPostsQuery, skip)
+			allSet(res)
+		}
+
+		getAllPosts()
+	}, [type, update, filterPostsQuery, skip])

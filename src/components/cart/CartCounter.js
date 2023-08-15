@@ -2,9 +2,9 @@ import React from "react"
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import useCartCounter from "./useCartCounter";
 
-export default function CartCounter({ quantity, _id }) {
+export default function CartCounter({ quantity, obj }) {
 
-	const { count, cartCounter } = useCartCounter(quantity, _id)
+	const { count, cartCounter } = useCartCounter(quantity, obj)
 
 	return (
 		<div className="f aic">

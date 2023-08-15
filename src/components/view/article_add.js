@@ -13,11 +13,12 @@ export default function article_add({ obj }) {
 
 	return (
 		<>
-			<div className="title tac">TEST: {varText}</div>
-			{/*                  eg: addPost(e, "article")} || editPost(e, "product")} */}
+			<div className="title tac">{varText}</div>
+			{/*                  eg: addPost(e, "article")} || editPost(e, "article")} */}
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "article")`)}>
-				<Input editValue={fullPost?.title} required name="title" label="title" helperText="text" />
-				<TagsInput />
+				<Input editValue={fullPost?.title} required name="title" label="title" />
+				{/* // TODO common component for TagsInput used in article_add & product_add */}
+				<TagsInput editValue={fullPost?.tags} placeholder="categories" field="tags" />
 				<TextEditor editValue={fullPost?.textEditorValue} />
 				<Button type="submit" variant="contained">{varText}</Button>
 			</form>

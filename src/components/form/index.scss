@@ -8,3 +8,11 @@
 		border-bottom: none !important;
 	}
 }
+
+.icon_add{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	margin: 15px 0;
+}

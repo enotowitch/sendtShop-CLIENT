@@ -1,23 +1,16 @@
 import React from 'react'
-import { Clear, Edit, FavoriteBorder, Share } from "@mui/icons-material";
 import Tags from '../tags/Tags';
+import Product_article_card_top from "./product_article_card_top"
 
 export default function product_article_card({ obj, children }) {
 
 	// !! only props must be here, no hooks
-	// * gray cause of eval
-	const { img, title, type, _id, deletePost, tags } = obj
+	const { img, title, tags } = obj
 
 	return (
 		<div>
 			{/* top */}
-			<div className="f jcsb aic card__top" onClick={(e) => e.stopPropagation()}>
-				<FavoriteBorder className="ml010" />
-				{/* eg: /edit/product|article|smth/_id */}
-				<Edit onClick={() => window.location.href = `/edit/${type}/${_id}`} />
-				<Clear style={{ height: 42, width: 42 }} onClick={(e) => deletePost(e, type, _id)} />
-				<Share className="mr010" />
-			</div>
+			<Product_article_card_top obj={obj} />
 			{/* center */}
 			<img src={img} />
 			<Tags arr={tags} className="scrollableTags" />

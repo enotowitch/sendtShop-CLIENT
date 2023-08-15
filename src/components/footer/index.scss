@@ -10,5 +10,9 @@ footer{
 		margin-bottom: 10px;
 	}
 	padding-top: 40px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
+	// media 
+	@media (max-width:$mobile) {
+		padding-bottom: 100px;
+	}
 }

@@ -7,7 +7,13 @@ import { Context } from "../../Context";
 export default function HeaderDrawer() {
 
 	const { allWithField } = usePosts("product", "tags")
-	const { showMenu, showMenuSet } = React.useContext(Context)
+	const { showMenu, showMenuSet, filterPostsQuerySet, skipSet } = React.useContext(Context)
+
+	function onClick(text) {
+		filterPostsQuerySet(prev => ({ ...prev, tag: text })) // define tag to filter 
+		showMenuSet(false) // hide HeaderDrawer
+		skipSet(0) // null skip to filter from the start of the product list
+	}
 
 	return (
 		showMenu &&
@@ -19,7 +25,8 @@ export default function HeaderDrawer() {
 			<List className="headerDrawer">
 				{allWithField?.map((text) => (
 					<ListItem key={text} disablePadding>
-						<ListItemButton>
+						{/* // TODO sep. comp. */}
+						<ListItemButton onClick={() => onClick(text)}>
 							<ListItemText primary={text} />
 						</ListItemButton>
 					</ListItem>

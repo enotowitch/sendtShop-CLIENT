@@ -27,7 +27,7 @@
 }
 
 .cards{
-	max-width: 1380px; // !! big screen => justify-content: flex-start
+	max-width: $cardsWidth; // !! big screen => justify-content: flex-start
 	width: 100%;
 	justify-content: flex-start;
 	@media (max-width:1364px) { // !! small screen => justify-content: center
@@ -46,7 +46,7 @@
 		gap: 15px;
 	}
 	&__left{
-		max-width: 570px;
+		max-width: 540px; // !! padding
 	}
 	&__right{
 		width: 440px;
@@ -62,5 +62,34 @@
 	// !!
 	a{
 		color: $brand;
+	}
+}
+
+.sort{
+	border-radius: $borderRadiusLarge;
+	background: transparent;
+	font-size: 20px; // !!
+	width: 330px;
+	padding-left: 95px;
+	border: 2px solid;
+	height: 30px;
+}
+
+.postFilters{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: space-between;
+	max-width: $cardsWidth;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	padding: 0 15px;
+	padding-left: 0;
+	@media (max-width:$mobile){
+		padding-left: 15px;
+	}
+	// !! center postFilters
+	@media (max-width:($wS*2+30)){ // !! 2 cards width + margins
+		width: $wS+30; // TODO
 	}
 }

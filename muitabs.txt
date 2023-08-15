@@ -1,0 +1,32 @@
+// npm i @mui/lab
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+
+// mui LabTabs
+export default function PostFilter() {
+	const [value, setValue] = React.useState("1");
+
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
+
+	return (
+		<Box sx={{ border: "2px solid", width: 330, borderRadius: "20px" }}>
+			<TabContext value={value}>
+				<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+					<TabList style={{ height: 25, minHeight: 25 }}
+						onChange={handleChange}
+						TabIndicatorProps={{ style: { display: "none" } }}>
+						<Tab label="NEW" style={{ padding: "10px 18px", height: 25, minHeight: 25, minWidth: "fit-content" }} />
+						<Tab label="FEATURED" style={{ padding: "10px 18px", height: 25, minHeight: 25, minWidth: "fit-content" }} />
+						<Tab label="HOT" style={{ padding: "10px 18px", height: 25, minHeight: 25, minWidth: "fit-content" }} />
+						<Tab label="SALE" style={{ padding: "10px 18px", height: 25, minHeight: 25, minWidth: "fit-content" }} />
+					</TabList>
+				</Box>
+			</TabContext>
+		</Box>
+	);
+}

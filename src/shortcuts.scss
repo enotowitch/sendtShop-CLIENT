@@ -214,6 +214,19 @@
 .px4{
 	padding: 0 60px !important;
 }
+// y axis
+.py{
+	padding: 15px 0 !important;
+}
+.py2{
+	padding: 30px 0 !important;
+}
+.py3{
+	padding: 45px 0 !important;
+}
+.py4{
+	padding: 60px 0 !important;
+}
 // all
 .p{
 	padding: 15px !important;
@@ -227,13 +240,58 @@
 .p4{
 	padding: 60px !important;
 }
+// left
+.pl{
+	padding-left: 15px !important;
+}
+.pl2{
+	padding-left: 30px !important;
+}
+.pl3{
+	padding-left: 45px !important;
+}
+.pl4{
+	padding-left: 60px !important;
+}
+// right
+.pr{
+	padding-right: 15px !important;
+}
+.pr2{
+	padding-right: 30px !important;
+}
+.pr3{
+	padding-right: 45px !important;
+}
+.pr4{
+	padding-right: 60px !important;
+}
+// null
+.pt0{
+	padding-top: 0px !important;
+}
+.pr0{
+	padding-right: 0px !important;
+}
+.pb0{
+	padding-bottom: 0px !important;
+}
+.pl0{
+	padding-left: 0px !important;
+}
+.p0{
+	padding: 0px !important;
+}
 // ! TITLES & text
 .title{
-	font-size: 2.5vh; // 27px @1080p
+	font-size: 27px; // 27px @1080p // TODO clamp(min,def,max)
 	font-weight: 600;
 }
 .tac{
 	text-align: center;
+}
+.tal{
+	text-align: left;
 }
 .fsi{
 	font-style: italic;
@@ -273,7 +331,10 @@
 	background: $danger !important;
 }
 .dangerBorder{
-	border: 1px solid $danger !important;
+	border: 2px solid $danger !important;
+}
+.blackBorder{
+	border: 2px solid $black !important;
 }
 .white{
 	color: $white !important;
@@ -300,6 +361,9 @@
 .inputBorderGray{
 	border: 1px solid #b3b3b3;
 }
+.br50{
+	border-radius: 50%;
+}
 // ! WIDTH
 .wS{ // width Small/Medium/Large
 	max-width: $wS;
@@ -310,19 +374,112 @@
 .wL{ // width Small/Medium/Large
 	max-width: $wL;
 }
+.cardsWidth{
+	max-width: $cardsWidth;
+}
+.maw100{
+	max-width: 100% !important;
+}
 .w100{
 	width: 100% !important;
 }
-// ! POSITION
+.w90{
+	width: 90% !important;
+}
+.w80{
+	width: 80% !important;
+}
+.w70{
+	width: 70% !important;
+}
+.w60{
+	width: 60% !important;
+}
+.w50{
+	width: 50% !important;
+}
+.wfc{
+	width: fit-content;
+}
+// ! POSITION & DISPLAY
 .por{
 	position: relative !important;
 }
+.poa{
+	position: absolute !important;
+}
+.db{
+	display: block;
+}
+// ! z-index
+.zi0{
+	z-index: 0;
+}
+.zi1{
+	z-index: 1;
+}
+.zi2{
+	z-index: 2;
+}
+.zi3{
+	z-index: 3;
+}
+.zi4{
+	z-index: 4;
+}
+.zi5{
+	z-index: 5;
+}
+.zi6{
+	z-index: 6;
+}
+.zi7{
+	z-index: 7;
+}
+.zi8{
+	z-index: 8;
+}
+.zi9{
+	z-index: 9;
+}
+// ! MEDIA
+.mobile{
+	@media (min-width:$mobile) { // show only on mobile
+		display: none;
+	}
+}
+// ! hiddenInput
+// input is centered to (.por: position: relative)
+// parrent MUST have .por className
+// to show browser native "required" hint, if input value is ""/false/...
+.hiddenInput{
+	position: absolute;
+	left:50%;
+	top: 100%;
+	transform: translate(-50%,-100%);
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+}
+// ? hiddenInput
 // ! OTHER
 .op0{
 	opacity: 0;
 }
+.oh{
+	overflow: hidden;
+}
+.toe{
+	text-overflow: ellipsis;
+}
+.wsn{
+	white-space: nowrap;
+}
 .br{
-	outline: 1px solid red;
+	border: 1px solid red;
+}
+.bb{
+	border: 1px solid blue;
 }
 .oa{
 	overflow: auto;

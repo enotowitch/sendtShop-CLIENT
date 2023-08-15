@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./index.scss"
+import { FAQ_ROUTE } from "../../consts"
 
 export default function Footer() {
 	return (
@@ -20,7 +21,7 @@ export default function Footer() {
 					<Link>Terms and Conditions</Link>
 					<Link>Privacy Policy</Link>
 					<Link>Return Policy</Link>
-					<Link>FAQ</Link>
+					<Link to={FAQ_ROUTE}>FAQ</Link>
 				</div>
 				{/* right */}
 				<div className="fc tac wS w100">

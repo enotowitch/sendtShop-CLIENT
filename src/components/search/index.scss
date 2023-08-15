@@ -1,0 +1,19 @@
+@import "../../vars.scss";
+
+.searchField{
+	height: 35px;
+	width: 200px;
+	@media (max-width:$mobile) {
+		position: absolute !important;
+		top: -40px;
+		width: 100%;
+	}
+	.MuiInputBase-input.MuiOutlinedInput-input{
+		box-sizing: border-box !important; // mui force my height
+		background: $white;
+		border-radius: $borderRadiusSmall;
+		@media (max-width:$mobile) { // searchField input height mobile
+			height: 45px;
+		}
+	}
+}
