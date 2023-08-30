@@ -1,5 +1,7 @@
 @import "../../vars.scss";
 
+$svgSize: 35;
+
 @mixin headerValues {
 	position: fixed;
 	z-index: 9999; // to be under MUI drawer (.headerDrawer)
@@ -15,8 +17,8 @@ header{
 	@include headerValues;
 	// !! header icons
 	svg{
-	height: 35px !important;
-	width: 35px !important;
+	height: $svgSize+px !important;
+	width: $svgSize+px !important;
 	color: $white;
 }
 }
@@ -58,6 +60,14 @@ header{
 
 .logoMain{
 	height: 40px;
+}
+
+.themeSwitch{
+	align-self: center;
+	// !!
+	svg{
+		height: calc($svgSize - 2)+px !important;
+	}
 }
 
 // ! Burger

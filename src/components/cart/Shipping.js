@@ -18,8 +18,8 @@ export default function Shipping() {
 	return (
 		<>
 			<CartSteps step={2} />
-			<section>
-				<form onSubmit={onSubmit} className="wM m0a">
+			<section className="wM m0a">
+				<form onSubmit={onSubmit}>
 					<div className="f fwn g2">
 						<Input editValue={userOrOrder?.firstName} required name="firstName" label="firstName" isDisabled={isInputDisabled} />
 						<Input editValue={userOrOrder?.lastName} required name="lastName" label="lastName" isDisabled={isInputDisabled} />

@@ -1,6 +1,7 @@
 import React from "react"
 import Product_article_card from "./product_article_card"
 import { Visibility } from "@mui/icons-material";
+import Card from "./Card";
 
 export default function article_card({ obj }) {
 
@@ -8,7 +9,7 @@ export default function article_card({ obj }) {
 	const { views } = obj
 
 	return (
-		<>
+		<Card obj={obj}>
 			<Product_article_card obj={obj}>
 
 				{/* product & article cards are 70% same; article_card diff here */}
@@ -18,6 +19,6 @@ export default function article_card({ obj }) {
 				</div>
 
 			</Product_article_card>
-		</>
+		</Card>
 	)
 }

@@ -1,20 +1,19 @@
-import usePullPush from "../../hooks/usePullPush"
-import useAnimation from "../../hooks/useAnimation"
+import * as api from "../../api"
+import { useContext } from "react"
+import { Context } from "../../Context"
 
 export default function useCartCard(obj) {
 
-	const { _id, size, color } = obj
-	const cartProduct = { _id, size, color }
+	const cartProduct = obj
 
-	const { pullPush } = usePullPush()
-	const { deleteAnimation } = useAnimation()
+	const { updateContext } = useContext(Context)
 
-	async function deleteAllCartProducts(e) {
-		const res = await pullPush({ col: "user", field: "cart", item: cartProduct, action: "pull", pullMode: "all" })
-		deleteAnimation(e, "product")
+	async function deleteCartProduct(e) {
+		const res = await api.deleteCartProduct({ product: cartProduct })
+		updateContext()
 	}
 
 	return (
-		{ deleteAllCartProducts }
+		{ deleteCartProduct }
 	)
 }

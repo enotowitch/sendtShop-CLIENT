@@ -44,17 +44,28 @@ export const loginSendEmail = async (form) => {
 
 // !! POST
 // ! addPost
-export const addPost = async (formAndType) => {
+export const addPost = async (formAndOtherStuff) => {
 	try {
-		const { data } = await instance.post(`/addPost`, { ...formAndType })
+		const { data } = await instance.post(`/addPost`, { ...formAndOtherStuff })
 		return data
 	} catch (error) {
 		console.log(error)
 	}
 }
 
-// ! addImg
-export const addImg = async (formData) => {
+// ! test
+export const test = async () => { // TODO delete
+	try {
+		const { data } = await instance.post(`/test`)
+		console.log(data)
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! addFile
+export const addFile = async (formData) => {
 	try {
 		const { data } = await instance.post("/upload", formData)
 		return data
@@ -132,6 +143,26 @@ export const pullPush = async ({ col, colId, field, item, action, dups, pullMode
 		console.log(error)
 	}
 }
+
+// ! deleteCartProduct
+export const deleteCartProduct = async ({ product }) => {
+	try {
+		const { data } = await instance.post(`/deleteCartProduct`, { product })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! randomPosts
+export const randomPosts = async (type) => {
+	try {
+		const { data } = await instance.post(`/randomPosts`, { type })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
 // ?? POST
 
 // !! ORDER
@@ -155,3 +186,35 @@ export const orderSendEmailTrack = async (form) => {
 	}
 }
 // ?? ORDER
+
+// !! OTHER
+// ! contactUs
+export const contactUs = async (form) => {
+	try {
+		const { data } = await instance.post(`/contactUs`, { ...form })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! subscribe
+export const subscribe = async (form) => {
+	try {
+		const { data } = await instance.post(`/subscribe`, { ...form })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! editFooter
+export const editFooter = async (type, textEditorValue) => {
+	try {
+		const { data } = await instance.post(`/editFooter`, { type, textEditorValue })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+// ?? OTHER

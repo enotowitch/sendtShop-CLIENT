@@ -16,7 +16,7 @@ export default function FAQPage() {
 	return (
 		<section className="wM m0a">
 			<div className="title tac mb">How can we help?</div>
-			<TextField onChange={(e) => valueSet(e.target.value)} placeholder="search FAQ" />
+			<TextField type="search" onChange={(e) => valueSet(e.target.value)} placeholder="search FAQ" />
 			<div className="mt">
 				{faqs?.map(({ title, text }) => <FAQ key={title} title={title} text={text} />)}
 			</div>

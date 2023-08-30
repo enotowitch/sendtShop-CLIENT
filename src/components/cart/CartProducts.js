@@ -8,7 +8,7 @@ export default function CartProducts({ cartProducts, allProductsTotalPrice, link
 			<div className="wM w100">
 				{cartProducts}
 			</div>
-			<section className="tac mb wS w100">
+			<section className="tac mb wS w100 asfs subTotal">
 				<div>Subtotal: ${allProductsTotalPrice}</div>
 				<div className="my">{text}</div>
 				<Button variant="contained" href={link}>{btnText}</Button>

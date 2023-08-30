@@ -18,7 +18,7 @@ export default function article_add({ obj }) {
 			<form className="fc" onSubmit={(e) => eval(`${varFn}(e, "article")`)}>
 				<Input editValue={fullPost?.title} required name="title" label="title" />
 				{/* // TODO common component for TagsInput used in article_add & product_add */}
-				<TagsInput editValue={fullPost?.tags} placeholder="categories" field="tags" />
+				<Input editValue={fullPost?.tags} required name="tags" label="tags" helperText="separated by comma" />
 				<TextEditor editValue={fullPost?.textEditorValue} />
 				<Button type="submit" variant="contained">{varText}</Button>
 			</form>

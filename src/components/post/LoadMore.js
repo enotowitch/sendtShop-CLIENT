@@ -11,9 +11,10 @@ import { Context } from "../../Context"
 // ...
 export default function LoadMore() {
 
-	const { skipSet } = useContext(Context)
+	const { skipSet, showLoadMore } = useContext(Context)
 
 	return (
-		<Button onClick={() => skipSet(prev => prev + 1)}>Load More</Button>
+		showLoadMore &&
+		<Button onClick={() => skipSet(prev => prev + 12)}>Load More</Button>
 	)
 }

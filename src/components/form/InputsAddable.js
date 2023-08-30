@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import add from "../../img/add.svg"
-import Input from "./Input"
 import "./index.scss"
-import Or from "../auth/Or"
+import Input from "./Input"
+import { Button } from "@mui/material"
 
 // eg: editNames=["name1", "name2", ...]
 // eg: editValues=["value1", "value2", ...]
@@ -28,9 +27,9 @@ export default function InputsAddable({ title, type, editNames, editValues }) {
 
 	return (
 		<>
-			<Or text={title} />
+			<div className="title2 tac">{title}</div>
 			{inputs()}
-			<img src={add} className="icon_add" onClick={addInput} />
+			<Button onClick={addInput} className="mb" variant="outlined">add {type}</Button>
 		</>
 	)
 }

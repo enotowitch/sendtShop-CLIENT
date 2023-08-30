@@ -94,3 +94,18 @@ import LoadMore from "./LoadMore"
 
 		getAllPosts()
 	}, [type, update, filterPostsQuery, skip])
+
+===
+
+// ! containsObject
+
+	function containsObject(obj, list) {
+		var i;
+		for (i = 0; i < list.length; i++) {
+			if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
+				return { contains: true, index: i }
+			}
+		}
+
+		return { contains: false }
+	}

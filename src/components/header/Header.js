@@ -5,6 +5,7 @@ import logoMain from "../../img/logoMain.png"
 import HeaderMenu from "./HeaderMenu"
 import HeaderIcon from "./HeaderIcon"
 import SearchIcon from "../search/SearchIcon"
+import ThemeSwitch from "./ThemeSwitch"
 
 export default function Header() {
 	return (
@@ -15,6 +16,7 @@ export default function Header() {
 
 				<div className="mla headerIcons">
 					<SearchIcon />
+					<ThemeSwitch />
 					<HeaderIcon route={ARTICLES_ROUTE}><ArticleOutlined /></HeaderIcon>
 					<HeaderIcon field="likes" route={LIKED_PRODS_ROUTE}><FavoriteBorder /></HeaderIcon>
 					<HeaderIcon field="cart" route={CART_ROUTE}><ShoppingCartOutlined /></HeaderIcon>
@@ -30,4 +32,3 @@ export default function Header() {
 		</>
 	)
 }
-// 

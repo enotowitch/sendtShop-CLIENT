@@ -2,7 +2,7 @@ import SliderImage from "react-zoom-slider"
 import "./index.scss"
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../Context"
-import getServerImgName from "../../utils/getServerImgName";
+import getServerFileName from "../../utils/getServerFileName";
 import * as api from "../../api"
 
 export default function CarouselProduct({ arr, obj }) { // obj= `product fullPost`
@@ -29,10 +29,10 @@ export default function CarouselProduct({ arr, obj }) { // obj= `product fullPos
 			}, 1) // loads after some time
 		}
 		// if clicked "delete img"
-		if (imgToDeleteInd) {
+		if (imgToDeleteInd !== "") {
 			const serverImgPath = arr[imgToDeleteInd]
 			// 1. delete img from server
-			api.deleteImg(getServerImgName(serverImgPath))
+			api.deleteImg(getServerFileName(serverImgPath))
 			// 2. delete img from DB product
 			const productId = obj?._id
 			api.pullPush({ col: "product", colId: productId, field: "img", action: "pull", pullMode: "one", item: serverImgPath })

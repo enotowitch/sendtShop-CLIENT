@@ -1,23 +1,26 @@
 import parseForm from "../utils/parseForm"
 import * as api from "../api"
 import useAddImg from "../components/addImg/useAddImg"
+import useAddArchive from "../components/addArchive/useAddArchive"
 import useAnimation from "./useAnimation"
 import { useParams } from "react-router-dom"
 
 export default function usePost() { // TODO move to post folder
 
-	// ! addPost
 	const { imgArr } = useAddImg()
+	const { archiveArr } = useAddArchive()
 
+	// ! addPost
 	async function addPost(e, type) {
 		// e = form event (onSubmit)
 		// type=product/article/comment/review...
 		e.preventDefault()
 
 		const img = await imgArr() // get uploadedImg url (on server) to store in DB
+		const archive = await archiveArr() // get uploadedArhive url (on server) to store in DB
 
 		const { form } = parseForm(e)
-		const res = await api.addPost({ ...form, type, img })
+		const res = await api.addPost({ ...form, type, img, archive })
 
 		if (type === "review") {
 			window.location.reload() // TODO update list
@@ -51,9 +54,10 @@ export default function usePost() { // TODO move to post folder
 
 		// TODO delete old imgs from server if changed
 		const img = await imgArr() // get uploadedImg url (on server) to store in DB
+		const archive = await archiveArr() // get uploadedArhive url (on server) to store in DB
 
 		const { form } = parseForm(e)
-		const res = await api.editPost({ ...form, type, _id, img })
+		const res = await api.editPost({ ...form, type, _id, img, archive })
 		res.ok && (window.location.href = `/${type}/${_id}`)
 	}
 

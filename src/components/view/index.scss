@@ -10,3 +10,11 @@
 	height: 45px;
 	border: 2px solid $brand;
 }
+
+.addToCartFullProdForm{
+	margin-top: 15px;
+	// !! all inner inputs & selects 
+	> *{
+		margin-bottom: 15px;
+	}
+}

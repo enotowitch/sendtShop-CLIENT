@@ -2,6 +2,7 @@
 @import "./shortcuts.scss";
 @import "./hovers.scss";
 @import "./animations.scss";
+@import "./theme.scss";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700&display=swap');
 
@@ -21,12 +22,11 @@ body {
 }
 
 a{
-	color: $white; // TODO ???
-	text-decoration: none;
+	color: $black; // TODO ???
+	// text-decoration: none;
 }
 
 section{
-	background: $white;
 	padding: 15px;
 	border-radius: $borderRadiusLarge;
 	// !!
@@ -84,10 +84,10 @@ body::-webkit-scrollbar {
 }
 ::-webkit-scrollbar-thumb {
 	background: lighten($dark800, 10%);
-	// border-radius: 20px;
+	border-radius: 20px;
 }
 ::-webkit-scrollbar-track {
 	background: $white;
-	// border-radius: 20px;	
+	border-radius: 20px;
 }
 // ? scrollbar

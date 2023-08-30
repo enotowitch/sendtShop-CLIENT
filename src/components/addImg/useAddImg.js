@@ -9,11 +9,11 @@ export default function useAddImg() {
 	async function imgArr() {
 		const formData = new FormData()
 		uploadedImg.map(file => { // e.target.file[0,1,2...]
-			formData.append("image", file) // append img from Context
+			formData.append("anyfile", file) // append img from Context
 		})
 
-		const res = await api.addImg(formData) // returns uploadedImg imgArr (on server) to store in DB: eg: ["imgPath1","imgPath2",...]
-		return res?.imgArr
+		const res = await api.addFile(formData) // returns uploadedImg imgArr (on server) to store in DB: eg: ["imgPath1","imgPath2",...]
+		return res?.fileArr
 	}
 
 	return (
