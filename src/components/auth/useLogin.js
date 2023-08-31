@@ -40,7 +40,7 @@ export default function useLogin() {
 		const { form } = parseForm(e) // get email
 		e.target.querySelector("input").value = "" // clear input email
 		const res = await api.loginSendEmail(form)
-		res.ok && showSnackbar({ text: "Please confirm login at: ", link: form.email, linkType: "web" })
+		res.ok && showSnackbar({ text: "Please confirm login at: ", link: form.email, linkType: "web", linkText: form.email })
 	}
 
 	return (

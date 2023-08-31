@@ -40,11 +40,6 @@ export default function OrderCard({ order }) {
 					</div>
 				</div>
 			}
-			{/* quantity // TODO ??? broken */}
-			{/* <div className="fc p orderCard__item">
-				<div className="fw500">Total quantity:</div>
-				<div className="brand">{order.cart.length}</div>
-			</div> */}
 			{/* order status */}
 			{order.status &&
 				<div className="fc p orderCard__item">

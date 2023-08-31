@@ -3,8 +3,7 @@ import usePullPush from "../../hooks/usePullPush"
 
 export default function useCartCounter(productQuantity, obj) {
 
-	const { _id, size, color } = obj
-	const cartProduct = { _id, size, color }
+	const cartProduct = obj
 
 	const [count, countSet] = useState(productQuantity)
 	const { pullPush } = usePullPush()

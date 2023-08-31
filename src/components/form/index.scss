@@ -9,10 +9,7 @@
 	}
 }
 
-.icon_add{
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 30px;
-	margin: 15px 0;
+// !! mui select label text, to be under product full image zoom hint
+.MuiFormLabel-root.MuiInputLabel-root{
+	z-index: 0;
 }

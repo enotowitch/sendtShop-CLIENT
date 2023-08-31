@@ -25,7 +25,6 @@
 .line{
 	$width: 5.5%;
 	height: 2px;
-	background: $grayLight;
 	&__small{
 		width: $width;
 	}
@@ -37,7 +36,6 @@
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	background: $grayLight;
 }
 
 .cartStep{
@@ -47,5 +45,24 @@
 		top: 40px;
 		width: 200px; // !! text goes to next line if much text: can look bad
 		text-align: center;
+	}
+}
+
+.cartReminder{
+	display: flex;
+	align-items: center;
+	position: fixed;
+	padding: 15px;
+	border-radius: $borderRadiusLarge;
+	white-space: nowrap;
+	// ! media
+	@media (width <= $mobile) { // mobile
+		bottom: 60px;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	@media (width >= $mobile) { // pc
+		top: 75px;
+		right: 15px;
 	}
 }

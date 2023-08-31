@@ -7,6 +7,7 @@ export default function FAQ({ title, text }) {
 	const [on, onSet] = useState(false)
 
 	return (
+		title &&
 		<div className="FAQ" onClick={() => onSet(prev => !prev)}>
 			<div className="FAQ__title">
 				{title}

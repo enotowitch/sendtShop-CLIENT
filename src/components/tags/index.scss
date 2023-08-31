@@ -11,9 +11,9 @@
 	background: $brand;
 }
 
-// ! scrollableTags
+// ! scrollableArea
 // tags are scrollable in Card
-.scrollableTags {
+.scrollableArea {
 	display: flex; 
 	flex-wrap: nowrap;
 	overflow: auto;
@@ -21,7 +21,10 @@
 	// center 1 tag
 	max-width: fit-content;
 	margin: 0 auto;
-	// !! scrollableTags prevent show-scrollbar
+}
+
+.hideScrollbar{
+	// !! scrollableArea prevent show-scrollbar
 	-ms-overflow-style: none;  /* Internet Explorer 10+ */
 	scrollbar-width: none;  /* Firefox */
 	&::-webkit-scrollbar{

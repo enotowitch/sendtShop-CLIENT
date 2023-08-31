@@ -4,10 +4,10 @@ import Tags from "../tags/Tags"
 import Markdown from "../textEditor/Markdown"
 import { Visibility } from "@mui/icons-material";
 import Product_article_card_top from "./product_article_card_top"
+import timeRead from "../../utils/timeRead";
 
-export default function article_full({ obj }) {
+export default function Article_full({ obj }) {
 
-	// !! only props must be here, no hooks
 	const { title, _id: articleId, createdAt, tags, textEditorValue, views, type } = obj.fullPost
 	const { deletePost } = obj
 
@@ -20,7 +20,7 @@ export default function article_full({ obj }) {
 
 			<div className="title tac">{title}</div>
 			{/* // TODO min read */}
-			<div className="gray mb">{cleanTimestamp(createdAt, false)} | 1 min read</div>
+			<div className="gray mb">{cleanTimestamp(createdAt, false)} | {timeRead(textEditorValue)}</div>
 			<Tags arr={tags} />
 			<Markdown>{textEditorValue}</Markdown>
 		</div>

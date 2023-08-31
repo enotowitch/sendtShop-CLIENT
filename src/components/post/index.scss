@@ -2,10 +2,13 @@
 
 .card{
 	position: relative;
-	background: $white;
 	border-radius: $borderRadiusLarge;
+	padding-bottom: 40px; // !! place for &__bottom: position: absolute
 	&__bottom{
-		margin: 10px;
+		position: absolute;
+		bottom: 8px;
+		left: 8px;
+		width: 95%;
 	}
 	&__top{
 		border-top-left-radius: 20px;
@@ -23,6 +26,15 @@
 		height: 202px;
 		object-fit: cover;
 		min-width: $wS; // !!
+	}
+	&__title,&__brand{
+		padding: 0 4px;
+		// number of lines to show
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+				  line-clamp: 2; 
+		-webkit-box-orient: vertical;
 	}
 }
 

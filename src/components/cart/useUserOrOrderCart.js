@@ -10,7 +10,7 @@ export default function useUserOrOrderCart() {
 	const { user } = useContext(Context)
 	const { pullPush } = usePullPush()
 
-	let userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2
+	let userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2, varBtnFn
 	// ! user cart
 	if (window.location.pathname.includes(CART_ROUTE)) {
 		userOrOrder = user
@@ -44,7 +44,7 @@ export default function useUserOrOrderCart() {
 		// user clicks on orderCard (one prev order) => prev order info is written to localStorage(order)
 		// then if user clicks REPEAT ORDER => prev order info is written to user.cart (DB), so user can pay and order same order again
 		const repeatUserOrderCart = userOrOrder.cart // [prodId1,prodId2...]
-		pullPush({ col: "user", field: "cart", item: repeatUserOrderCart, action: "push" })
+		varBtnFn = () => pullPush({ col: "user", field: "cart", item: repeatUserOrderCart, action: "push" })
 		className = "hideSvg"
 		varText = "By clicking `order again` products in this previous order will be added to your cart. You will be able to modify this new order or order the same"
 		varBtnText = "ORDER AGAIN"
@@ -54,6 +54,6 @@ export default function useUserOrOrderCart() {
 	}
 
 	return (
-		{ userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2 }
+		{ userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2, varBtnFn }
 	)
 }

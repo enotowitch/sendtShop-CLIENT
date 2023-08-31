@@ -3,6 +3,7 @@ export const BRAND_COLOR = "#673BD9"
 
 // TODO: currently all routes are hardcoded; use consts in ROUTES later
 // ROUTES
+export const MAIN_ROUTE = "/"
 export const SEARCH_ROUTE = "/search"
 export const LIKED_PRODS_ROUTE = "/liked" // TODO ?
 export const CART_ROUTE = "/cart"
@@ -24,3 +25,9 @@ export const USER_ORDER_SHIPPING = "/user/order/shipping"
 export const USER_ORDER_TRACK = "/user/order/track"
 export const ARTICLES_ROUTE = "/articles"
 export const FAQ_ROUTE = "/FAQ"
+export const CONTACT_US_ROUTE = "/contact-us"
+export const SUBSCRIBE_ROUTE = "/subscribe"
+export const ABOUT_US_ROUTE = "/about-us"
+export const TERMS_ROUTE = "/terms-and-conditions"
+export const PRIVACY_ROUTE = "/privacy-policy"
+export const RETURNS_ROUTE = "/return-policy"

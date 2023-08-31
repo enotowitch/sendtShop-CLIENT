@@ -2,6 +2,7 @@ import React from "react"
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import useCartCounter from "./useCartCounter";
 
+// TODO not used now => delete later
 export default function CartCounter({ quantity, obj }) {
 
 	const { count, cartCounter } = useCartCounter(quantity, obj)

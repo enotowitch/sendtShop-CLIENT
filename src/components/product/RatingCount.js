@@ -25,7 +25,7 @@ export default function RatingCount({ _id: productId, showCount = false }) {
 				<Rating initialValue={avarageRating} disabled={true} size={20} />
 			</div>
 			{showCount &&
-				<div className="gray tac">{ratings.length} customer reviews</div>
+				<div className="gray tac">customer reviews ({ratings.length})</div>
 			}
 		</>
 	)

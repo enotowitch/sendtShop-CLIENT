@@ -1,31 +1,55 @@
-import React, { useState } from "react"
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import "./index.scss"
-import { useContext } from "react"
-import { Context } from "../../Context"
 
-export default function Select(props) {
+// type=strArr ["str1","str2", ...] default
+// type=objArr [{name, price},{name, price}...]
+export default function _Select(props) {
 
-	const { className, options, editValue, placeholder, defaultValue } = props
-	const [value, valueSet] = useState()
+	const { id, arr, placeholder, required, editValue, defaultValue, selectedValue, selectedIndex, selectedValueAndSelectId, type = "strArr" } = props
 
-	const { filterPostsQuerySet, skipSet } = useContext(Context)
+	// for edit: pass old value to editValue prop
+	// eg: <Select editValue={obj.selectName} />
+	React.useEffect(() => {
+		editValue && valueSet(editValue)
+	}, [editValue])
+
+	const [value, valueSet] = React.useState(defaultValue)
 
 	function onChange(e) {
 		valueSet(e.target.value) // set state
-		filterPostsQuerySet(prev => ({ ...prev, sort: e.target.value })) // set sort value to Context
-		skipSet(0) // null skip to sort from the start of the product list
+		// ! selectedValue
+		selectedValue && selectedValue(e.target.value) // pass selected value to parent component
+		// ! selectedIndex
+		if (selectedIndex) { // if selectedIndex prop passed
+			let selectedInd
+			arr?.map((item, ind) => JSON.stringify(item) === e.target.value && (selectedInd = ind - 1)) // map and asign Select selected index
+			selectedIndex(selectedInd) // pass Select selected index to parent component
+		}
+		selectedValueAndSelectId && selectedValueAndSelectId({ value: e.target.value, id: id })
+		// ? selectedIndex
 	}
 
 	return (
-		<select
-			value={value || editValue}
-			onChange={onChange}
-			className={className}
-			{...props}
-		>
-			{placeholder && <option hidden>{placeholder}</option>}
-			{defaultValue && <option value="" selected>{defaultValue}</option>}
-			{options.map(({ value, text }) => <option key={value} value={value}>{text}</option>)}
-		</select>
-	)
+		<Box sx={{ width: "50%" }}>
+			<FormControl required={required} fullWidth>
+				<InputLabel id="demo-simple-select-label">{placeholder}</InputLabel>
+				<Select
+					labelId="demo-simple-select-label"
+					id="demo-simple-select"
+					value={value}
+					label={placeholder}
+					onChange={onChange}
+					{...props}
+				>
+					{type === "strArr" && arr?.map(option => <MenuItem value={option}>{option}</MenuItem>)}
+					{type === "objArr" && arr?.map(objOption => objOption && <MenuItem value={JSON.stringify(objOption)}>{objOption.name} +${objOption.price}</MenuItem>)}
+				</Select>
+			</FormControl>
+		</Box>
+	);
 }

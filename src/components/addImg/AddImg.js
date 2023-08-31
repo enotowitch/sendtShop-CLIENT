@@ -1,12 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import addImage from "./addImage.svg"
 import './index.scss'
 import usePreview from "./usePreview"
 import CarouselProduct from "../carousel/CarouselProduct"
+import { Context } from "../../Context"
 
 export default function AddImg({ editValue, obj }) { // obj=fullPost
 
 	const { preview, previewMake } = usePreview(editValue)
+	const { uploadedImg } = useContext(Context)
 
 	async function onChange(e) {
 		// 1. make previews
@@ -17,7 +19,8 @@ export default function AddImg({ editValue, obj }) { // obj=fullPost
 	return (
 		<label className="por">
 			<input
-				required
+				// required if uploadedImg.length is 0
+				required={!uploadedImg.length}
 				className="hiddenInput"
 				name="img"
 				type="file"

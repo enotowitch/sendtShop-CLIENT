@@ -3,14 +3,22 @@ import React, { useEffect, useState } from "react"
 
 export default function Input(props) {
 
+	const { editValue, isDisabled, variant = "standard", size = "normal" } = props
+
 	// for edit: pass old value to editValue prop
 	// eg: <Input editValue={obj.inputName} />
-	const { editValue, isDisabled, variant = "standard", size = "normal" } = props
 	useEffect(() => {
 		editValue && valueSet(editValue)
 	}, [editValue])
 
-	const [value, valueSet] = useState("")
+	// prevent type number scroll (and +/- while scrolling)
+	function typeNumberPreventScroll(e) {
+		e.target.blur()
+		e.stopPropagation()
+		setTimeout(() => { e.target.focus() }, 0)
+	}
+
+	const [value, valueSet] = useState("") // input value
 
 	return (
 		<TextField
@@ -21,6 +29,7 @@ export default function Input(props) {
 			onChange={(e) => valueSet(e.target.value)}
 			variant={variant}
 			size={size}
+			onWheel={typeNumberPreventScroll}
 		/>
 	)
 }

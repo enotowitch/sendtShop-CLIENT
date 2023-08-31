@@ -1,23 +1,29 @@
 import usePullPush from "../../hooks/usePullPush"
 import parseForm from "../../utils/parseForm"
-import { CART_ROUTE } from "../../consts"
+import { useContext } from "react"
+import { Context } from "../../Context"
 
-export default function useAddToCart() {
+export default function useAddToCart(fullPost) {
 
 	const { pullPush } = usePullPush()
+	const { dialogContentSet, dialogContentNameSet, dialogTitleSet, dialogShowSet } = useContext(Context)
 
-	function addToCart(e) {
+	async function addToCart(e) {
+		e.preventDefault()
 		const { form } = parseForm(e)
 
 		// TODO
 		delete form.tags
-		delete form.sizes
-		delete form.colors
 		delete form.textEditorValue
 		// TODO
+		const res = await pullPush({ col: "user", field: "cart", item: form, action: "push", dups: true })
 
-		pullPush({ col: "user", field: "cart", item: form, action: "push", dups: true })
-		window.location.href = CART_ROUTE
+		// make dialog
+		const totalPrice = fullPost.price * form.quantity
+		dialogContentSet({ ...fullPost, ...form, totalPrice })
+		dialogContentNameSet("addedToCart")
+		dialogTitleSet("Product added to cart")
+		dialogShowSet(true)
 	}
 
 	return (

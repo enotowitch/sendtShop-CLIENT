@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { baseURL } from "../../consts";
+import { Context } from "../../Context";
 
 export default function useStripe() {
 
 	const [stripeLink, stripeLinkSet] = useState("")
+	const { user } = useContext(Context)
 
 	useEffect(() => {
 		fetch(`${baseURL}/create-checkout-session`,
@@ -12,13 +14,7 @@ export default function useStripe() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({
-					// TODO real items
-					items: [
-						{ id: 1, quantity: 3 },
-						{ id: 2, quantity: 1 },
-					],
-				}),
+				body: JSON.stringify({ userId: user._id }),
 			})
 			.then((response) => {
 				return response.json();

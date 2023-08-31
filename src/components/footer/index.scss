@@ -15,4 +15,9 @@ footer{
 	@media (max-width:$mobile) {
 		padding-bottom: 100px;
 	}
+	// !!
+	a {
+		color: $white;
+		text-decoration: none;
+	}
 }

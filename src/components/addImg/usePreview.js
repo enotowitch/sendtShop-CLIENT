@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Context } from '../../Context';
-import getServerImgName from '../../utils/getServerImgName';
+import getServerFileName from '../../utils/getServerFileName';
 
 export default function usePreview(editValue) { // editValue=["serverImgPath1", "serverImgPath2", ...]
 
@@ -16,7 +16,7 @@ export default function usePreview(editValue) { // editValue=["serverImgPath1", 
 			const toDataURL = url => fetch(url)
 				.then(response => response.blob())
 				.then(blob => {
-					const imgName = getServerImgName(serverImgPath)
+					const imgName = getServerFileName(serverImgPath)
 					var file = new File([blob], imgName) // eg: File {name: imageName1.jpg}
 					uploadedImgSet(prev => ([...prev, file]))
 				})

@@ -1,39 +1,34 @@
 import React from "react"
-import CloseIcon from "@mui/icons-material/Close";
 import "./index.scss"
-import CartCounter from "./CartCounter";
-import useCartCard from "./useCartCard";
-import copyToClipBoard from "../../utils/copyToClipBoard";
+import DigitalDownload from "../digitalDownload/DigitalDownload";
+import HasDigitalDownload from "../digitalDownload/HasDigitalDownload";
+import CartCardImg from "./CartCardImg";
+import CartCardPrice from "./CartCardPrice";
+import CartCardCustomFields from "./CartCardCustomFields";
+import CartCardDelete from "./CartCardDelete";
 
 export default function CartCard({ obj, totalPrice, className }) {
 
-	const { img, title, price, _id: productId, size, color, quantity, custom_field } = obj
-	const { deleteAllCartProducts } = useCartCard(obj)
+	const { img, title, price, _id: productId, quantity, archive } = obj
 
 	return (
 		<section className={`f jcsb aic m0a mb cartCard animation ${className ? className : ""}`}>
-			<img src={img} onClick={() => window.location.href = `/product/${productId}`} />
+			<CartCardImg img={img} productId={productId} />
+
 			<div className="fc maw100">
 				<div>{title}</div>
-				<div>size: <b>{size}</b></div>
-				<div>color: <b>{color}</b></div>
-
-				{/* // ! custom_field */}
-				<div
-					className="maw100 oh toe wsn"
-				>
-					{/* eg: inscription:   	 									abc */}
-					{obj?.custom_field}: <b onClick={copyToClipBoard}>{obj?.[custom_field]}</b>
-				</div>
-				{/* // ? custom_field */}
-
+				<CartCardCustomFields obj={obj} />
 				<div className="brand">${price}</div>
 			</div>
 
-			<CartCounter quantity={quantity} obj={obj} />
+			<div>{quantity}</div>
 
-			<div>${totalPrice}</div>
-			<CloseIcon onClick={(e) => deleteAllCartProducts(e)} />
+			<CartCardPrice obj={obj} totalPrice={totalPrice} />
+
+			<CartCardDelete obj={obj} />
+			
+			<DigitalDownload download={archive} />
+			<HasDigitalDownload download={archive} />
 		</section>
 	)
 }

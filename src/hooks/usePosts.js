@@ -21,20 +21,6 @@ export default function usePosts(type, field) { // TODO move to post folder
 		getAllPosts()
 	}, [type, update])
 
-	// TODO liked from server to enable pagination
-	// ! liked
-	const { user } = useContext(Context)
-	const [liked, likedSet] = useState([])
-	useEffect(() => {
-		// * when all posts loaded => filter liked
-		function getLiked() {
-			const filterLiked = all?.filter(post => user?.likes?.includes(post._id) && post)
-			likedSet(filterLiked)
-		}
-
-		getLiked()
-	}, [all])
-
 	// ! allWithField
 	// eg: all product tags
 	const [allWithField, allWithFieldSet] = useState([])
@@ -49,6 +35,6 @@ export default function usePosts(type, field) { // TODO move to post folder
 
 
 	return (
-		{ all, liked, allWithField }
+		{ all, allWithField }
 	)
 }

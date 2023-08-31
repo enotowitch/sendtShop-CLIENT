@@ -1,0 +1,72 @@
+.dark{
+	background: $dark100;
+	color: $white;
+	*:not(.tab_active,button) {
+		color: $white !important;
+	}
+	svg{
+		fill: $white;
+	}
+	input,textarea{
+		background: $dark300 !important;
+		color: $white !important;
+		border-color: $white !important;
+	}
+	option,.cartReminder{
+		background: $dark300;
+	}
+	.card,.cartCard,.CodeMirror,.subTotal{
+		background: $dark200;
+	}
+	.filter{
+		border-color: $white;
+	}
+	section{
+		background: $dark200;
+	}
+	.line,.round{
+		background: $white;
+		color: $black !important;
+	}
+	// !! cards' hovers
+	.card, .cartCard, .orderCard{
+		&:hover{
+			box-shadow: 0px 10px 15px -3px rgba(182, 182, 182, 0.15);
+		}
+	}
+}
+
+// ! light
+.light{
+	.card,.cartCard,.CodeMirror,.subTotal,section,.cartReminder{
+		background: $white;
+	}
+	.line,.round{
+		background: $grayLight;
+	}
+}
+
+// ! other
+// mui dialog
+.darkDialog{
+	.MuiDialog-container.MuiDialog-scrollPaper{
+		.MuiPaper-root{
+			background: $dark300 !important;
+		}
+	}
+	// !!
+	* {
+		color: $white;
+	}
+}
+
+// ! mui drawer (HeaderDrawer)
+.MuiDrawer-root.MuiDrawer-modal.darkDrawer{
+	.MuiPaper-root{
+		background: $dark300 !important;
+	}
+	// !!
+	* {
+		color: $white;
+	}
+}

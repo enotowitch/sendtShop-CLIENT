@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Context } from "../../Context"
 import usePullPush from "../../hooks/usePullPush"
 
@@ -8,9 +8,13 @@ export default function useLikeIcon(obj) {
 	const { user } = useContext(Context)
 	const { pullPush } = usePullPush()
 
-	// isProductLiked:                                   user likes includes productId
+	// ! isProductLiked:                                   user likes includes productId
 	const [isProductLiked, isProductLikedSet] = useState(user?.likes?.includes(_id))
-	// articleLikesCount:                                   	article.likes.length
+	useEffect(() => {
+		isProductLikedSet(user?.likes?.includes(_id))
+	}, [user]) // watch if user liked and rerender all prods' likes
+	
+	// ! articleLikesCount:                                   	article.likes.length
 	const [articleLikesCount, articleLikesCountSet] = useState(obj?.likes?.length)
 
 	async function likeDislike() {

@@ -1,0 +1,23 @@
+@import "../../vars.scss";
+
+.category{
+	width: 330px;
+	height: 330px;
+	overflow: hidden;
+	border-radius: $borderRadiusLarge;
+	-webkit-text-stroke: 1px $black;
+	font-family: Roboto;
+	// !!
+	img{
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// ! CarouselBanner container
+.Carousel__Container-sc-hyhecw-0.fPimMH{
+	width: 1050px;
+	@media (width <= $mobile) {
+		width: 375px !important;
+	}
+}

@@ -3,8 +3,8 @@ import { Chip, Autocomplete, TextField, Stack } from "@mui/material";
 import "./index.scss"
 import usePosts from "../../hooks/usePosts";
 
-// field=tags/sizes/colors/...
-export default function TagsInput({ placeholder, field, editValue }) {
+// field=tags/...
+export default function TagsInput({ placeholder, field, editValue, freeSolo = true }) {
 
 	const { allWithField } = usePosts("product", field)
 	const [value, valueSet] = React.useState(editValue) // pass editValue in `update mode`
@@ -18,15 +18,21 @@ export default function TagsInput({ placeholder, field, editValue }) {
 				}}
 				multiple
 				id="tags-filled"
+				// eg: tags: ["new", "sale"] 
 				options={allWithField?.map((option) => option)}
 				// defaultValue={[top100Films[13].title]}
-				freeSolo
+				freeSolo={freeSolo} // true: can add own values; false: can only select existing values
 				renderTags={(value, getTagProps) =>
 					value.map((option, index) => (
 						<>
-							<Chip variant="outlined" label={option} {...getTagProps({ index })} />
-							{/* hidden input to get `Chip values` in parseForm */}
-							<input hidden name={`${field}${index}`} value={option} />
+							{option &&
+								<>
+									<Chip variant="outlined" label={option} {...getTagProps({ index })} />
+									{/* hidden input to get `Chip values` in parseForm */}
+									{/* eg: 					  tags1/... */}
+									<input hidden name={`${field}${index}`} value={option} />
+								</>
+							}
 						</>
 					))
 				}

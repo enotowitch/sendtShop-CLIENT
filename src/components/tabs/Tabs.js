@@ -20,10 +20,7 @@ export default function Tabs(props) {
 				))}
 			</div>
 			{/* tabs content: if passed */}
-			{on[0] && <div>{children?.[0]}</div>}
-			{on[1] && <div>{children?.[1]}</div>}
-			{on[2] && <div>{children?.[2]}</div>}
-			{on[3] && <div>{children?.[3]}</div>}
+			{Array.from({ length: 99 }).map((v, i) => on[i] && <div>{children?.[i]}</div>)}
 		</div>
 	)
 }

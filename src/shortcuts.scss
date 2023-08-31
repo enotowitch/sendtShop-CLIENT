@@ -41,6 +41,12 @@
 .jcsa{
 	justify-content: space-around;
 }
+.asfs{
+	align-self: flex-start;
+}
+.asfe{
+	align-self: flex-end;
+}
 .g{
 	gap: 15px;
 }
@@ -287,6 +293,14 @@
 	font-size: 27px; // 27px @1080p // TODO clamp(min,def,max)
 	font-weight: 600;
 }
+.title2{
+	font-size: 20px; // TODO clamp(min,def,max)
+	font-weight: 600;
+}
+.title3{
+	font-size: 16px; // TODO clamp(min,def,max)
+	font-weight: 600;
+}
 .tac{
 	text-align: center;
 }
@@ -341,6 +355,12 @@
 }
 .whiteBg{
 	background: $white !important;
+}
+.black{
+	color: $black !important;
+}
+.blackBg{
+	background: $black !important;
 }
 .gray{
 	color: $gray !important;
@@ -480,6 +500,9 @@
 }
 .bb{
 	border: 1px solid blue;
+}
+.bd{
+	border: 2px dashed $gray600;
 }
 .oa{
 	overflow: auto;

@@ -1,0 +1,10 @@
+@import "../../vars.scss";
+
+// mui dialog
+.MuiDialog-container.MuiDialog-scrollPaper{
+	.cartCard{
+		@media (width > $mobile) {
+			width: 1000px;
+		}
+	}
+}
