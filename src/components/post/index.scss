@@ -85,9 +85,11 @@
 	background: transparent;
 	font-size: 20px; // !!
 	width: 330px;
-	padding-left: 95px;
 	border: 2px solid;
 	height: 30px;
+	option{
+		text-align: center;
+	}
 }
 
 .postFilters{

@@ -10,12 +10,13 @@ export default function PostFiltersTags() {
 
 	const { currentSearchParams } = useCurrentSearchParams()
 	const { writeSearchParams } = useWriteSearchParams()
-	const { searchFieldValueSet } = useContext(Context)
+	const { searchFieldValueSet, postSortValueSet } = useContext(Context)
 
 	function deleteTag(paramName) {
 		delete currentSearchParams?.[paramName] // ??
 		writeSearchParams(currentSearchParams)
 		paramName === "text" && searchFieldValueSet("") // null searchFieldValue
+		paramName === "sort" && postSortValueSet("")
 	}
 
 	return (

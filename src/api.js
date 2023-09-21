@@ -76,9 +76,9 @@ export const testArticles = async () => { // TODO delete
 }
 
 // ! addFile
-export const addFile = async (formData) => {
+export const addFile = async (formData, path) => {
 	try {
-		const { data } = await instance.post("/upload", formData)
+		const { data } = await instance.post(path, formData)
 		return data
 	} catch (error) {
 		console.log(error)

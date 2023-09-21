@@ -22,7 +22,13 @@ export default function PostSort() {
 	return (
 		(window.location.pathname === MAIN_ROUTE) &&
 		<div className="f">
-			<SelectNative value={postSortValue} arr={sortProductOptions} className="sort" onChange={onChange} />
+			<SelectNative
+				value={postSortValue}
+				arr={sortProductOptions}
+				className="sort"
+				onChange={onChange}
+				defaultValue="SORT"
+			/>
 		</div>
 	)
 }

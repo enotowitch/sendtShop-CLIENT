@@ -2,16 +2,19 @@ import usePullPush from "../../hooks/usePullPush"
 import parseFormAddToCart from "../../utils/parseFormAddToCart"
 import { useContext } from "react"
 import { Context } from "../../Context"
+import useAddImg from "../addImg/useAddImg"
 
 export default function useAddToCart(fullPost) {
 
 	const { pullPush } = usePullPush()
 	const { dialogSet, user, prodFullSelectedImgInd } = useContext(Context)
+	const { imgArr } = useAddImg("/upload/userProductFiles")
 
 	async function addToCart(e) {
 		e.preventDefault()
 		let { form } = parseFormAddToCart(e)
-		form = { ...form, prodFullSelectedImgInd } // add which img user selected in prod full => to show in cart: eg: color: blue: ind: 1
+		const img = await imgArr([e.target?.file?.files[0]]) // get uploadedImg url (on server) to store in DB
+		form = { ...form, prodFullSelectedImgInd, file: img[0] }
 
 		if (!user) { // if NO user logged in write cart to localStorage
 			let prevUser = JSON.parse(localStorage.getItem("user"))

@@ -10,7 +10,7 @@ import { Context } from "../Context"
 
 export default function usePost() { // TODO move to post folder
 
-	const { imgArr } = useAddImg()
+	const { imgArr } = useAddImg("/upload/productImages")
 	const { archiveArr } = useAddArchive()
 	const { updateContext } = useContext(Context)
 

@@ -16,7 +16,12 @@ export default function Header() {
 		<>
 			<header className={`f jcsb ${isNotOnTop ? "op05" : ""}`}>
 
-				<HeaderIcon route={MAIN_ROUTE}><img src={logoMain} className="ml logoMain" /></HeaderIcon>
+				<HeaderIcon route={MAIN_ROUTE}>
+					<div className="fcc fz45">
+						<img src={logoMain} className="ml logoMain" />
+						<span className="white ffFuggles">sendt-3d</span>
+					</div>
+				</HeaderIcon>
 
 				<div className="mla headerIcons">
 					<HeaderIcon text="search" className="aife"><SearchIcon /></HeaderIcon>
