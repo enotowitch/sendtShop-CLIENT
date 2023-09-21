@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Product_article_card_top from "./product_article_card_top"
 import Tags from "../tags/Tags"
 import Product_full_form from "./Product_full_form"
@@ -10,30 +10,38 @@ import Product_full_tabs from "./Product_full_tabs"
 
 export default function Product_full({ obj }) {
 
-	let img, title, price, text, productId, brand, tags, archive, characteristicNames, characteristicValues, informationNames, informationValues
+	let img, title, price, text, productId, brand, tags, archive, characteristics, informations
 	if (obj.fullPost) { // prevent "can not destructure"
-		({ img, title, price, text, _id: productId, brand, tags, archive, characteristicNames, characteristicValues, informationNames, informationValues } = obj.fullPost)
+		({ img, title, price, text, _id: productId, brand, tags, archive, characteristics, informations } = obj.fullPost)
 	}
 
-	const { addToCart, deletePost } = obj
-	const [varPrice, varPriceSet] = useState(price)
+	const { addToCart, hidePost } = obj
+
+	// ! change price on productId change
+	const [finalVarPrice, finalVarPriceSet] = useState(0)
+	useEffect(() => {
+		finalVarPriceSet(price)
+	}, [productId])
+	// ? change price on productId change
+
 
 	return (
 		<>
 			{/* left */}
 			<div className="postFull__left">
-				<Product_article_card_top obj={{ ...obj.fullPost, deletePost }} />
+				<Product_article_card_top obj={{ ...obj.fullPost, hidePost }} />
 				{img && <CarouselProduct arr={img} />}
-				{characteristicNames && <Product_full_tabs obj={{ characteristicNames, characteristicValues, informationNames, informationValues }} productId={productId} />}
+				{characteristics && <Product_full_tabs characteristics={characteristics} informations={informations} productId={productId} />}
 			</div>
 			{/* right */}
 			<div className="postFull__right">
 				<div className="title tac">{title}</div>
-				<div className="brand tac fullProductTotalPrice">${varPrice}</div>
+				{/* finalVarPrice: 0: additional price was NOT applied || initial price */}
+				<div className="brand tac fullProductTotalPrice">${finalVarPrice || price}</div>
 				<div className="gray tac mt mb">{brand}</div>
 				<RatingCount _id={productId} showCount={true} />
 				<HasDigitalDownload download={archive} className="fcc" />
-				<Product_full_form addToCart={addToCart} {...obj.fullPost} />
+				<Product_full_form addToCart={addToCart} {...obj.fullPost} finalVarPriceSet={finalVarPriceSet} />
 				{/* "bottom" */}
 				<hr className="mt2 mb"></hr>
 				<Tags arr={tags} className="tac" label="Tags" />

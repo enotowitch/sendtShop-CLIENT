@@ -1,4 +1,4 @@
-export const baseURL = process.env.REACT_APP_API_URL || "http://localhost:5000"
+export const baseURL = "https://sendtshopserver.onrender.com"
 export const BRAND_COLOR = "#673BD9"
 export const DANGER_COLOR = "tomato"
 
