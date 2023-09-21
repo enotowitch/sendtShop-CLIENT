@@ -20,6 +20,7 @@ export default function useStripe() {
 				return response.json();
 			})
 			.then((data) => {
+				console.log(data)
 				stripeLinkSet(data.url);
 			});
 	}, [])

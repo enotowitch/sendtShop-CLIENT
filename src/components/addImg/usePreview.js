@@ -9,6 +9,7 @@ export default function usePreview(editValue) { // editValue=["serverImgPath1", 
 
 	useEffect(() => { // old images during update: make previews & add to uploadedImg(s)
 		editValue?.map(serverImgPath => {
+			if (preview.includes(serverImgPath)) return // prevent preview dup imgs
 			previewSet(prev => ([...prev, serverImgPath]))
 
 			// convert serverImgPath to file, add files to uploadedImg(s)
@@ -28,6 +29,10 @@ export default function usePreview(editValue) { // editValue=["serverImgPath1", 
 	function previewMake(files) { // file=e.target.files[0]
 		if (files) {
 			Object.values(files)?.map(file => {
+				if (file.size > 2864494) { // prevent too big files (CarouselProduct fails to render img hint onHover)
+					alert(`File: "${file.name}" is too big. MAX FILE SIZE IS: 2.73 MB`)
+					return
+				}
 				const reader = new FileReader();
 				reader.addEventListener("load", () => {
 					// 1. make previews

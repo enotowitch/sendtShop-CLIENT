@@ -9,12 +9,12 @@ import timeRead from "../../utils/timeRead";
 export default function Article_full({ obj }) {
 
 	const { title, _id: articleId, createdAt, tags, textEditorValue, views, type } = obj.fullPost
-	const { deletePost } = obj
+	const { hidePost } = obj
 
 	return (
 		<div className="fc aic">
 
-			<Product_article_card_top obj={{ ...obj.fullPost, deletePost }}>
+			<Product_article_card_top obj={{ ...obj.fullPost, hidePost }}>
 				<div className="f aic"><Visibility />{views}</div>
 			</Product_article_card_top>
 

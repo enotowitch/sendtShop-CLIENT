@@ -9,26 +9,34 @@ import CartCardDelete from "./CartCardDelete";
 
 export default function CartCard({ obj, totalPrice, className }) {
 
-	const { img, title, price, _id: productId, quantity, archive } = obj
+	const { img, title, price, _id: productId, quantity, archive, status } = obj
 
 	return (
-		<section className={`f jcsb aic m0a mb cartCard animation ${className ? className : ""}`}>
-			<CartCardImg img={img} productId={productId} />
+		<section className={`f jcsb aic m0a mb cartCard animation cardAnim ${className ? className : ""} ${status === "hidden" ? "dangerBg" : ""} ${status === "deleted" ? "dangerBg2" : ""}`}>
 
-			<div className="fc maw100">
-				<div>{title}</div>
+			{status === "hidden" && <div className="w100 mb">* this product was marked as suspended</div>}
+			{status === "deleted" && <div className="w100 mb">* this product was marked as deleted</div>}
+
+			<CartCardImg obj={obj} />
+
+			{/* section 1 */}
+			<div className="fc w60 oh sec1">
+				<div className="title2 wsn toe cartCard__title">{title}</div>
 				<CartCardCustomFields obj={obj} />
-				<div className="brand">${price}</div>
+				<div><span className="fw500">Quantity:</span> {quantity}</div>
 			</div>
 
-			<div>{quantity}</div>
+			{/* section 2 */}
+			<div className="fc sec2">
+				<CartCardDelete obj={obj} className="asfe mb40" />
+				<CartCardPrice obj={obj} totalPrice={totalPrice} className="asfe fw600" />
+				<div className="brand">${price}+ each</div>
+			</div>
 
-			<CartCardPrice obj={obj} totalPrice={totalPrice} />
-
-			<CartCardDelete obj={obj} />
-			
-			<DigitalDownload download={archive} />
-			<HasDigitalDownload download={archive} />
+			<div className="w100">
+				<DigitalDownload download={archive} />
+				<HasDigitalDownload download={archive} />
+			</div>
 		</section>
 	)
 }

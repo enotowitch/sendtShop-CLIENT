@@ -4,12 +4,11 @@ import { Context } from "../../Context"
 
 export default function useIsOrderedByUser(productId) {
 
-	const { all } = usePosts("order")
-	const { user } = useContext(Context)
+	const { user, orders } = useContext(Context)
 
 	let isOrderedByUser = false
 
-	all?.map(order => {
+	orders?.map(order => {
 		if (order?.userId === user?._id) {
 			order.cart.map(prod => {
 				if (prod._id === productId) {

@@ -2,11 +2,16 @@ import React from "react"
 import usePosts from "../../hooks/usePosts"
 import CartCard from "./CartCard"
 import useUserOrOrderCart from "./useUserOrOrderCart"
+import { useContext } from "react"
+import { Context } from "../../Context"
+import { useLocation } from "react-router-dom"
+import { CART_ROUTE } from "../../consts"
 
 export default function useCartProducts() {
 
-	const { all } = usePosts("product")
+	const { productsWithDeleted } = useContext(Context)
 	const { userOrOrder, varLink, varLink2, className, varText, varBtnText, varBtnText2, varBtnFn } = useUserOrOrderCart()
+	const isInCartRoute = useLocation().pathname === CART_ROUTE
 
 	// 1. get user/order cart products
 	// 2. get all products
@@ -15,7 +20,8 @@ export default function useCartProducts() {
 	let arr = []
 
 	userOrOrder?.cart?.map(cartProd => { // map cart
-		return all?.map(allProd => { // map all products
+		return productsWithDeleted?.map(allProd => { // map all products
+			if (isInCartRoute && (allProd.status === "hidden" || allProd.status === "deleted")) return // prevent adding "hidden/deleted" prods to cart
 			if (cartProd._id === allProd._id) {
 				arr.push(cartProd)
 			}
@@ -24,7 +30,7 @@ export default function useCartProducts() {
 
 	const cartProducts = arr?.map(cartProd => {
 		if (cartProd?.quantity === 0) return
-		return all?.map(allProd => {
+		return productsWithDeleted?.map(allProd => {
 			if (cartProd._id === allProd._id) {
 				// ! additionalPrice
 				let allAdditionalPrices = 0

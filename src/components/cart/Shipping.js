@@ -1,9 +1,9 @@
-import { Button } from "@mui/material"
 import React from "react"
 import useShipping from "./useShipping"
 import Input from "../form/Input"
 import useUserOrOrderShipping from "./useUserOrOrderShipping"
 import CartSteps from "./CartSteps"
+import StripeBtn from "./StripeBtn"
 
 export default function Shipping() {
 
@@ -31,8 +31,8 @@ export default function Shipping() {
 					</div>
 					<Input editValue={userOrOrder?.zipCode} required name="zipCode" type="number" label="ZIP Code" isDisabled={isInputDisabled} />
 					<Input editValue={userOrOrder?.phone} required name="phone" type="number" label="phone" isDisabled={isInputDisabled} />
-					<Input editValue={userOrOrder?.email || userEmail} disabled name="email" type="email" label="email" isDisabled={isInputDisabled} />
-					<Button type="submit" disabled={isBtnDisabled} variant="contained">{varText}</Button>
+					<Input editValue={userOrOrder?.email || userEmail} disabled name="email" type="email" label="email" isDisabled={isInputDisabled} helperText="registration email used" />
+					<StripeBtn isBtnDisabled={isBtnDisabled} varText={varText} />
 					<div className="brand tac fsi">{varBtnHelpText}</div>
 				</form>
 			</section>

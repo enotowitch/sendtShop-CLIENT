@@ -6,19 +6,22 @@ import { Context } from "../../Context";
 import { useNavigate } from "react-router-dom";
 import { MAIN_ROUTE } from "../../consts";
 import scrollToFilter from "../../utils/scrollToFilter";
+import useCurrentSearchParams from "../../hooks/useCurrentSearchParams";
+import useWriteSearchParams from "../../hooks/useWriteSearchParams";
 
 export default function HeaderDrawer() {
 
 	const { allWithField } = usePosts("product", "tags")
-	const { showMenu, showMenuSet, filterPostsQuerySet, skipSet, showLoadMoreSet, theme } = React.useContext(Context)
+	const { showMenu, showMenuSet, skipProdsSet, showLoadMoreSet, theme } = React.useContext(Context)
 	const navigate = useNavigate()
+	const { currentSearchParams } = useCurrentSearchParams()
+	const { writeSearchParams } = useWriteSearchParams()
 
 	function onClick(text) {
-		filterPostsQuerySet(prev => ({ ...prev, tag: text })) // define tag to filter 
+		writeSearchParams({ ...currentSearchParams, tag: text })
 		showMenuSet(false) // hide HeaderDrawer
-		skipSet(0) // null skip to filter from the start of the product list
+		skipProdsSet(0) // null skip to filter from the start of the product list
 		showLoadMoreSet(true) // new filter => show LoadMore btn
-		navigate(MAIN_ROUTE) // where filtering results are displayed
 		scrollToFilter()
 	}
 
@@ -31,6 +34,7 @@ export default function HeaderDrawer() {
 			className={`${theme === "dark" ? "darkDrawer" : ""}`}
 		>
 			<List className="headerDrawer">
+				<ListItem><div className="title2">Categories:</div></ListItem>
 				{allWithField?.map((text) => (
 					text &&
 					<ListItem key={text} disablePadding>

@@ -2,8 +2,9 @@ import React from "react"
 import usePost from "../../hooks/usePost"
 import usePostFull from "../../hooks/usePostFull"
 import useAddOrEdit from "../../hooks/useAddOrEdit"
-import VariableView from "../view/VariableView"
 import { useParams } from "react-router-dom"
+import Product_add from "../view/product_add"
+import Article_add from "../view/article_add"
 
 export default function PostAdd({ type }) { // type=product/article/...
 
@@ -13,12 +14,16 @@ export default function PostAdd({ type }) { // type=product/article/...
 	const { addPost, editPost } = usePost() // PostAdd is for both: addPost & editPost
 	const { varText, varFn } = useAddOrEdit(type) // variable text/function dep. on post type
 
-	const obj = { addPost, editPost, fullPost, varText, varFn } // props needed by VariableView: product_add/article_add/comment_add...
+	const obj = { addPost, editPost, fullPost, varText, varFn }
 
 	return (
 		<section className="wM m0a">
-			{/* load product_add/article_add/comment_add/... */}
-			<VariableView type={type} action="add" obj={obj} />
+			{type === "product"
+				?
+				<Product_add obj={obj} />
+				:
+				<Article_add obj={obj} />
+			}
 		</section>
 	)
 }

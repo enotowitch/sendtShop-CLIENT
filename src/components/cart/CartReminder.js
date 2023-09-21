@@ -1,17 +1,24 @@
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import "./index.scss"
 import { Context } from "../../Context"
-import usePosts from "../../hooks/usePosts"
-import { useState } from "react"
 import { Close } from '@mui/icons-material';
 import { useNavigate } from "react-router-dom"
 import { CART_ROUTE } from "../../consts"
+import * as api from "../../api"
 
 export default function CartReminder() {
 
+	useEffect(() => {
+		async function getActualUserCart() {
+			await api.getActualUserCart()
+			updateContext()
+		}
+
+		getActualUserCart()
+	}, [])
+
 	const [show, showSet] = useState(true)
-	const { user } = useContext(Context)
-	const { all } = usePosts("product")
+	const { user, products, updateContext } = useContext(Context)
 	const navigate = useNavigate()
 
 	function close(e) {
@@ -21,12 +28,13 @@ export default function CartReminder() {
 
 	// calculations
 	let allProductsTotalPrice = 0
-	let prods = []
+	let quantity = 0
 
 	user?.cart?.map(cartProd => { // map cart
-		return all?.map(allProd => { // map all products
+		return products?.map(allProd => { // map all products
+			if (allProd.status === "hidden" || allProd.status === "deleted") return // prevent adding "hidden/deleted" prods to CartReminder
 			if (cartProd._id === allProd._id) {
-				prods.push({ ...cartProd, ...allProd })
+				quantity += Number(cartProd.quantity)
 				// ! additionalPrice
 				let allAdditionalPrices = 0
 				cartProd?.custom_field_names?.map(fieldName => {
@@ -43,9 +51,9 @@ export default function CartReminder() {
 	})
 
 	return (
-		show &&
+		show && quantity > 0 &&
 		<div className="cartReminder" onClick={() => navigate(CART_ROUTE)}>
-			{prods.length} products in cart : ${allProductsTotalPrice.toFixed(2)}
+			{quantity} product{quantity > 1 && "s"} in cart : ${allProductsTotalPrice.toFixed(2)}
 			<Close onClick={close} className="ml" />
 		</div>
 	)

@@ -1,30 +1,36 @@
 import { useContext } from "react"
 import { Context } from "../../Context"
+import { ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, USER_ORDERS_NEW, USER_ORDERS_SENT } from "../../consts"
 import usePosts from "../../hooks/usePosts"
-import { ADMIN_ORDERS_NEW, ADMIN_ORDERS_SENT, USER_ORDERS } from "../../consts"
 
 export default function useOrderCards() {
 
-	let { all: allOrders } = usePosts("order")
-	const { user } = useContext(Context)
+	let { user } = useContext(Context)
+	let { all: orders } = usePosts("order")
 
-	// show only this user orders
-	if (window.location.pathname === USER_ORDERS) {
+	// show only this USER NEW orders
+	if (window.location.pathname === USER_ORDERS_NEW) {
 		// userId in DB ORDER matches this user id
-		allOrders = allOrders?.filter(order => order.userId === user?._id)
+		orders = orders?.filter(order => order.userId === user?._id && order.status === "pending")
 	}
 
-	// show only admin orders with order.status = "sent"
-	if (window.location.pathname === ADMIN_ORDERS_SENT) {
-		allOrders = allOrders?.filter(order => order.status === "sent")
+	// show only this USER SENT orders
+	if (window.location.pathname === USER_ORDERS_SENT) {
+		// userId in DB ORDER matches this user id
+		orders = orders?.filter(order => order.userId === user?._id && order.status === "sent")
 	}
 
-	// show only admin orders with order.status = "pending"
+	// show only ADMIN NEW orders
 	if (window.location.pathname === ADMIN_ORDERS_NEW) {
-		allOrders = allOrders?.filter(order => order.status === "pending")
+		orders = orders?.filter(order => order.status === "pending")
+	}
+
+	// show only ADMIN SENT orders
+	if (window.location.pathname === ADMIN_ORDERS_SENT) {
+		orders = orders?.filter(order => order.status === "sent")
 	}
 
 	return (
-		{ allOrders }
+		{ orders }
 	)
 }

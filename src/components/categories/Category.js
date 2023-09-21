@@ -1,26 +1,24 @@
-import React, { useContext } from "react"
+import React from "react"
 import "./index.scss"
-import { Context } from "../../Context"
 import scrollToFilter from "../../utils/scrollToFilter"
+import useWriteSearchParams from "../../hooks/useWriteSearchParams"
+import useCurrentSearchParams from "../../hooks/useCurrentSearchParams"
 
 export default function Category({ src, title }) {
 
 	// get image: local or web
 	let src_
-	if (src && !src.match(/http/)) { // local img
-		try {
-			src_ = require(`./img/${src}.jpg`) // jpg
-		} catch (error) {
-			src_ = require(`./img/${src}.png`) // png
-		}
-	} else { // web img
-		src_ = src
+	if (src && !src.match(/http/)) {
+		src_ = require(`./img/${src}`) // local img
+	} else {
+		src_ = src // web img
 	}
 
-	const { filterPostsQuerySet } = useContext(Context)
+	const { currentSearchParams } = useCurrentSearchParams()
+	const { writeSearchParams } = useWriteSearchParams()
 
 	function onClick() {
-		filterPostsQuerySet(prev => ({ ...prev, tag: title }))
+		writeSearchParams({ ...currentSearchParams, tag: title.toLowerCase().trim() })
 		scrollToFilter()
 	}
 

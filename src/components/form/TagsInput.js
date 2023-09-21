@@ -3,6 +3,7 @@ import { Chip, Autocomplete, TextField, Stack } from "@mui/material";
 import "./index.scss"
 import usePosts from "../../hooks/usePosts";
 
+// TODO DELETE => NOT USED ANYMORE
 // field=tags/...
 export default function TagsInput({ placeholder, field, editValue, freeSolo = true }) {
 

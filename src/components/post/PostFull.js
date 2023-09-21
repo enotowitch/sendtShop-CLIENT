@@ -5,7 +5,7 @@ import usePullPush from "../../hooks/usePullPush"
 import usePost from "../../hooks/usePost"
 import { useParams } from "react-router-dom"
 import useAddToCart from "../product/useAddToCart"
-import YouMayLike from "../other/YouMayLike"
+import PostsOther from "../other/PostsOther"
 import Product_full from "../view/Product_full"
 import Article_full from "../view/Article_full"
 import Spinner from "../other/Spinner"
@@ -16,9 +16,9 @@ export default function PostFull({ type }) { // type=product/article/...
 	const { fullPost, loading } = usePostFull(type, id) // full product/full article/...
 
 	const { pullPush } = usePullPush()
-	const { deletePost } = usePost()
+	const { hidePost } = usePost()
 	const { addToCart } = useAddToCart(fullPost)
-	const obj = { fullPost, pullPush, deletePost, addToCart }
+	const obj = { fullPost, pullPush, hidePost, addToCart }
 
 	return (
 		<>
@@ -33,7 +33,7 @@ export default function PostFull({ type }) { // type=product/article/...
 					}
 				</div>
 			</Spinner>
-			<YouMayLike type={type} className="mt4" />
+			<PostsOther type={type} className="mt4" />
 		</>
 	)
 }

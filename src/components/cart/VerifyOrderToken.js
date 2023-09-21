@@ -1,15 +1,16 @@
 import { useContext, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import * as api from "../../api"
-import { Context } from "../../Context"
 import usePullPush from "../../hooks/usePullPush"
-import { USER_ORDERS } from "../../consts"
+import { USER_ORDER_NEW } from "../../consts"
+import { Context } from "../../Context"
 
 export default function VerifyOrderToken() {
 
 	const { token } = useParams()
-	const { user } = useContext(Context)
 	const { pullPush } = usePullPush()
+	const navigate = useNavigate()
+	const { dialogSet } = useContext(Context)
 
 	useEffect(() => {
 		async function verifyOrderToken() {
@@ -19,12 +20,18 @@ export default function VerifyOrderToken() {
 			const res = await api.addOrder(token)
 			if (res.ok) { // order added to DB => clear user's cart
 				await pullPush({ col: "user", field: "cart", action: "clear" })
-				window.location.href = USER_ORDERS
+				localStorage.setItem("orderId", res.orderId) // set orderId for navigate
+				navigate(USER_ORDER_NEW)
+				dialogSet({
+					dialogShow: true,
+					dialogTitle: "Your order is in the queue for shipment",
+					dialogContentName: "ordered"
+				})
 			}
 		}
 
 		verifyOrderToken()
-	}, [user])
+	}, [token])
 
 	return (
 		""

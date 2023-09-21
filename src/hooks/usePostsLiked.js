@@ -1,31 +1,41 @@
-import { useContext } from "react"
-import { Context } from "../Context"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useEffect } from "react"
-import usePosts from "./usePosts"
+import * as api from "../api"
+import useSkip from "./useSkip"
+import { Context } from "../Context"
 
-export default function usePostsLiked() {
-
-	// TODO liked from server to enable pagination
-	// ! liked
-	const { user } = useContext(Context)
-	const { all } = usePosts("product")
+export default function usePostsLiked(type) {
 
 	const [liked, likedSet] = useState([])
 	const [loading, loadingSet] = useState(true)
+	const { skip, skipSet } = useSkip()
+	const { user } = useContext(Context)
+	const [serverPostsNum, serverPostsNumSet] = useState(0)
 
+	// ! 1: skip dependency
 	useEffect(() => {
-		// * when all posts loaded => filter liked
-		function getLiked() {
-			const filterLiked = all?.filter(post => user?.likes?.includes(post._id) && post)
-			likedSet(filterLiked)
-			loadingSet(false)
+		async function getLiked() {
+			const res = await api.likedPosts(type, skip)
+			res && likedSet(prev => [...prev, ...res])
+			res && loadingSet(false)
+			res && serverPostsNumSet(res.length) // hide LoadMore btn when nothing to load
 		}
 
 		getLiked()
-	}, [all, user])
+	}, [type, skip])
+
+	// ! 2: user likes dependency
+	useEffect(() => {
+		async function getLiked() {
+			const res = await api.likedPosts(type, skip)
+			res && likedSet(res)
+			res && loadingSet(false)
+		}
+
+		setTimeout(() => getLiked(), 1) // on 1 load rewrite all posts, then use 1 or 2 dependency
+	}, [user?.likes])
 
 	return (
-		[liked, loading]
+		[liked, loading, skipSet, serverPostsNum]
 	)
 }

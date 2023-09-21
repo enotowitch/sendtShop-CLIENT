@@ -1,10 +1,6 @@
-import { useContext } from "react"
-import { Context } from "../../Context"
-
 export default function Tab(props) {
 
-	const { id, tab, onSet } = props
-	const { filterPostsQuery } = useContext(Context)
+	const { id, tab, onSet, colorTab } = props
 
 	function onClick(e) {
 		// 1. set state
@@ -20,7 +16,7 @@ export default function Tab(props) {
 		<div
 			id={id}
 			// active on click: filtered tab
-			className={`tab ${filterPostsQuery?.tag === tab.toLowerCase() ? "tab_active" : ""}`}
+			className={`tab ${tab.toLowerCase() === colorTab ? "tab_active" : ""}`}
 			onClick={onClick}
 		>
 			{tab}

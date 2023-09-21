@@ -64,6 +64,17 @@ export const test = async () => { // TODO delete
 	}
 }
 
+// ! testArticles
+export const testArticles = async () => { // TODO delete
+	try {
+		const { data } = await instance.post(`/testArticles`)
+		console.log(data)
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 // ! addFile
 export const addFile = async (formData) => {
 	try {
@@ -85,9 +96,9 @@ export const deleteImg = async (imgName) => {
 }
 
 // ! getAllPosts
-export const getAllPosts = async (type, field) => {
+export const getAllPosts = async (type, field, showDeleted) => {
 	try {
-		const { data } = await instance.post("/getAllPosts", { type, field })
+		const { data } = await instance.post("/getAllPosts", { type, field, showDeleted })
 		return data
 	} catch (error) {
 		console.log(error)
@@ -108,6 +119,26 @@ export const filterPosts = async (type, filterPostsQuery, skip) => {
 export const deletePost = async (type, _id) => {
 	try {
 		const { data } = await instance.post("/deletePost", { type, _id })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! hidePost
+export const hidePost = async (type, _id) => {
+	try {
+		const { data } = await instance.post("/hidePost", { type, _id })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! unHidePost
+export const unHidePost = async (type, _id) => {
+	try {
+		const { data } = await instance.post("/unHidePost", { type, _id })
 		return data
 	} catch (error) {
 		console.log(error)
@@ -163,6 +194,46 @@ export const randomPosts = async (type) => {
 		console.log(error)
 	}
 }
+
+// ! viewedPosts
+export const viewedPosts = async (type) => {
+	try {
+		const { data } = await instance.post(`/viewedPosts`, { type })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! hiddenPosts
+export const hiddenPosts = async (type, skip) => {
+	try {
+		const { data } = await instance.post("/hiddenPosts", { type, skip })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! likedPosts
+export const likedPosts = async (type, skip) => {
+	try {
+		const { data } = await instance.post("/likedPosts", { type, skip })
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+// ! getActualUserCart
+export const getActualUserCart = async () => {
+	try {
+		const { data } = await instance.post(`/getActualUserCart`)
+		return data
+	} catch (error) {
+		console.log(error)
+	}
+}
 // ?? POST
 
 // !! ORDER
@@ -176,7 +247,7 @@ export const addOrder = async (token) => {
 	}
 }
 
-// ! addOrder
+// ! orderSendEmailTrack
 export const orderSendEmailTrack = async (form) => {
 	try {
 		const { data } = await instance.post(`/orderSendEmailTrack`, { ...form })

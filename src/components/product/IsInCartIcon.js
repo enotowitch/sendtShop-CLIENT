@@ -2,9 +2,11 @@ import React from "react"
 import { ShoppingCart } from "@mui/icons-material"
 import { BRAND_COLOR } from "../../consts"
 import useIsInCartIcon from "./useIsInCartIcon"
+import CardLink from "../view/CardLink"
 
-export default function IsInCartIcon({ isInCart }) {
+export default function IsInCartIcon({ obj }) {
 
+	const { isInCart } = obj
 	const { goToCart } = useIsInCartIcon()
 
 	return (
@@ -15,6 +17,8 @@ export default function IsInCartIcon({ isInCart }) {
 				onClick={goToCart}
 			/>
 			:
-			<div className="brand fw600">shop ></div>
+			<CardLink obj={obj}>
+				<div className="brand fw600">shop ></div>
+			</CardLink>
 	)
 }

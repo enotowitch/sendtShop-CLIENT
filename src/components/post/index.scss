@@ -46,19 +46,22 @@
 		justify-content: center;
 	}
 	@media (max-width:$mobile) {
-		flex-direction: column;
-		align-items: center;
+		// flex-direction: column;
+		// align-items: center;
 	}
 }
 
 .postFull{
 	max-width: 1100px;
 	padding: 0 15px;
-	@media (max-width:$mobile) {
+	@media (width <= $mobile) { // mobile
 		gap: 15px;
 	}
-	&__left{
-		max-width: 540px; // !! padding
+	&__left{ // part where prod img located
+		width: 540px; // !! padding
+		@media (width <= $tablet) { // tablet
+			width: 100%;
+		}
 	}
 	&__right{
 		width: 440px;

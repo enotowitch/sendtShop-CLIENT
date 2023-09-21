@@ -1,0 +1,13 @@
+@import "../../vars.scss";
+
+.scrollTop{
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	width: 50px !important;
+	height: 50px !important;
+	@media (width <= $mobile) { // mobile
+		bottom: 55px;
+		right: 0px;
+	}
+}

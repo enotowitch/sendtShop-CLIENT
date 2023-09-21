@@ -8,11 +8,11 @@ export default function Product_article_card({ obj, children }) {
 	const { img, title, tags, textEditorValue } = obj
 
 	return (
-		<div>
+		<div className="wS tdn card animation cardAnim">
 			{/* top */}
 			<Product_article_card_top obj={obj} />
 			{/* center */}
-			<Product_article_card_img img={img} textEditorValue={textEditorValue} />
+			<Product_article_card_img obj={obj} />
 			<Tags arr={tags} className="scrollableArea hideScrollbar" />
 			<div className="title tac card__title">{title}</div>
 			{/* bottom */}

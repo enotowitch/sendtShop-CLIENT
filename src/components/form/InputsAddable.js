@@ -1,28 +1,38 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./index.scss"
 import Input from "./Input"
 import { Button } from "@mui/material"
 
-// eg: editNames=["name1", "name2", ...]
-// eg: editValues=["value1", "value2", ...]
+// eg: editValue=[{name:"a", value:"1"}...]
 // type=characteristic/information
-export default function InputsAddable({ title, type, editNames, editValues }) {
+export default function InputsAddable({ title, type, editValue }) {
 
-	const [count, countSet] = useState(editNames?.length || 1)
+	const [inputArr, inputArrSet] = useState([])
+
+	useEffect(() => { // edit mode
+		inputArrSet(editValue || [])
+	}, [editValue])
 
 	function inputs() {
-		return Array.from({ length: count }, (v, i) => i).map((item, ind) => { // gen inputs on "add" click
+		return inputArr?.map(({ name, value }, ind) => { // gen inputs on "add" click
 			return (
-				<div className="f fwn g3 mt">
-					<Input multiline name={`${type}Name${ind + 1}`} placeholder={`name of ${type} ${ind + 1}`} editValue={editNames?.[ind]} />
-					<Input multiline name={`${type}Value${ind + 1}`} placeholder={`value of ${type} ${ind + 1}`} editValue={editValues?.[ind]} />
-				</div>
+				<React.Fragment key={name}>
+					<div className="f fwn g3 mt">
+						<Input multiline name={`${type}Name${ind + 1}`} placeholder={`name of ${type} ${ind + 1}`} label={`name of ${type} ${ind + 1}`} editValue={name} />
+						<Input multiline name={`${type}Value${ind + 1}`} placeholder={`value of ${type} ${ind + 1}`} label={`value of ${type} ${ind + 1}`} editValue={value} />
+						<Button onClick={() => delInput(ind)} variant="outlined" className="removeBtn">remove</Button>
+					</div>
+				</React.Fragment>
 			)
 		})
 	}
 
 	function addInput() {
-		countSet(prev => prev + 1)
+		inputArrSet(prev => [...prev, ""])
+	}
+
+	function delInput(ind) {
+		inputArrSet(prev => prev.filter((input, inputInd) => inputInd !== ind))
 	}
 
 	return (

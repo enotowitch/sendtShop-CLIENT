@@ -6,6 +6,13 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+.if{
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+.fdr{
+	flex-direction: row;
+}
 .fwn{
 	flex-wrap: nowrap;
 }
@@ -23,11 +30,17 @@
 .aic{
 	align-items: center;
 }
+.aifs{
+	align-items: flex-start;
+}
 .aife{
 	align-items: flex-end;
 }
 .jcc{
 	justify-content: center;
+}
+.jcfs{
+	justify-content: flex-start !important;
 }
 .jcfe{
 	justify-content: flex-end;
@@ -179,6 +192,9 @@
 .mb4{
 	margin-bottom: 60px !important;
 }
+.mb40{
+	margin-bottom: 40% !important;
+}
 // ? MARGIN
 // ! PADDING
 // top
@@ -219,6 +235,13 @@
 }
 .px4{
 	padding: 0 60px !important;
+}
+.px05{
+	padding: 0 5px !important;
+}
+.px0{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 // y axis
 .py{
@@ -307,8 +330,17 @@
 .tal{
 	text-align: left;
 }
+.tar{
+	text-align: right;
+}
 .fsi{
 	font-style: italic;
+}
+.tdu{
+	text-decoration: underline;
+}
+.tdn{
+	text-decoration: none;
 }
 .fw100{
 	font-weight: 100;
@@ -331,6 +363,9 @@
 .fw700{
 	font-weight: 700;
 }
+.fz12{
+	font-size: 12px;
+}
 // ! BACKGROUND & COLOR
 .brand{
 	color: $brand !important;
@@ -342,7 +377,10 @@
 	color: $danger !important;
 }
 .dangerBg{
-	background: $danger !important;
+	background: lighten($danger, 25%) !important;
+}
+.dangerBg2{
+	background: lighten($danger, 15%) !important;
 }
 .dangerBorder{
 	border: 2px solid $danger !important;
@@ -428,8 +466,14 @@
 .poa{
 	position: absolute !important;
 }
+.pof{
+	position: fixed !important;
+}
 .db{
 	display: block;
+}
+.dn{
+	display: none !important;
 }
 // ! z-index
 .zi0{
@@ -486,6 +530,9 @@
 .op0{
 	opacity: 0;
 }
+.op05{
+	background: rgba($color: #000000, $alpha: 0.5);
+}
 .oh{
 	overflow: hidden;
 }
@@ -506,4 +553,7 @@
 }
 .oa{
 	overflow: auto;
+}
+.pin{
+	pointer-events: none;
 }

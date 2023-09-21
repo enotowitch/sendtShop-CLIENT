@@ -42,10 +42,22 @@ header{
 	}
 }
 
+.headerIcon{
+	color: $white !important;
+	svg{
+		fill: $white !important;
+	}
+	&.visited{
+		color: $brand !important;
+		svg{
+			fill: $brand !important;
+		}
+	}
+}
+
 .headerIconCount{
 	position: absolute;
-	left: 10px;
-	top: 8px;
+	top: 13px;
 	background: $brand; 
 	border-radius: 50%;
 	width: 16px;
@@ -64,9 +76,11 @@ header{
 
 .themeSwitch{
 	align-self: center;
+	position: relative;
+	top: 2px;
 	// !!
 	svg{
-		height: calc($svgSize - 2)+px !important;
+		height: calc($svgSize - 4)+px !important;
 	}
 }
 

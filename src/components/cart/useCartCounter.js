@@ -1,6 +1,7 @@
 import { useState } from "react"
 import usePullPush from "../../hooks/usePullPush"
 
+// !! TODO: NOT USED: delete ?
 export default function useCartCounter(productQuantity, obj) {
 
 	const cartProduct = obj

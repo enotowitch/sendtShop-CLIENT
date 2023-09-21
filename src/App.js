@@ -15,6 +15,7 @@ import Dialog from "./components/dialog/Dialog";
 import { useContext } from "react";
 import { Context } from "./Context";
 import CartReminder from "./components/cart/CartReminder";
+import ScrollTop from "./components/other/ScrollTop";
 
 export default function App() {
 
@@ -25,11 +26,12 @@ export default function App() {
 			<Header />
 
 			{/* nail down the footer */}
-			<div style={{ minHeight: "100vh" }}>
+			<div style={{ minHeight: "100vh", overflowX: "hidden" }}>
 				<AppRouter />
 				<CartReminder />
 				<Snackbar />
 				<Dialog />
+				<ScrollTop />
 			</div>
 
 			<Footer />

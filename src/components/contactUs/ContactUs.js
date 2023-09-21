@@ -21,7 +21,8 @@ export default function ContactUs() {
 					You can expect to hear back from us soon.
 				</div>
 
-				<Input disabled type="email" name="email" placeholder="email" label="Email" editValue={user?.email} />
+				<Input disabled type="email" name="email" placeholder="email" label="Email" editValue={user?.email} helperText="registration email used" />
+				<InputUncontrolled name="orderId" placeholder="Order id" label="Order id" />
 				<InputUncontrolled required name="subject" placeholder="subject" label="Subject" />
 				<InputUncontrolled required multiline name="message" placeholder="message" label="Message" />
 				<Button type="submit" variant="contained">Send message</Button>

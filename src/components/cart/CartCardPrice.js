@@ -2,7 +2,7 @@ import React from "react"
 import { useState } from "react"
 import { useEffect } from "react"
 
-export default function CartCardPrice({ obj, totalPrice }) {
+export default function CartCardPrice({ obj, totalPrice, className }) {
 
 	const [additionalPrice, additionalPriceSet] = useState(0) // eg: {color: red, price: 10} = 10
 
@@ -20,6 +20,6 @@ export default function CartCardPrice({ obj, totalPrice }) {
 	}, [obj])
 
 	return (
-		<div>${finalPrice}</div>
+		<div className={className}>${finalPrice}</div>
 	)
 }

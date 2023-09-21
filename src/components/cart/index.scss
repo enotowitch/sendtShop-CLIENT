@@ -3,12 +3,16 @@
 .cartCard{
 	max-width: $wM;
 	// !!
+	@media (width <= $mobile){
+		flex-wrap: wrap;
+	}
+	// !!
 	img{
 		height: 60px;
-		width: 100px !important;
 		border-radius: $borderRadiusMedium;
 		width: auto;
-		@media (max-width:$mobile) {
+		object-fit: contain;
+		@media (width <= $mobile) {
 			width: 100% !important;
 			height: auto;
 		}
@@ -49,19 +53,20 @@
 }
 
 .cartReminder{
+	position: fixed;
+	z-index: 5;
 	display: flex;
 	align-items: center;
-	position: fixed;
 	padding: 15px;
 	border-radius: $borderRadiusLarge;
 	white-space: nowrap;
 	// ! media
-	@media (width <= $mobile) { // mobile
+	@media (width <= calc($mobile + 360px)) { // mobile
 		bottom: 60px;
 		left: 50%;
 		transform: translate(-50%);
 	}
-	@media (width >= $mobile) { // pc
+	@media (width > calc($mobile + 360px)) { // pc
 		top: 75px;
 		right: 15px;
 	}

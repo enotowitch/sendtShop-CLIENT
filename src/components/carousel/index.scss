@@ -19,7 +19,7 @@
 		}
 		img{ // one hint img
 			border-radius: 0;
-			object-fit: cover;
+			object-fit: contain;
 		}
 		// media: > mobile
 		@media (min-width:$mobile) {			
@@ -45,3 +45,13 @@
 	}
 }
 // ? CarouselProduct
+
+// ! CarouselBanner
+// center image(s) if not 3
+.Carousel__ItemSet-sc-hyhecw-3.daGMts{
+	@media (width >= 768px) {
+		display: flex; 
+		justify-content: center;
+	}
+}
+// ? CarouselBanner

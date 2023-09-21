@@ -1,13 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import Rating from "./Rating"
 import usePosts from "../../hooks/usePosts"
+import { Context } from "../../Context"
 
 export default function RatingCount({ _id: productId, showCount = false }) {
 
-	const { all } = usePosts("review")
+	const { reviews } = useContext(Context)
 	const ratings = []
 
-	all?.map(review => {
+	reviews?.map(review => {
 		if (review.productId === productId) {
 			ratings.push(review.rating)
 		}

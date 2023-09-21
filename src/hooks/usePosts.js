@@ -9,7 +9,7 @@ import { Context } from "../Context"
 export default function usePosts(type, field) { // TODO move to post folder
 
 	// ! all
-	const { update, filterPostsQuery } = useContext(Context)
+	const { update } = useContext(Context)
 	const [all, allSet] = useState([])
 	useEffect(() => {
 		async function getAllPosts() {

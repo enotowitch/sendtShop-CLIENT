@@ -15,17 +15,25 @@ export default function ThemeSwitch() {
 		localStorage.setItem("theme", theme)
 	}, [theme])
 
+	function ThemeSwitch({ children }) {
+		return (
+			<div className="themeSwitch" onClick={onClick}>
+				{children}
+			</div>
+		)
+	}
+
 	return (
 		<>
 			{theme === "light"
 				?
-				<div className="themeSwitch" onClick={onClick}>
-					<DarkModeOutlined />
-				</div>
-				:
-				<div className="themeSwitch" onClick={onClick}>
+				<ThemeSwitch>
 					<WbSunnyOutlined />
-				</div>
+				</ThemeSwitch>
+				:
+				<ThemeSwitch>
+					<DarkModeOutlined />
+				</ThemeSwitch>
 			}
 		</>
 	)

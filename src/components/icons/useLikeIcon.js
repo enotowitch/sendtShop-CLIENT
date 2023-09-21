@@ -12,7 +12,7 @@ export default function useLikeIcon(obj) {
 	const [isProductLiked, isProductLikedSet] = useState(user?.likes?.includes(_id))
 	useEffect(() => {
 		isProductLikedSet(user?.likes?.includes(_id))
-	}, [user]) // watch if user liked and rerender all prods' likes
+	}, [user, _id]) // watch if user liked and rerender all prods' likes
 	
 	// ! articleLikesCount:                                   	article.likes.length
 	const [articleLikesCount, articleLikesCountSet] = useState(obj?.likes?.length)

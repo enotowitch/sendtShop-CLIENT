@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Context } from "../../Context"
+import { Link } from "react-router-dom"
 
 export default function SnackbarMessage() {
 
@@ -9,6 +10,10 @@ export default function SnackbarMessage() {
 	const href = snackbarLinkType === "web" ? `http://${snackbarLink}` : `${snackbarLink}`
 
 	return (
-		<>{snackbarText}<a target="blank_" href={href}>{snackbarLinkText}</a></>
+		snackbarLinkType === "web"
+			?
+			<>{snackbarText}<a target="blank_" href={href}>{snackbarLinkText}</a></>
+			:
+			<>{snackbarText}<Link to={href}>{snackbarLinkText}</Link></>
 	)
 }

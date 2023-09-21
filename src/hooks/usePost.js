@@ -4,11 +4,15 @@ import useAddImg from "../components/addImg/useAddImg"
 import useAddArchive from "../components/addArchive/useAddArchive"
 import useAnimation from "./useAnimation"
 import { useParams } from "react-router-dom"
+import { MAIN_ROUTE } from "../consts"
+import { useContext } from "react"
+import { Context } from "../Context"
 
 export default function usePost() { // TODO move to post folder
 
 	const { imgArr } = useAddImg()
 	const { archiveArr } = useAddArchive()
+	const { updateContext } = useContext(Context)
 
 	// ! addPost
 	async function addPost(e, type) {
@@ -23,7 +27,7 @@ export default function usePost() { // TODO move to post folder
 		const res = await api.addPost({ ...form, type, img, archive })
 
 		if (type === "review") {
-			window.location.reload() // TODO update list
+			updateContext()
 			return // skip going to location
 		}
 		res.ok && (window.location.href = `/${type}/${res._id}`)
@@ -36,11 +40,34 @@ export default function usePost() { // TODO move to post folder
 		// e = form event (onSubmit)
 		// type=product/article/comment/review...
 		e.preventDefault()
-		// TODO delete img from server
 
 		const res = await api.deletePost(type, id)
 		// TODO go to "/products" || "/articles" dep.on type after delete
-		window.location.pathname.includes(type + "/") && (window.location.href = `/`) // if you delete product/article in product_full/article_full go to "/" skipping all below code
+		window.location.pathname.includes(type + "/") && (window.location.href = `/${type + "s"}`) // if you delete product/article in product_full/article_full go to "/type..." skipping all below code
+		res.ok && deleteAnimation(e, type)
+	}
+
+	// ! hidePost
+	async function hidePost(e, type, id) {
+		// e = form event (onSubmit)
+		// type=product/article/comment/review...
+		e.preventDefault()
+
+		const res = await api.hidePost(type, id)
+		// TODO go to "/products" || "/articles" dep.on type after delete
+		window.location.pathname.includes(type + "/") && (window.location.href = `/hidden/${type + "s"}`) // if you delete product/article in product_full/article_full go to "/hidden/type..." skipping all below code
+		res.ok && deleteAnimation(e, type)
+	}
+
+	// ! unHide
+	async function unHidePost(e, type, id) {
+		// e = form event (onSubmit)
+		// type=product/article/comment/review...
+		e.preventDefault()
+
+		const res = await api.unHidePost(type, id)
+		// TODO go to "/products" || "/articles" dep.on type after delete
+		window.location.pathname.includes(type + "/") && (window.location.href = MAIN_ROUTE) // if you delete product/article in product_full/article_full go to "/" skipping all below code
 		res.ok && deleteAnimation(e, type)
 	}
 
@@ -62,6 +89,6 @@ export default function usePost() { // TODO move to post folder
 	}
 
 	return (
-		{ addPost, deletePost, editPost }
+		{ addPost, deletePost, hidePost, unHidePost, editPost }
 	)
 }

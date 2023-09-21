@@ -2,8 +2,7 @@ import React from "react"
 import Banner from "../banner/Banner";
 import PostCards from "../post/PostCards";
 import PostFilters from "../post/PostFilters";
-import LoadMore from "../post/LoadMore";
-import YouMayLike from "../other/YouMayLike";
+import PostsOther from "../other/PostsOther";
 import Categories from "../categories/Categories";
 
 export default function MainPage() {
@@ -13,8 +12,7 @@ export default function MainPage() {
 			<Categories />
 			<PostFilters />
 			<PostCards type="product" title="Products" />
-			<LoadMore />
-			<YouMayLike type="product" className="mt4" />
+			<PostsOther type="product" className="mt4" />
 		</>
 	)
 }

@@ -1,22 +1,28 @@
 import SelectNative from "../form/SelectNative"
-import sortProductOptions from "../../utils/sortProductOptions"
+import sortProductOptions from "./sortProductOptions"
 import { useContext } from "react"
 import { Context } from "../../Context"
+import { MAIN_ROUTE } from "../../consts"
+import useCurrentSearchParams from "../../hooks/useCurrentSearchParams"
+import useWriteSearchParams from "../../hooks/useWriteSearchParams"
 
 export default function PostSort() {
 
-	const { filterPostsQuerySet, skipSet, showLoadMoreSet } = useContext(Context)
+	const { skipProdsSet, showLoadMoreSet, postSortValue, postSortValueSet } = useContext(Context)
+	const { currentSearchParams } = useCurrentSearchParams()
+	const { writeSearchParams } = useWriteSearchParams()
 
 	function onChange(e) {
-		filterPostsQuerySet(prev => ({ ...prev, sort: e.target.value })) // set sort value to Context
-		skipSet(0) // null skip to sort from the start of the product list
+		postSortValueSet(e.target.value) // set Context value and pass it to SelectNative
+		writeSearchParams({ ...currentSearchParams, sort: e.target.value })
+		skipProdsSet(0) // null skip to sort from the start of the product list
 		showLoadMoreSet(true) // new filter => show LoadMore btn
 	}
 
 	return (
-		(window.location.pathname === "/") &&
+		(window.location.pathname === MAIN_ROUTE) &&
 		<div className="f">
-			<SelectNative arr={sortProductOptions} className="sort" onChange={onChange} />
+			<SelectNative value={postSortValue} arr={sortProductOptions} className="sort" onChange={onChange} />
 		</div>
 	)
 }

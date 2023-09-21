@@ -4,25 +4,32 @@ import Input from "../form/Input"
 import Or from "../auth/Or"
 import Select from "../form/Select"
 import "./index.scss"
-import useNoUser from "../../hooks/useNoUser"
-import clickSliderImg from "../../utils/clickSliderImg"
+import useClickSliderImg from "../../hooks/useClickSliderImg"
+import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 
 // to add product to cart: user selects Tags eg: color/size/...
-export default function Product_full_form({ addToCart, _id: productId, custom_fields, price }) {
-
-	const { noUserRedirect } = useNoUser()
+export default function Product_full_form({ addToCart, _id: productId, custom_fields, price, finalVarPriceSet }) {
 
 	// ! varPrices
-	const varPrices = [] // [10,30] always rewriten via `SelectId` from `selectedValueAndSelectId`
+	const [varPrices, varPricesSet] = useState([]) // [10,30] always rewriten via `SelectId` from `selectedValueAndSelectId`
 	function calcVarPrice(selectedValueAndSelectId) { // eg: {value: '{"name":"red","price":"10"}', id: 1}
 		const priceSelected = JSON.parse(selectedValueAndSelectId?.value)?.price * 1
 		const idSelected = selectedValueAndSelectId?.id
-		varPrices[idSelected] = priceSelected
+		varPrices[idSelected] = priceSelected // instead of state setter
 		const sumPrice = varPrices.reduce((a, b) => a + b, 0)
 		const finalVarPrice = Number(price) + sumPrice
-		document.querySelector(".fullProductTotalPrice").innerText = "$" + finalVarPrice
+		finalVarPriceSet(finalVarPrice.toFixed(2))
 	}
+
+	// null additional prices on product id change
+	const { id } = useParams()
+	useEffect(() => {
+		varPricesSet([])
+	}, [id])
 	// ? varPrices
+
+	const { clickSliderImg } = useClickSliderImg()
 
 	return (
 		<>
@@ -57,14 +64,7 @@ export default function Product_full_form({ addToCart, _id: productId, custom_fi
 				}
 				{/* // ? custom_fields */}
 
-				<Button
-					type="submit"
-					className="mt"
-					variant="contained"
-					onClick={noUserRedirect}
-				>
-					add to cart
-				</Button>
+				<Button type="submit" className="mt" variant="contained">add to cart</Button>
 			</form>
 		</>
 	)

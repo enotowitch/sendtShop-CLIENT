@@ -17,7 +17,7 @@ export default function usePostFull(type, id) {	// type=product/article/comment/
 		}
 
 		getFullPost()
-	}, [update, type])
+	}, [update, type, id])
 
 	return (
 		{ fullPost, loading }

@@ -1,111 +1,34 @@
-import { useEffect, useState } from "react";
+=== useCurrentSearchParams ===
 
-export default function useStripe() {
+import { useSearchParams } from "react-router-dom"
 
-	const [stripeLink, stripeLinkSet] = useState("")
+export default function useCurrentSearchParams() {
 
-	useEffect(() => {
-		fetch('http://localhost:5000/create-checkout-session',
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					items: [
-						{ id: 1, quantity: 3 },
-						{ id: 2, quantity: 1 },
-					],
-				}),
-			})
-			.then((response) => {
-				return response.json();
-			})
-			.then((data) => {
-				stripeLinkSet(data.url);
-			});
-	}, [])
+	const [searchParams] = useSearchParams()
+	const currentSearchParams = Object.fromEntries([...searchParams])
 
 	return (
-		{ stripeLink }
+		{ currentSearchParams }
 	)
 }
 
-pagination
-============
+=== useWriteSearchParams ===
 
-1. api.js
+import { createSearchParams, useNavigate } from "react-router-dom"
+import { MAIN_ROUTE } from "../consts";
 
-// ! filterPosts
-export const filterPosts = async (type, filterPostsQuery, skip) => {
-	try {
-		const { data } = await instance.post("/filterPosts", { type, filterPostsQuery, skip })
-		return data
-	} catch (error) {
-		console.log(error)
+export default function useWriteSearchParams() {
+
+	const navigate = useNavigate()
+
+	function writeSearchParams(objToWrite) { // eg: filterPostsQuery/currentSearchParams
+		navigate({
+			pathname: MAIN_ROUTE,
+			search: createSearchParams(objToWrite).toString()
+		});
 	}
-}
-
-2. Context.js
-
-const [skip, skipSet] = useState(0) // for pagination: how many posts to skip/limit
-
-// pagination: skip posts
-skip, skipSet
-
-3. NEW FILE - LoadMore.js
-
-import { Button } from "@mui/material"
-import React from "react"
-import { useContext } from "react"
-import { Context } from "../../Context"
-
-// eg:			SKIP LIMIT
-// round 1		 0    10
-// round 2		10		10
-// round 3		20    10
-// round 4		30    10
-// ...
-export default function LoadMore() {
-
-	const { skipSet } = useContext(Context)
 
 	return (
-		<Button onClick={() => skipSet(prev => prev + 1)}>Load More</Button>
+		{ writeSearchParams }
 	)
 }
-
-4. PostCards.js
-
-import LoadMore from "./LoadMore"
-<LoadMore />
-
-5. usePosts.js
-
-	// ! all
-	const { update, filterPostsQuery, skip } = useContext(Context)
-	const [all, allSet] = useState([])
-	useEffect(() => {
-		async function getAllPosts() {
-			// eg:									product {tag:sale, sort:price&asc, text:someText}
-			const res = await api.filterPosts(type, filterPostsQuery, skip)
-			allSet(res)
-		}
-
-		getAllPosts()
-	}, [type, update, filterPostsQuery, skip])
-
-===
-
-// ! containsObject
-
-	function containsObject(obj, list) {
-		var i;
-		for (i = 0; i < list.length; i++) {
-			if (JSON.stringify(list[i]) === JSON.stringify(obj)) {
-				return { contains: true, index: i }
-			}
-		}
-
-		return { contains: false }
-	}

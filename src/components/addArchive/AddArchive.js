@@ -1,7 +1,12 @@
 import React, { useContext, useState } from "react"
 import { Context } from "../../Context"
+import { useEffect } from "react"
 
 export default function AddArchive({ editValue }) {
+
+	useEffect(() => { // edit mode: show uploadedName
+		uploadedNameSet(editValue)
+	}, [editValue])
 
 	const [uploadedName, uploadedNameSet] = useState(editValue)
 	const { uploadedArchiveSet } = useContext(Context)

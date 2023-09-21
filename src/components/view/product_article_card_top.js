@@ -1,15 +1,15 @@
 import React from "react"
-import { Clear, Edit } from "@mui/icons-material";
+import { Edit } from "@mui/icons-material";
 import LikeIcon from "../icons/LikeIcon";
 import ForAdmin from "../other/ForAdmin";
 import Share from "../share/Share";
-import usePost from "../../hooks/usePost"
+import Product_article_card_top_hide from "./Product_article_card_top_hide";
+import Product_article_card_top_delete from "./Product_article_card_top_delete";
 
 // TODO rename to PostIcons
 export default function Product_article_card_top({ obj, children }) { // type=product/article
 
 	const { type, _id } = obj
-	const { deletePost } = usePost()
 
 	return (
 		<>
@@ -26,7 +26,8 @@ export default function Product_article_card_top({ obj, children }) { // type=pr
 				{/* eg: /edit/product|article|smth/_id */}
 				<ForAdmin>
 					<Edit onClick={() => window.location.href = `/edit/${type}/${_id}`} />
-					<Clear style={{ height: 42, width: 42 }} onClick={(e) => deletePost(e, type, _id)} />
+					<Product_article_card_top_hide obj={obj} />
+					<Product_article_card_top_delete obj={obj} />
 				</ForAdmin>
 				<Share obj={obj} />
 			</div>

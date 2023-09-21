@@ -14,7 +14,6 @@ export default function AddReview({ _id: productId }) {
 	const { isOrderedByUser } = useIsOrderedByUser(productId)
 	const { isReviewedByUser } = useIsReviewedByUser(productId)
 
-
 	return (
 		<>
 			{isOrderedByUser && !isReviewedByUser &&
@@ -34,7 +33,7 @@ export default function AddReview({ _id: productId }) {
 				</>
 			}
 
-			{isReviewedByUser && <div className="tac mt fsi">You have already left a review</div>}
+			{isReviewedByUser && <div className="tac mt fsi">Thank you for your review!</div>}
 
 			<Or text="Customers' Reviews" className="mt2 mb" />
 

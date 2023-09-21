@@ -1,13 +1,12 @@
-import React, { useState } from "react"
+import React from "react"
 import "./index.scss"
 
 export default function SelectNative(props) {
 
-	const { className, arr, editValue, placeholder, defaultValue } = props
-	const [value, valueSet] = useState()
+	const { className, arr, editValue, placeholder, defaultValue, value } = props
 
+	// set outer (eg: Context) value, and get outer value via props
 	function onChange(e) {
-		valueSet(e.target.value) // set state
 		props.onChange && props.onChange(e)
 	}
 

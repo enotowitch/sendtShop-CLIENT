@@ -2,29 +2,41 @@ import { TextField } from "@mui/material"
 import React, { useContext, useEffect, useState } from "react"
 import "./index.scss"
 import { Context } from "../../Context"
-import { useNavigate } from "react-router-dom"
-import { MAIN_ROUTE } from "../../consts"
 import scrollToFilter from "../../utils/scrollToFilter"
+import useWriteSearchParams from "../../hooks/useWriteSearchParams"
 
 export default function SearchField() {
 
-	const [value, valueSet] = useState(false)
-	const { filterPostsQuerySet, skipSet, showLoadMoreSet } = useContext(Context)
-	const navigate = useNavigate()
+	const { skipProdsSet, showLoadMoreSet, searchFieldValue, searchFieldValueSet } = useContext(Context)
+	const { writeSearchParams } = useWriteSearchParams()
+	const [focused, focusedSet] = useState(0)
 
 	async function onChange(e) {
-		valueSet(e.target.value) // set input state
-		skipSet(0) // null skip to search from the start of the product list 
+		searchFieldValueSet(e.target.value) // set input state
+		skipProdsSet(0) // null skip to search from the start of the product list 
 		showLoadMoreSet(true) // new filter => show LoadMore btn
-		navigate(MAIN_ROUTE) // where filtering results are displayed
 		scrollToFilter()
 	}
 
 	useEffect(() => {
-		filterPostsQuerySet(prev => ({ ...prev, text: value })) // trigger new render to show found
-	}, [value])
+		// !!!!
+		const currentSearchParams = JSON.parse(localStorage.getItem("filters"))
+		if (searchFieldValue) {
+			writeSearchParams({ ...currentSearchParams, text: searchFieldValue })
+		} else {
+			writeSearchParams({ ...currentSearchParams })
+		}
+	}, [searchFieldValue, focused])
 
 	return (
-		<TextField type="search" className="searchField" onChange={onChange} placeholder="search product title & text" autoFocus />
+		<TextField
+			value={searchFieldValue}
+			type="search"
+			className="searchField"
+			onChange={onChange}
+			placeholder="search product title & text"
+			autoFocus
+			onFocus={() => focusedSet(prev => prev + 1)}
+		/>
 	)
 }

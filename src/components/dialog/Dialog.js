@@ -9,36 +9,33 @@ import { useContext } from 'react';
 import { Context } from '../../Context';
 import useDialog from './useDialog';
 import './index.scss'
-import { CART_ROUTE } from '../../consts';
-import { useNavigate } from 'react-router-dom';
 
 export default function _Dialog() {
 
-	const { dialogShow, dialogShowSet, dialogContentName, dialogTitle, dialogImg, dialogHasButtons, theme } = useContext(Context)
+	const { dialog, dialogSet, theme } = useContext(Context)
 	// * gray cause of eval
-	const { share, addedToCart } = useDialog()
-	const navigate = useNavigate()
+	const { share, addedToCart, ordered, goToCart, deletePost, hidePost, unHidePost } = useDialog()
 
 	return (
 		<Dialog
-			open={dialogShow}
-			onClose={() => dialogShowSet(false)}
+			open={dialog?.dialogShow}
+			onClose={() => dialogSet({ dialogShow: false })}
 			aria-labelledby="alert-dialog-title"
 			aria-describedby="alert-dialog-description"
 			className={`fcc ${theme === "dark" ? "darkDialog" : ""}`}
 		>
 			<DialogTitle id="alert-dialog-title" className="fcc">
-				{dialogTitle}
+				{dialog?.dialogTitle}
 			</DialogTitle>
-			{dialogImg && <img src={dialogImg} className="w100" />}
+			{dialog?.dialogImg && <img src={dialog?.dialogImg} className="w100" />}
 			<DialogContent className="fcc">
 				{/* eg: 						  share() */}
-				{dialogContentName && eval(`${dialogContentName}()`)}
+				{dialog?.dialogContentName && eval(`${dialog?.dialogContentName}()`)}
 			</DialogContent>
-			{dialogHasButtons &&
+			{dialog?.dialogHasButtons &&
 				<DialogActions className="mb">
-					<Button variant="outlined" onClick={() => dialogShowSet(false)}>Continue shopping</Button>
-					<Button variant="contained" onClick={() => (navigate(CART_ROUTE), dialogShowSet(false))} autoFocus>Go to cart</Button>
+					<Button variant="outlined" onClick={() => dialogSet({ dialogShow: false })}>{dialog?.dialogLeftBtnText}</Button>
+					<Button variant="contained" onClick={eval(dialog?.dialogRightBtnFn)} autoFocus>{dialog?.dialogRightBtnText}</Button>
 				</DialogActions>
 			}
 		</Dialog>

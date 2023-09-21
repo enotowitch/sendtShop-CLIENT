@@ -27,7 +27,7 @@ export default function _Select(props) {
 		// ! selectedIndex
 		if (selectedIndex) { // if selectedIndex prop passed
 			let selectedInd
-			arr?.map((item, ind) => JSON.stringify(item) === e.target.value && (selectedInd = ind - 1)) // map and asign Select selected index
+			arr?.map((item, ind) => JSON.stringify(item) === e.target.value && (selectedInd = ind)) // map and asign Select selected index
 			selectedIndex(selectedInd) // pass Select selected index to parent component
 		}
 		selectedValueAndSelectId && selectedValueAndSelectId({ value: e.target.value, id: id })

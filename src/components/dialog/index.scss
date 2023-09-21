@@ -2,9 +2,30 @@
 
 // mui dialog
 .MuiDialog-container.MuiDialog-scrollPaper{
+	@media (width <= $mobile) {
+		max-height: calc(100% - 60px);
+		// overflow-y: scroll; // makes scroll and ugly card
+	}
 	.cartCard{
+		width: 100% !important; // !! prevent scrollX in dialog cause of too wide cartCard (with long title)
+		// ! mobile
+		@media (width <= $mobile) {
+			&__title{
+				width: calc($wS - 30px) !important;
+			}
+			.sec1{
+				width: 100% !important;
+			}
+			.sec2{
+				margin-left: auto;
+			}
+		}
+		// ! pc
 		@media (width > $mobile) {
-			width: 1000px;
+			width: 1000px !important; // !! prevent cartCard small width in dialog
+			.sec1{
+				padding-left: 15px;	
+			}
 		}
 	}
 }

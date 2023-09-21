@@ -1,7 +1,7 @@
 import React from "react"
 import CartProducts from "./CartProducts"
 import CartSteps from "./CartSteps"
-import YouMayLike from "../other/YouMayLike"
+import PostsOther from "../other/PostsOther"
 
 export default function Cart() {
 	return (
@@ -10,7 +10,7 @@ export default function Cart() {
 				<CartSteps step={1} />
 				<CartProducts />
 			</>
-			<YouMayLike type="product" className="mt4" />
+			<PostsOther type="product" className="mt4" />
 		</>
 	)
 }

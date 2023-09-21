@@ -7,9 +7,9 @@ export default function SearchIcon() {
 	const [show, showSet] = useState(false)
 
 	return (
-		<>
+		<div className="f fwn">
 			{show && <SearchField />}
 			<Search onClick={() => showSet(prev => !prev)} />
-		</>
+		</div>
 	)
 }

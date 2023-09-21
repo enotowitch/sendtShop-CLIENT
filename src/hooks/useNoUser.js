@@ -1,13 +1,15 @@
 import { useContext } from "react"
 import { Context } from "../Context"
 import { PROFILE_ROUTE } from "../consts"
+import { useNavigate } from "react-router-dom"
 
 export default function useNoUser() {
 
 	const { user } = useContext(Context)
+	const navigate = useNavigate()
 
 	function noUserRedirect() {
-		!user && (window.location.href = PROFILE_ROUTE)
+		!user && (navigate(PROFILE_ROUTE))
 	}
 
 	return (

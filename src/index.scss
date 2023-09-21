@@ -64,6 +64,11 @@ b{
 	}
 }
 
+.disabled{
+	background: $gray !important;
+	color: $white;
+}
+
 // ! MUI TextField(input) style by default
 .MuiFormControl-root.MuiTextField-root{ // input
 	width: 100%;

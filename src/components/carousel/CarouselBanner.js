@@ -1,5 +1,6 @@
 import React from "react"
 import Carousel from "better-react-carousel"
+import "./index.scss"
 
 export const CarouselBanner = ({ children, cols, autoplay = 99999, width }) => {
 	return (

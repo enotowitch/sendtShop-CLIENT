@@ -1,3 +1,5 @@
+@import "../../vars.scss";
+
 // !! mui tags background
 .MuiInputBase-root.MuiFilledInput-root{
 	background: white;
@@ -12,4 +14,24 @@
 // !! mui select label text, to be under product full image zoom hint
 .MuiFormLabel-root.MuiInputLabel-root{
 	z-index: 0;
+}
+
+.inputButton{
+	position: relative;
+	&__input{ 
+	}
+	&__button{
+		position: absolute !important;
+		right: 0 !important;
+		height: 40px !important; 
+		padding: 0 !important;
+		align-self: center !important;
+		margin-right: 10px !important;
+	}
+}
+
+.removeBtn{
+	padding: 0 !important;
+	min-width: 75px !important;
+	align-self: center !important;
 }

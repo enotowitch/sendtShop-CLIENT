@@ -2,10 +2,10 @@ export default function parseForm(e) { // e=event from onSubmit (html form)
 
 	let form = {} // {"any field 1": "@","any field 2": "123","any field 3": "abc"}
 	let tags = [] // gather mui TagsInput (Autocomplete) hidden inputs after Chip
-	let characteristicNames = [] // gather product_add characteristic names
-	let characteristicValues = [] // gather product_add characteristic values
-	let informationNames = [] // gather product_add info names
-	let informationValues = [] // gather product_add info values
+	let characteristics = [] // gather product_add characteristics
+	let oneCharacteristic = {}
+	let informations = [] // gather product_add informations
+	let oneInformation = {}
 
 	const custom_fields = [] // custom_fields = [fieldObj1{name, type,...}, fieldObj2{name, type,...}]
 	let fieldObj = {}
@@ -25,12 +25,27 @@ export default function parseForm(e) { // e=event from onSubmit (html form)
 		if (each.name && each.value) {
 			if (each.name.includes("tags")) {
 				const arrTags = each.value.split(",") // now tags are string
-				tags = arrTags
+				const fixedTags = arrTags.map(tag => tag && tag.toLowerCase().trim()).filter(delEmpty => delEmpty)
+				tags = fixedTags
 			}
-			if (each.name.includes("characteristicName")) { characteristicNames = [...characteristicNames, each.value] }
-			if (each.name.includes("characteristicValue")) { characteristicValues = [...characteristicValues, each.value] }
-			if (each.name.includes("informationName")) { informationNames = [...informationNames, each.value] }
-			if (each.name.includes("informationValue")) { informationValues = [...informationValues, each.value] }
+			// ! characteristics
+			if (each.name.includes("characteristicName")) {
+				oneCharacteristic.name = each.value
+			}
+			if (each.name.includes("characteristicValue")) {
+				oneCharacteristic.value = each.value
+				characteristics.push(oneCharacteristic)
+				oneCharacteristic = {}
+			}
+			// ! informations
+			if (each.name.includes("informationName")) {
+				oneInformation.name = each.value
+			}
+			if (each.name.includes("informationValue")) {
+				oneInformation.value = each.value
+				informations.push(oneInformation)
+				oneInformation = {}
+			}
 
 			// ! custom_fields
 			for (let i = 1; i < 99; i++) {
@@ -75,7 +90,7 @@ export default function parseForm(e) { // e=event from onSubmit (html form)
 			if (each.name.includes("custom_field_name")) { custom_field_names = [...custom_field_names, each.value] }
 
 
-			form = { ...form, tags, characteristicNames, characteristicValues, informationNames, informationValues, custom_fields, custom_field_names, textEditorValue, [each.name]: each.checked || each.value }
+			form = { ...form, tags, characteristics, informations, custom_fields, custom_field_names, textEditorValue, [each.name]: each.checked || each.value }
 		}
 	})
 

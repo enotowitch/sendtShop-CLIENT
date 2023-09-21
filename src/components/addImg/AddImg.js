@@ -26,7 +26,7 @@ export default function AddImg({ editValue, obj }) { // obj=fullPost
 				type="file"
 				onChange={onChange}
 				multiple
-				accept="image/png, image/gif, image/jpeg"
+				accept="image/png, image/gif, image/jpeg, image/webp"
 			/>
 
 			<CarouselProduct arr={preview.length > 0 ? preview : [addImage]} obj={obj} />

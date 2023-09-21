@@ -4,12 +4,11 @@ import { Context } from "../../Context"
 
 export default function useIsReviewedByUser(_id) {
 
-	const { all } = usePosts("review")
-	const { user } = useContext(Context)
+	const { user, reviews } = useContext(Context)
 
 	let isReviewedByUser = false
 
-	all?.map(review => {
+	reviews?.map(review => {
 		if (review.productId === _id && review.userId === user?._id) {
 			isReviewedByUser = true
 		}
