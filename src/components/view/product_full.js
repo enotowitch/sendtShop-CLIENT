@@ -50,3 +50,4 @@ export default function Product_full({ obj }) {
 		</>
 	)
 }
+// test com
